@@ -1,0 +1,754 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>Physics 1 Visual Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: university-portal shell (navy header band, chapter card grid) + chapter "lab" view with section rail and live instruments */
+:root{
+  --bg:#F3F6FB; --surface:#FFFFFF; --surface-2:#EAF0FA; --ink:#0D1B36; --muted:#56627C; --line:#D6DEEC;
+  --brand:#14306E; --brand-ink:#FFFFFF; --accent:#2D63E8; --accent-soft:#DDE7FD;
+  --vA:#D9480F; --vB:#1971C2; --vC:#2B8A3E; --warn:#C92A2A; --warn-soft:#FDECEC;
+  --grid:#E3E9F3; --axis:#8A97B0;
+  --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0A1120; --surface:#111B2F; --surface-2:#18243D; --ink:#E5ECF8; --muted:#97A5C0; --line:#24324F;
+  --brand:#0F1A31; --brand-ink:#E5ECF8; --accent:#7EA2FF; --accent-soft:#1E2D52;
+  --vA:#FF8A5B; --vB:#5FB0FF; --vC:#5CCB7B; --warn:#FF6B6B; --warn-soft:#3A1A20;
+  --grid:#1B2742; --axis:#5D6C8C; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0A1120; --surface:#111B2F; --surface-2:#18243D; --ink:#E5ECF8; --muted:#97A5C0; --line:#24324F;
+  --brand:#0F1A31; --brand-ink:#E5ECF8; --accent:#7EA2FF; --accent-soft:#1E2D52;
+  --vA:#FF8A5B; --vB:#5FB0FF; --vC:#5CCB7B; --warn:#FF6B6B; --warn-soft:#3A1A20;
+  --grid:#1B2742; --axis:#5D6C8C; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;margin:0}
+a{color:var(--accent)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+
+/* header */
+.topbar{background:var(--brand);color:var(--brand-ink);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:20px;min-height:60px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.mark-sq{width:30px;height:30px;border:2px solid currentColor;display:grid;place-items:center;font:700 13px var(--f-display);letter-spacing:.02em}
+.mark-t{font:700 15px var(--f-display);letter-spacing:.01em}
+.mark-s{font-size:12px;opacity:.75;display:block;margin-top:-2px;font-family:var(--f-body);font-weight:500}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{color:inherit;text-decoration:none;padding:7px 12px;border-radius:6px;font-weight:500;font-size:14px;opacity:.88}
+.nav a:hover,.nav a[aria-current="page"]{background:rgba(255,255,255,.12);opacity:1}
+
+/* hero */
+.hero{padding-block:44px 28px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.eyebrow{font:600 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(28px,4.2vw,44px)/1.12 var(--f-display);margin:.35em 0 .45em;text-wrap:balance;letter-spacing:-.01em}
+h2{font:700 22px/1.25 var(--f-display);margin:0 0 .4em;text-wrap:balance}
+h3{font:600 17px/1.3 var(--f-body);margin:0;text-wrap:balance}
+.lede{color:var(--muted);font-size:17px;max-width:58ch;margin:0}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);text-decoration:none;color:var(--ink);font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0A1120}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#0A1120}}
+.hero-demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.hero-demo .cap{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* chapter grid */
+.section{padding-block:22px 40px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.sec-head p{margin:0;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card .num{font:700 13px var(--f-mono);color:var(--muted)}
+.card ul{margin:2px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+.card .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px dashed var(--line);font-size:13px}
+.chip{font:600 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:var(--surface-2);color:var(--muted)}
+.chip.live{background:var(--accent-soft);color:var(--accent)}
+.card.live{border-color:var(--accent)}
+.card a.go{font-weight:600;text-decoration:none}
+
+/* chapter view */
+.ch-head{padding-block:28px 10px}
+.ch-head .crumb{font-size:13px;color:var(--muted)}
+.ch-head .crumb a{text-decoration:none}
+.lab{display:grid;grid-template-columns:230px 1fr;gap:26px;padding-bottom:50px}
+@media (max-width:900px){.lab{grid-template-columns:1fr}}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start;font-size:14px}
+@media (max-width:900px){.rail{position:static}}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.rail ol a{display:flex;gap:10px;padding:7px 10px;border-radius:6px;text-decoration:none;color:var(--ink)}
+.rail ol a:hover{background:var(--surface-2)}
+.rail .sn{font:600 12px var(--f-mono);color:var(--muted);min-width:30px;padding-top:2px}
+.rail .note{margin-top:14px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.sims{display:grid;gap:22px;min-width:0}
+.sim{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:0;scroll-margin-top:84px}
+.sim-h{display:flex;gap:12px;align-items:baseline;justify-content:space-between;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--line)}
+.sim-h .ref{font:500 12px var(--f-mono);color:var(--muted)}
+.sim-b{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:0}
+@media (max-width:760px){.sim-b{grid-template-columns:1fr}}
+.stage{padding:12px;border-right:1px solid var(--line);min-width:0;background:var(--surface)}
+@media (max-width:760px){.stage{border-right:0;border-bottom:1px solid var(--line)}}
+.stage svg,.stage canvas{display:block;width:100%;height:auto;touch-action:none;user-select:none}
+.panel{padding:14px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel p{margin:0;color:var(--muted);font-size:14px}
+.ctrl{display:grid;gap:4px}
+.ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:500}
+.ctrl label output{font:600 13px var(--f-mono);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--surface);padding:6px 11px;font-size:13px;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.readout{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font:13px var(--f-mono);background:var(--surface-2);border-radius:8px;padding:10px 12px;font-variant-numeric:tabular-nums}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0;text-align:right;color:var(--ink);font-weight:600}
+.flag{font-size:13px;border-radius:8px;padding:8px 10px;background:var(--warn-soft);color:var(--warn)}
+.flag[hidden]{display:none}
+.hint{font-size:12px;color:var(--muted)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.small-btn{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer}
+.small-btn:hover{border-color:var(--accent);color:var(--accent)}
+.key{font-size:13px;border-left:3px solid var(--vA);padding:4px 0 4px 10px;color:var(--ink)}
+
+/* svg text & marks */
+.svg-t{font:600 13px var(--f-body);fill:var(--ink)}
+.svg-m{font:500 11px var(--f-mono);fill:var(--muted)}
+.grid-l{stroke:var(--grid);stroke-width:1}
+.axis-l{stroke:var(--axis);stroke-width:1.2}
+.handle{cursor:grab}
+.handle:active{cursor:grabbing}
+
+/* footer */
+footer{background:var(--brand);color:var(--brand-ink);padding-block:26px;font-size:13px}
+footer .wrap{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap}
+footer .muted{opacity:.75}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="#home" aria-label="Physics 1 Visual Lab home">
+      <span class="mark-sq">Φ1</span>
+      <span><span class="mark-t">Physics 1 Visual Lab</span><span class="mark-s">Mechanics · interactive companion to the textbook</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#home" data-nav="home">Chapters</a>
+      <a href="#ch1" data-nav="ch1">Chapter 1</a>
+      <a href="#about" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app">
+<!-- ===================== HOME ===================== -->
+<section id="view-home">
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Physics 1 · Mechanics · SI units</div>
+        <h1>See the equations move.</h1>
+        <p class="lede">Every chapter of the Physics 1 textbook gets a set of live instruments: drag a vector, change a length, swing a pendulum, and watch the numbers from the worked examples respond.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#ch1">Open Chapter 1 lab</a>
+          <a class="btn" href="#chapters">All chapters</a>
+        </div>
+      </div>
+      <div class="hero-demo">
+        <svg id="hero-svg" viewBox="0 0 420 300" role="img" aria-label="Drag the red and blue arrows to add two vectors"></svg>
+        <div class="cap" id="hero-cap">Drag the arrow tips. The green arrow is the vector sum.</div>
+      </div>
+    </div>
+  </div>
+  <div class="section wrap" id="chapters">
+    <div class="sec-head">
+      <h2>Chapters</h2>
+      <p>Labs open as each chapter of the book is finished.</p>
+    </div>
+    <div class="cards" id="chapter-cards"></div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER 1 ===================== -->
+<section id="view-ch1" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 1</div>
+    <h1 style="margin-bottom:.2em">Units, Physical Quantities, and Vectors</h1>
+    <p class="lede">Seven instruments that follow the chapter section by section. Values match the worked examples in the book, so you can check every calculation by hand.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 1 instruments">
+      <ol>
+        <li><a href="#ch1-triangulation"><span class="sn">1.3</span>Distance by triangulation</a></li>
+        <li><a href="#ch1-pendulum"><span class="sn">1.3</span>Pendulum and dimensions</a></li>
+        <li><a href="#ch1-uncertainty"><span class="sn">1.4</span>Uncertainty of an area</a></li>
+        <li><a href="#ch1-addition"><span class="sn">1.5</span>Adding vectors</a></li>
+        <li><a href="#ch1-components"><span class="sn">1.6</span>Components and angle</a></li>
+        <li><a href="#ch1-axes"><span class="sn">1.6</span>Right-handed axes in 3D</a></li>
+        <li><a href="#ch1-products"><span class="sn">1.7</span>Scalar and vector products</a></li>
+      </ol>
+      <div class="note">Opening question: a drone flies 30 m north, then 40 m east. Try it in <a href="#ch1-addition">Adding vectors</a>.</div>
+    </aside>
+
+    <div class="sims">
+
+      <!-- 1. TRIANGULATION -->
+      <article class="sim" id="ch1-triangulation">
+        <div class="sim-h"><h3>Distance by triangulation</h3><span class="ref">Section 1.3 · Example 1.2 · Fig. 1.1</span></div>
+        <div class="sim-b">
+          <div class="stage"><svg id="tri-svg" viewBox="0 0 520 360" role="img" aria-label="Triangle formed by a baseline and two lines of sight"></svg></div>
+          <div class="panel">
+            <p>Only the baseline AB and the two angles are measured. The distance to C comes from the law of sines.</p>
+            <div class="ctrl"><label for="tri-d">Baseline AB <output id="tri-d-o"></output></label><input type="range" id="tri-d" min="100" max="1000" step="10" value="500"></div>
+            <div class="ctrl"><label for="tri-a">Angle α at A <output id="tri-a-o"></output></label><input type="range" id="tri-a" min="10" max="88" step="0.5" value="72"></div>
+            <div class="ctrl"><label for="tri-b">Angle β at B <output id="tri-b-o"></output></label><input type="range" id="tri-b" min="10" max="88" step="0.5" value="65"></div>
+            <dl class="readout" id="tri-out"></dl>
+            <div class="row"><button class="small-btn" id="tri-ex">Load Example 1.2</button><button class="small-btn" id="tri-far">Very distant object</button></div>
+            <div class="flag" id="tri-flag" hidden>γ is small: a 0.5° error in α or β now changes the distance a lot. Use a longer baseline.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. PENDULUM -->
+      <article class="sim" id="ch1-pendulum">
+        <div class="sim-h"><h3>Pendulum and dimensional analysis</h3><span class="ref">Section 1.3 · Example 1.5 · Problem P6</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="pen-cv" width="560" height="380" aria-label="Animated pendulum"></canvas></div>
+          <div class="panel">
+            <p>Dimensional analysis predicts <b>T = C√(l/g)</b> with no mass dependence. The simulation solves the full equation of motion, so you can test both claims.</p>
+            <div class="ctrl"><label for="pen-l">Length l <output id="pen-l-o"></output></label><input type="range" id="pen-l" min="0.10" max="2.00" step="0.05" value="1.00"></div>
+            <div class="ctrl"><label for="pen-m">Mass m <output id="pen-m-o"></output></label><input type="range" id="pen-m" min="0.1" max="5" step="0.1" value="1"></div>
+            <div class="ctrl"><label for="pen-th">Amplitude θ₀ <output id="pen-th-o"></output></label><input type="range" id="pen-th" min="2" max="80" step="1" value="10"></div>
+            <div class="row"><span class="hint">Gravity:</span>
+              <div class="seg" id="pen-g" role="group" aria-label="Free-fall acceleration">
+                <button data-g="9.81" aria-pressed="true">Earth</button><button data-g="3.71" aria-pressed="false">Mars</button><button data-g="1.62" aria-pressed="false">Moon</button>
+              </div></div>
+            <dl class="readout" id="pen-out"></dl>
+            <div class="key" id="pen-key">Change the mass: the measured period does not move.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. UNCERTAINTY -->
+      <article class="sim" id="ch1-uncertainty">
+        <div class="sim-h"><h3>Uncertainty of a computed area</h3><span class="ref">Section 1.4 · Example 1.6</span></div>
+        <div class="sim-b">
+          <div class="stage"><svg id="unc-svg" viewBox="0 0 520 320" role="img" aria-label="Rectangle with its range of possible sizes"></svg></div>
+          <div class="panel">
+            <p>The shaded band shows every rectangle consistent with the measurements. Its spread is the uncertainty of the area.</p>
+            <div class="ctrl"><label for="unc-a">Length a <output id="unc-a-o"></output></label><input type="range" id="unc-a" min="2" max="20" step="0.1" value="12.4"></div>
+            <div class="ctrl"><label for="unc-da">Uncertainty Δa <output id="unc-da-o"></output></label><input type="range" id="unc-da" min="0.05" max="1" step="0.05" value="0.1"></div>
+            <div class="ctrl"><label for="unc-b">Width b <output id="unc-b-o"></output></label><input type="range" id="unc-b" min="2" max="12" step="0.1" value="5.2"></div>
+            <div class="ctrl"><label for="unc-db">Uncertainty Δb <output id="unc-db-o"></output></label><input type="range" id="unc-db" min="0.05" max="1" step="0.05" value="0.1"></div>
+            <dl class="readout" id="unc-out"></dl>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. VECTOR ADDITION -->
+      <article class="sim" id="ch1-addition">
+        <div class="sim-h"><h3>Adding and subtracting vectors</h3><span class="ref">Section 1.5 · Example 1.8 · Fig. 1.2</span></div>
+        <div class="sim-b">
+          <div class="stage"><svg id="add-svg" viewBox="0 0 520 440" role="img" aria-label="Two draggable displacement vectors and their sum"></svg></div>
+          <div class="panel">
+            <p>Drag the tips of <b style="color:var(--vA)">A</b> and <b style="color:var(--vB)">B</b>. Grid squares are 10 m; north is up.</p>
+            <div class="seg" id="add-mode" role="group" aria-label="Construction">
+              <button data-m="tail" aria-pressed="true">Head to tail</button><button data-m="para" aria-pressed="false">Parallelogram</button><button data-m="diff" aria-pressed="false">A − B</button>
+            </div>
+            <dl class="readout" id="add-out"></dl>
+            <div class="row"><button class="small-btn" id="add-q">Opening question: 30 m N, then 40 m E</button><button class="small-btn" id="add-zero">Make A + B = 0</button></div>
+            <div class="key" id="add-key">The distance flown is |A| + |B|; the displacement is |A + B|. They are equal only when A and B point the same way.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. COMPONENTS -->
+      <article class="sim" id="ch1-components">
+        <div class="sim-h"><h3>Components and direction angle</h3><span class="ref">Section 1.6 · Eqs. (1.5)–(1.6) · Caution</span></div>
+        <div class="sim-b">
+          <div class="stage"><svg id="cmp-svg" viewBox="0 0 520 440" role="img" aria-label="A draggable vector with its x and y components"></svg></div>
+          <div class="panel">
+            <p>Drag the tip of <b style="color:var(--vA)">A</b> into each quadrant and compare the calculator's arctan with the true direction.</p>
+            <dl class="readout" id="cmp-out"></dl>
+            <div class="flag" id="cmp-flag" hidden></div>
+            <div class="key">A calculator's arctan always returns an angle between −90° and +90°. Check the quadrant from the signs of the components.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. 3D AXES -->
+      <article class="sim" id="ch1-axes">
+        <div class="sim-h"><h3>Position vector in a right-handed system</h3><span class="ref">Section 1.6 · Eq. (1.9) · Fig. 1.4</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="ax-cv" width="560" height="420" aria-label="Three-dimensional axes; drag to rotate"></canvas></div>
+          <div class="panel">
+            <p>Drag the picture to turn it. r = x î + y ĵ + z k̂ runs from the origin to the point.</p>
+            <div class="ctrl"><label for="ax-x">x <output id="ax-x-o"></output></label><input type="range" id="ax-x" min="-4" max="4" step="0.5" value="2"></div>
+            <div class="ctrl"><label for="ax-y">y <output id="ax-y-o"></output></label><input type="range" id="ax-y" min="-4" max="4" step="0.5" value="3"></div>
+            <div class="ctrl"><label for="ax-z">z <output id="ax-z-o"></output></label><input type="range" id="ax-z" min="-4" max="4" step="0.5" value="2"></div>
+            <div class="seg" id="ax-hand" role="group" aria-label="Coordinate system">
+              <button data-h="R" aria-pressed="true">Right-handed</button><button data-h="L" aria-pressed="false">Mirror image (left-handed)</button>
+            </div>
+            <dl class="readout" id="ax-out"></dl>
+            <div class="key" id="ax-key">Corkscrew rule: turn from +x towards +y; a right-handed screw advances along +z.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. PRODUCTS -->
+      <article class="sim" id="ch1-products">
+        <div class="sim-h"><h3>Scalar and vector products</h3><span class="ref">Section 1.7 · Eqs. (1.10)–(1.13) · Fig. 1.5</span></div>
+        <div class="sim-b">
+          <div class="stage"><svg id="prd-svg" viewBox="0 0 520 440" role="img" aria-label="Two draggable vectors, the projection and the parallelogram they span"></svg></div>
+          <div class="panel">
+            <p>Both vectors lie in the xy-plane, so A × B points straight out of the screen (⊙) or into it (⊗).</p>
+            <div class="seg" id="prd-mode" role="group" aria-label="Show">
+              <button data-m="dot" aria-pressed="true">Scalar product</button><button data-m="cross" aria-pressed="false">Vector product</button>
+            </div>
+            <dl class="readout" id="prd-out"></dl>
+            <div class="row"><button class="small-btn" id="prd-perp">Make perpendicular</button><button class="small-btn" id="prd-par">Make parallel</button></div>
+            <div class="key" id="prd-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="view-about" hidden>
+  <div class="ch-head wrap" style="max-width:760px">
+    <div class="crumb"><a href="#home">Chapters</a> / About</div>
+    <h1>About this lab</h1>
+    <p class="lede">The Visual Lab accompanies the English-language textbook <i>Physics 1: Mechanics</i>, written for the Physics 1 course at Astana IT University.</p>
+    <p style="margin-top:1em">Each instrument follows the notation, section numbers and worked examples of the book. The book follows a concept → worked example → quick check → practice structure, and the lab adds a step in the middle: change the inputs and see what the equations do.</p>
+    <p>The explanations draw on two classic Russian mechanics courses, by N. V. Aleksandrov and A. Ya. Yashkin (1978) and by D. V. Sivukhin (1979), rewritten and extended for an international, English-speaking audience.</p>
+    <p class="hint" style="margin-top:1.4em">Author: Olzhas Mukhmetov, Senior Lecturer. This is an independent course resource, not an official university website.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Physics 1 Visual Lab</b><br><span class="muted">Companion to the textbook <i>Physics 1: Mechanics</i> · Astana IT University course</span></div>
+    <div class="muted">O. Mukhmetov · 2026</div>
+  </div>
+</footer>
+
+<script>
+(() => {
+"use strict";
+const $ = s => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const deg = r => r*180/Math.PI, rad = d => d*Math.PI/180;
+const fmt = (x,n=1) => (Math.abs(x)<1e-9?0:x).toFixed(n);
+function el(tag, attrs={}, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function txt(parent,x,y,s,cls="svg-t",anchor="middle",fill){ const t=el("text",{x,y,class:cls,"text-anchor":anchor,"dominant-baseline":"middle"},parent); if(fill) t.style.fill=fill; t.textContent=s; return t; }
+function arrow(g,x1,y1,x2,y2,color,w=3,dash){
+  const L=Math.hypot(x2-x1,y2-y1); if(L<1) return;
+  const ux=(x2-x1)/L, uy=(y2-y1)/L, h=Math.min(13,L*0.45), hw=h*0.45;
+  const bx=x2-ux*h, by=y2-uy*h;
+  const ln=el("line",{x1,y1,x2:bx,y2:by,"stroke-width":w,"stroke-linecap":"round"},g); ln.style.stroke=color; if(dash) ln.setAttribute("stroke-dasharray",dash);
+  const p=el("polygon",{points:`${x2},${y2} ${bx-uy*hw},${by+ux*hw} ${bx+uy*hw},${by-ux*hw}`},g); p.style.fill=color;
+}
+function tipLabel(P,g,x,y,s,color,dy=-14){ let X=P.toX(x), Y=P.toY(y)+dy, anchor="start", dx=12;
+  if(X>P.W-70){ anchor="end"; dx=-14; } if(Y<14) Y=P.toY(y)+18; if(Y>P.H-10) Y=P.H-12;
+  return txt(g,X+dx,Y,s,"svg-t",anchor,color); }
+function readout(dl, rows){ dl.innerHTML=rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join(""); }
+function seg(id, cb){ const s=$(id); s.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; s.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b?"true":"false")); cb(b.dataset); }); }
+function setPressed(id, key, val){ $(id).querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed", b.dataset[key]===val?"true":"false")); }
+
+/* ---------- 2D plane with draggable handles ---------- */
+function Plane(svg, {xmin,xmax,ymin,ymax,step=1,pad=24,labelStep}) {
+  const vb=svg.viewBox.baseVal, W=vb.width, H=vb.height;
+  const sx=(W-2*pad)/(xmax-xmin), sy=(H-2*pad)/(ymax-ymin), s=Math.min(sx,sy);
+  const ox=pad+(W-2*pad-s*(xmax-xmin))/2 - xmin*s, oy=H-pad-(H-2*pad-s*(ymax-ymin))/2 + ymin*s;
+  const P={svg,W,H,s,toX:x=>ox+x*s,toY:y=>oy-y*s,fromX:X=>(X-ox)/s,fromY:Y=>(oy-Y)/s};
+  P.drawGrid=(g)=>{
+    for(let x=Math.ceil(xmin/step)*step;x<=xmax+1e-9;x+=step) el("line",{x1:P.toX(x),y1:P.toY(ymin),x2:P.toX(x),y2:P.toY(ymax),class:x===0?"axis-l":"grid-l"},g);
+    for(let y=Math.ceil(ymin/step)*step;y<=ymax+1e-9;y+=step) el("line",{x1:P.toX(xmin),y1:P.toY(y),x2:P.toX(xmax),y2:P.toY(y),class:y===0?"axis-l":"grid-l"},g);
+    if(labelStep){ for(let x=labelStep;x<=xmax;x+=labelStep) txt(g,P.toX(x),P.toY(0)+12,String(x),"svg-m"); for(let y=labelStep;y<=ymax;y+=labelStep) txt(g,P.toX(0)-6,P.toY(y),String(y),"svg-m","end"); }
+  };
+  P.svgPoint=(evt)=>{ const pt=svg.createSVGPoint(); pt.x=evt.clientX; pt.y=evt.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()); };
+  P.dragSet=null; P.snap=step/2;
+  svg.addEventListener("pointermove",ev=>{ if(!P.dragSet) return; const p=P.svgPoint(ev);
+    let nx=Math.round(P.fromX(p.x)/P.snap)*P.snap, ny=Math.round(P.fromY(p.y)/P.snap)*P.snap;
+    nx=Math.max(xmin,Math.min(xmax,nx)); ny=Math.max(ymin,Math.min(ymax,ny)); P.dragSet(nx,ny); });
+  const stop=()=>{ P.dragSet=null; };
+  svg.addEventListener("pointerup",stop); svg.addEventListener("pointercancel",stop);
+  P.handle=(g,get,set,color,snap=step/2)=>{ P.snap=snap;
+    const [x,y]=get();
+    const c=el("circle",{cx:P.toX(x),cy:P.toY(y),r:11,class:"handle","fill-opacity":"0.18","stroke-width":2},g);
+    c.style.fill=color; c.style.stroke=color; c.setAttribute("tabindex","0");
+    c.addEventListener("pointerdown",e=>{ e.preventDefault(); P.dragSet=set; svg.setPointerCapture(e.pointerId); });
+    c.addEventListener("keydown",e=>{ const [x,y]=get(); const d=snap; const m={ArrowLeft:[-d,0],ArrowRight:[d,0],ArrowUp:[0,d],ArrowDown:[0,-d]}[e.key]; if(m){ e.preventDefault(); set(Math.max(xmin,Math.min(xmax,x+m[0])),Math.max(ymin,Math.min(ymax,y+m[1]))); } });
+    return c;
+  };
+  return P;
+}
+
+/* ---------- HERO mini demo ---------- */
+function hero(){
+  const svg=$("#hero-svg"); const P=Plane(svg,{xmin:-5,xmax:7,ymin:-1,ymax:7,step:1,pad:14});
+  const st={A:[4,1],B:[1,4]};
+  let focusKey=null;
+  const draw=()=>{ svg.innerHTML=""; const g=el("g",{},svg); P.drawGrid(g);
+    const [ax,ay]=st.A,[bx,by]=st.B;
+    arrow(g,P.toX(0),P.toY(0),P.toX(ax),P.toY(ay),css("--vA"));
+    arrow(g,P.toX(ax),P.toY(ay),P.toX(ax+bx),P.toY(ay+by),css("--vB"));
+    arrow(g,P.toX(0),P.toY(0),P.toX(ax+bx),P.toY(ay+by),css("--vC"),3.4);
+    txt(g,P.toX(ax/2)+10,P.toY(ay/2)+12,"A","svg-t","middle",css("--vA"));
+    txt(g,P.toX(ax+bx/2)+12,P.toY(ay+by/2),"B","svg-t","middle",css("--vB"));
+    const hA=P.handle(g,()=>st.A,(x,y)=>{st.A=[x,y];focusKey="A";draw();},css("--vA"),1);
+    // B handle at its tip (A+B)
+    const hB=P.handle(g,()=>[ax+bx,ay+by],(x,y)=>{st.B=[x-st.A[0],y-st.A[1]];focusKey="B";draw();},css("--vB"),1);
+    if(focusKey==="A") hA.focus({preventScroll:true}); if(focusKey==="B") hB.focus({preventScroll:true});
+    const R=Math.hypot(ax+bx,ay+by);
+    $("#hero-cap").textContent=`|A| = ${fmt(Math.hypot(ax,ay),2)}, |B| = ${fmt(Math.hypot(bx,by),2)}, |A + B| = ${fmt(R,2)}. Drag the arrow tips; the green arrow is the sum.`;
+  };
+  draw(); return draw;
+}
+
+/* ---------- 1. TRIANGULATION ---------- */
+function triangulation(){
+  const svg=$("#tri-svg"), d=$("#tri-d"), a=$("#tri-a"), b=$("#tri-b");
+  const draw=()=>{
+    const D=+d.value, al=+a.value, be=+b.value, ga=180-al-be;
+    $("#tri-d-o").textContent=D+" m"; $("#tri-a-o").textContent=al.toFixed(1)+"°"; $("#tri-b-o").textContent=be.toFixed(1)+"°";
+    const AC=D*Math.sin(rad(be))/Math.sin(rad(ga)), BC=D*Math.sin(rad(al))/Math.sin(rad(ga)), h=AC*Math.sin(rad(al));
+    const Cx=AC*Math.cos(rad(al)), Cy=h;
+    svg.innerHTML=""; const g=el("g",{},svg);
+    const W=520,H=360,pad=40; const xmin=Math.min(0,Cx), xmax=Math.max(D,Cx);
+    const s=Math.min((W-2*pad)/(xmax-xmin),(H-2*pad-10)/Math.max(Cy,1));
+    const X=x=>pad+(x-xmin)*s+((W-2*pad)-(xmax-xmin)*s)/2, Y=y=>H-pad-y*s;
+    const ground=el("line",{x1:10,y1:Y(0),x2:W-10,y2:Y(0),class:"grid-l"},g);
+    const pl=el("polygon",{points:`${X(0)},${Y(0)} ${X(D)},${Y(0)} ${X(Cx)},${Y(Cy)}`},g); pl.style.fill=css("--accent-soft");
+    const sA=el("line",{x1:X(0),y1:Y(0),x2:X(Cx),y2:Y(Cy),"stroke-width":2,"stroke-dasharray":"6 5"},g); sA.style.stroke=css("--vB");
+    const sB=el("line",{x1:X(D),y1:Y(0),x2:X(Cx),y2:Y(Cy),"stroke-width":2,"stroke-dasharray":"6 5"},g); sB.style.stroke=css("--vB");
+    const base=el("line",{x1:X(0),y1:Y(0),x2:X(D),y2:Y(0),"stroke-width":4},g); base.style.stroke=css("--ink");
+    const hl=el("line",{x1:X(Cx),y1:Y(Cy),x2:X(Cx),y2:Y(0),"stroke-width":1.5,"stroke-dasharray":"2 4"},g); hl.style.stroke=css("--vA");
+    txt(g,X(Cx)+8,Y(Cy/2),`h = ${Math.round(h)} m`,"svg-t","start",css("--vA"));
+    // angle arcs
+    const arc=(cx,cy,a0,a1,r)=>{ const p=el("path",{d:`M ${cx+r*Math.cos(rad(a0))} ${cy-r*Math.sin(rad(a0))} A ${r} ${r} 0 0 0 ${cx+r*Math.cos(rad(a1))} ${cy-r*Math.sin(rad(a1))}`,fill:"none","stroke-width":1.5},g); p.style.stroke=css("--ink"); };
+    arc(X(0),Y(0),0,al,26); arc(X(D),Y(0),180-be,180,26);
+    txt(g,X(0)+38*Math.cos(rad(al/2)),Y(0)-38*Math.sin(rad(al/2)),"α","svg-t");
+    txt(g,X(D)-38*Math.cos(rad(be/2)),Y(0)-38*Math.sin(rad(be/2)),"β","svg-t");
+    [[0,0,"A",-1],[D,0,"B",1]].forEach(([x,y,n,s2])=>{ const c=el("circle",{cx:X(x),cy:Y(y),r:4.5},g); c.style.fill=css("--ink"); txt(g,X(x)+s2*12,Y(y)+16,n); });
+    const cc=el("circle",{cx:X(Cx),cy:Y(Cy),r:5},g); cc.style.fill=css("--vA"); txt(g,X(Cx),Y(Cy)-14,"C");
+    txt(g,(X(0)+X(D))/2,Y(0)+18,`AB = ${D} m (measured)`,"svg-m");
+    readout($("#tri-out"),[["γ = 180° − α − β",ga.toFixed(1)+"°"],["AC = AB sin β / sin γ",Math.round(AC)+" m"],["BC = AB sin α / sin γ",Math.round(BC)+" m"],["h = AC sin α",Math.round(h)+" m"]]);
+    $("#tri-flag").hidden = ga>=8;
+  };
+  [d,a,b].forEach(i=>i.addEventListener("input",draw));
+  $("#tri-ex").onclick=()=>{d.value=500;a.value=72;b.value=65;draw();};
+  $("#tri-far").onclick=()=>{d.value=200;a.value=87;b.value=87.5;draw();};
+  draw(); return draw;
+}
+
+/* ---------- 2. PENDULUM ---------- */
+function pendulum(){
+  const cv=$("#pen-cv"), ctx=cv.getContext("2d"), L=$("#pen-l"), M=$("#pen-m"), TH=$("#pen-th");
+  let g=9.81, th=rad(+TH.value), w=0, t=0, lastUp=null, Tmeas=null, prev=th, raf=null, lastTs=null;
+  const reset=()=>{ th=rad(+TH.value); w=0; t=0; lastUp=null; Tmeas=null; prev=th; labels(); };
+  function labels(){
+    const l=+L.value, m=+M.value, t0=+TH.value;
+    $("#pen-l-o").textContent=l.toFixed(2)+" m"; $("#pen-m-o").textContent=m.toFixed(1)+" kg"; $("#pen-th-o").textContent=t0+"°";
+  }
+  function stats(){
+    const l=+L.value, T0=2*Math.PI*Math.sqrt(l/g), q=rad(+TH.value);
+    const Tser=T0*(1+q*q/16+11*q**4/3072);
+    readout($("#pen-out"),[["2π√(l/g)  (small swings)",T0.toFixed(3)+" s"],["measured period",Tmeas?Tmeas.toFixed(3)+" s":"measuring…"],["measured / 2π√(l/g)",Tmeas?(Tmeas/T0).toFixed(3):"…"],["g",g.toFixed(2)+" m/s²"]]);
+    $("#pen-key").textContent = (+TH.value>30) ? "At large amplitude the period grows: T = f(θ₀)·√(l/g). Dimensional analysis cannot find f(θ₀)." : "Change the mass: the measured period does not move. Make l four times larger: the period doubles.";
+  }
+  const acc=(a)=>-(g/(+L.value))*Math.sin(a);
+  function step(dt){ // RK4
+    const k1t=w, k1w=acc(th);
+    const k2t=w+0.5*dt*k1w, k2w=acc(th+0.5*dt*k1t);
+    const k3t=w+0.5*dt*k2w, k3w=acc(th+0.5*dt*k2t);
+    const k4t=w+dt*k3w, k4w=acc(th+dt*k3t);
+    prev=th; th+=dt/6*(k1t+2*k2t+2*k3t+k4t); w+=dt/6*(k1w+2*k2w+2*k3w+k4w); t+=dt;
+    if(prev<0 && th>=0){ const tc=t-dt*th/(th-prev); if(lastUp!==null) Tmeas=tc-lastUp; lastUp=tc; }
+  }
+  function draw(){
+    const W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+    ctx.fillStyle=css("--surface"); ctx.fillRect(0,0,W,H);
+    const px=(H-70)/2.05, l=+L.value, len=l*px, ox=W/2, oy=26;
+    ctx.strokeStyle=css("--grid"); ctx.lineWidth=1;
+    for(let k=0;k<=2;k+=0.5){ ctx.beginPath(); ctx.setLineDash([3,5]); ctx.arc(ox,oy,k*px,0,Math.PI); ctx.stroke(); }
+    ctx.setLineDash([]);
+    ctx.fillStyle=css("--muted"); ctx.font="11px "+css("--f-mono"); ctx.textAlign="left";
+    [0.5,1,1.5,2].forEach(k=>ctx.fillText(k.toFixed(1)+" m",ox+4,oy+k*px-4));
+    ctx.strokeStyle=css("--ink"); ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(ox-60,oy); ctx.lineTo(ox+60,oy); ctx.stroke();
+    // amplitude marks
+    const a0=rad(+TH.value); ctx.strokeStyle=css("--axis"); ctx.lineWidth=1; ctx.setLineDash([2,4]);
+    [-a0,a0,0].forEach(a=>{ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(ox+len*Math.sin(a),oy+len*Math.cos(a));ctx.stroke();});
+    ctx.setLineDash([]);
+    const bx=ox+len*Math.sin(th), by=oy+len*Math.cos(th);
+    ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.6; ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(bx,by); ctx.stroke();
+    const r=7+6*Math.cbrt(+M.value); ctx.fillStyle=css("--vA"); ctx.beginPath(); ctx.arc(bx,by,r,0,2*Math.PI); ctx.fill();
+    ctx.fillStyle=css("--ink"); ctx.font="600 13px "+css("--f-body"); ctx.textAlign="left";
+    ctx.fillText(`t = ${t.toFixed(1)} s`,14,H-14);
+  }
+  function loop(ts){
+    if(lastTs===null) lastTs=ts; let dt=Math.min(0.05,(ts-lastTs)/1000); lastTs=ts;
+    const n=Math.max(1,Math.ceil(dt/0.002)); for(let i=0;i<n;i++) step(dt/n);
+    draw(); stats(); raf=requestAnimationFrame(loop);
+  }
+  [L,TH].forEach(i=>i.addEventListener("input",()=>{reset();}));
+  M.addEventListener("input",labels);
+  seg("#pen-g",ds=>{ g=+ds.g; reset(); });
+  labels(); draw(); stats();
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting && !raf && !reduce){ lastTs=null; raf=requestAnimationFrame(loop);} else if(!e.isIntersecting && raf){ cancelAnimationFrame(raf); raf=null; } }));
+  io.observe(cv);
+  return ()=>{ draw(); };
+}
+
+/* ---------- 3. UNCERTAINTY ---------- */
+function uncertainty(){
+  const svg=$("#unc-svg"), A=$("#unc-a"), dA=$("#unc-da"), B=$("#unc-b"), dB=$("#unc-db");
+  const round1=(x)=>{ const p=Math.floor(Math.log10(x)); const r=Math.round(x/10**p)*10**p; return {r,p:Math.floor(Math.log10(r))}; };
+  const draw=()=>{
+    const a=+A.value, da=+dA.value, b=+B.value, db=+dB.value;
+    $("#unc-a-o").textContent=a.toFixed(1)+" cm"; $("#unc-da-o").textContent="± "+da.toFixed(2)+" cm";
+    $("#unc-b-o").textContent=b.toFixed(1)+" cm"; $("#unc-db-o").textContent="± "+db.toFixed(2)+" cm";
+    svg.innerHTML=""; const g=el("g",{},svg);
+    const W=520,H=320,pad=40, s=Math.min((W-2*pad)/21,(H-2*pad)/13);
+    const x0=pad, y0=H-pad;
+    const R=(w,h,fill,stroke,dash)=>{ const r=el("rect",{x:x0,y:y0-h*s,width:w*s,height:h*s,"stroke-width":1.5},g); r.style.fill=fill; r.style.stroke=stroke; if(dash) r.setAttribute("stroke-dasharray",dash); };
+    R(a+da,b+db,css("--accent-soft"),css("--accent"),"5 4");
+    R(a,b,"transparent",css("--ink"));
+    R(a-da,b-db,css("--surface"),css("--accent"),"5 4");
+    txt(g,x0+a*s/2,y0+16,`a = ${a.toFixed(1)} ± ${da.toFixed(2)} cm`,"svg-m");
+    txt(g,x0-8,y0-b*s/2,`b`,"svg-m","end");
+    txt(g,x0+(a-da)*s/2,y0-(b-db)*s/2,"smallest","svg-m");
+    txt(g,x0+(a+da)*s-6,y0-(b+db)*s-10,"largest","svg-m","end");
+    const area=a*b, rel=da/a+db/b, dArea=area*rel;
+    const {r,p}=round1(dArea); const dec=Math.max(0,-p); const areaR=(Math.round(area/10**p)*10**p).toFixed(dec);
+    readout($("#unc-out"),[["A = ab",area.toFixed(2)+" cm²"],["Δa/a + Δb/b",(rel*100).toFixed(1)+" %"],["ΔA",dArea.toFixed(2)+" cm²"],["range",((a-da)*(b-db)).toFixed(1)+" – "+((a+da)*(b+db)).toFixed(1)+" cm²"],["report",`(${areaR} ± ${r.toFixed(dec)}) cm²`]]);
+  };
+  [A,dA,B,dB].forEach(i=>i.addEventListener("input",draw)); draw(); return draw;
+}
+
+/* ---------- 4. VECTOR ADDITION ---------- */
+function addition(){
+  const svg=$("#add-svg"); const P=Plane(svg,{xmin:-60,xmax:60,ymin:-50,ymax:50,step:10,pad:16,labelStep:20});
+  const st={A:[0,30],B:[40,0],mode:"tail"}; let foc=null;
+  const compass=(x,y)=>{ if(Math.hypot(x,y)<1e-9) return "—"; const th=deg(Math.atan2(x,y)); const b=(th+360)%360; // bearing from north
+    const ns=y>=0?"N":"S", ew=x>=0?"E":"W"; const ang=deg(Math.atan2(Math.abs(x),Math.abs(y)));
+    if(Math.abs(x)<1e-9) return y>0?"due north":"due south"; if(Math.abs(y)<1e-9) return x>0?"due east":"due west";
+    return `${ang.toFixed(1)}° ${ew==="E"?"east":"west"} of ${ns==="N"?"north":"south"}`; };
+  const draw=()=>{
+    svg.innerHTML=""; const g=el("g",{},svg); P.drawGrid(g);
+    txt(g,P.toX(0)+10,P.toY(50)+6,"N","svg-m","start");
+    const [ax,ay]=st.A,[bx,by]=st.B, O=[P.toX(0),P.toY(0)];
+    const cA=css("--vA"), cB=css("--vB"), cC=css("--vC");
+    let res;
+    if(st.mode==="tail"){
+      arrow(g,...O,P.toX(ax),P.toY(ay),cA); arrow(g,P.toX(ax),P.toY(ay),P.toX(ax+bx),P.toY(ay+by),cB);
+      arrow(g,...O,P.toX(ax+bx),P.toY(ay+by),cC,3.5); res=[ax+bx,ay+by];
+      tipLabel(P,g,ax+bx,ay+by,"A + B",cC,-16);
+    } else if(st.mode==="para"){
+      const d1=el("line",{x1:P.toX(ax),y1:P.toY(ay),x2:P.toX(ax+bx),y2:P.toY(ay+by),"stroke-dasharray":"5 4","stroke-width":1.5},g); d1.style.stroke=cB;
+      const d2=el("line",{x1:P.toX(bx),y1:P.toY(by),x2:P.toX(ax+bx),y2:P.toY(ay+by),"stroke-dasharray":"5 4","stroke-width":1.5},g); d2.style.stroke=cA;
+      arrow(g,...O,P.toX(ax),P.toY(ay),cA); arrow(g,...O,P.toX(bx),P.toY(by),cB);
+      arrow(g,...O,P.toX(ax+bx),P.toY(ay+by),cC,3.5); res=[ax+bx,ay+by];
+      tipLabel(P,g,ax+bx,ay+by,"A + B",cC,-16);
+    } else {
+      arrow(g,...O,P.toX(ax),P.toY(ay),cA); arrow(g,...O,P.toX(bx),P.toY(by),cB);
+      arrow(g,P.toX(bx),P.toY(by),P.toX(ax),P.toY(ay),cC,3.5); res=[ax-bx,ay-by];
+      txt(g,P.toX((ax+bx)/2)+12,P.toY((ay+by)/2)+14,"A − B","svg-t","start",cC);
+    }
+    tipLabel(P,g,ax,ay,"A",cA,-16);
+    if(st.mode!=="tail") tipLabel(P,g,bx,by,"B",cB,18);
+    else txt(g,P.toX(ax+bx/2)+12,P.toY(ay+by/2)+12,"B","svg-t","start",cB);
+    const hA=P.handle(g,()=>st.A,(x,y)=>{st.A=[x,y];foc="A";draw();},cA,5);
+    const hB=st.mode==="tail"
+      ? P.handle(g,()=>[st.A[0]+st.B[0],st.A[1]+st.B[1]],(x,y)=>{st.B=[x-st.A[0],y-st.A[1]];foc="B";draw();},cB,5)
+      : P.handle(g,()=>st.B,(x,y)=>{st.B=[x,y];foc="B";draw();},cB,5);
+    if(foc==="A") hA.focus({preventScroll:true}); if(foc==="B") hB.focus({preventScroll:true});
+    const mA=Math.hypot(ax,ay), mB=Math.hypot(bx,by), mR=Math.hypot(...res);
+    readout($("#add-out"),[["A",`(${ax}, ${ay}) m`],["B",`(${bx}, ${by}) m`],["|A|, |B|",`${fmt(mA)} m, ${fmt(mB)} m`],[st.mode==="diff"?"|A − B|":"|A + B|",`${fmt(mR)} m`],["direction",compass(...res)],["|A| + |B|",`${fmt(mA+mB)} m`]]);
+    $("#add-key").textContent = st.mode==="diff" ? "A − B is the arrow you must add to B to get A. Compare its length with |A + B|." : "The distance travelled is |A| + |B|; the displacement is |A + B|. They are equal only when A and B point the same way.";
+  };
+  seg("#add-mode",ds=>{st.mode=ds.m;foc=null;draw();});
+  $("#add-q").onclick=()=>{st.A=[0,30];st.B=[40,0];st.mode="tail";setPressed("#add-mode","m","tail");foc=null;draw();};
+  $("#add-zero").onclick=()=>{st.B=[-st.A[0],-st.A[1]];foc=null;draw();};
+  draw(); return draw;
+}
+
+/* ---------- 5. COMPONENTS ---------- */
+function components(){
+  const svg=$("#cmp-svg"); const P=Plane(svg,{xmin:-5,xmax:5,ymin:-4,ymax:4,step:1,pad:16,labelStep:2});
+  const st={A:[-3,2]}; let foc=false;
+  const draw=()=>{
+    svg.innerHTML=""; const g=el("g",{},svg); P.drawGrid(g);
+    txt(g,P.toX(5)-6,P.toY(0)-12,"x","svg-m","end"); txt(g,P.toX(0)+10,P.toY(4)+8,"y","svg-m","start");
+    const [x,y]=st.A, cA=css("--vA");
+    const dx=el("line",{x1:P.toX(x),y1:P.toY(y),x2:P.toX(x),y2:P.toY(0),"stroke-dasharray":"4 4"},g); dx.style.stroke=css("--axis");
+    const dy=el("line",{x1:P.toX(x),y1:P.toY(y),x2:P.toX(0),y2:P.toY(y),"stroke-dasharray":"4 4"},g); dy.style.stroke=css("--axis");
+    arrow(g,P.toX(0),P.toY(0),P.toX(x),P.toY(0),css("--vB"),4); arrow(g,P.toX(0),P.toY(0),P.toX(0),P.toY(y),css("--vC"),4);
+    arrow(g,P.toX(0),P.toY(0),P.toX(x),P.toY(y),cA,3);
+    const th=(deg(Math.atan2(y,x))+360)%360;
+    if(Math.hypot(x,y)>0.1){ const r=34, end=rad(th); const large=th>180?1:0;
+      const pth=el("path",{d:`M ${P.toX(0)+r} ${P.toY(0)} A ${r} ${r} 0 ${large} 0 ${P.toX(0)+r*Math.cos(end)} ${P.toY(0)-r*Math.sin(end)}`,fill:"none","stroke-width":1.5},g); pth.style.stroke=css("--ink");
+      txt(g,P.toX(0)+52*Math.cos(rad(th/2)),P.toY(0)-52*Math.sin(rad(th/2)),"θ","svg-t"); }
+    txt(g,P.toX(x/2),P.toY(0)+(y>=0?14:-14),"Aₓ","svg-t","middle",css("--vB"));
+    txt(g,P.toX(0)+(x>=0?-16:16),P.toY(y/2),"Aᵧ","svg-t","middle",css("--vC"));
+    txt(g,P.toX(x)+(x>=0?12:-12),P.toY(y)-14,"A","svg-t",x>=0?"start":"end",cA);
+    const h=P.handle(g,()=>st.A,(nx,ny)=>{st.A=[nx,ny];foc=true;draw();},cA,0.5); if(foc) h.focus({preventScroll:true});
+    const mag=Math.hypot(x,y); const calc = x!==0 ? deg(Math.atan(y/x)) : NaN;
+    const quad = x>0&&y>0?"I":x<0&&y>0?"II":x<0&&y<0?"III":x>0&&y<0?"IV":"on an axis";
+    readout($("#cmp-out"),[["Aₓ = A cos θ",fmt(x,1)],["Aᵧ = A sin θ",fmt(y,1)],["A = √(Aₓ² + Aᵧ²)",fmt(mag,2)],["quadrant",quad],["arctan(Aᵧ/Aₓ)",isNaN(calc)?"undefined (Aₓ = 0)":fmt(calc,1)+"°"],["true θ",mag<1e-9?"—":fmt(th,1)+"°"]]);
+    const f=$("#cmp-flag");
+    if(x<0 && mag>0){ f.hidden=false; f.textContent=`The calculator gives ${fmt(calc,1)}°, but A points into quadrant ${quad}. Add 180°: θ = ${fmt(th,1)}°.`; }
+    else f.hidden=true;
+  };
+  draw(); return draw;
+}
+
+/* ---------- 6. 3D AXES ---------- */
+function axes(){
+  const cv=$("#ax-cv"), ctx=cv.getContext("2d"), X=$("#ax-x"), Y=$("#ax-y"), Z=$("#ax-z");
+  let psi=rad(-30), phi=rad(22), hand="R", drag=null;
+  const proj=(v)=>{ const [x,y,z0]=v; const z=hand==="R"?z0:-z0;
+    const d=x*Math.cos(psi)-y*Math.sin(psi), h=x*Math.sin(psi)+y*Math.cos(psi);
+    const vert=z*Math.cos(phi)-d*Math.sin(phi); const s=38; return [cv.width/2+s*h, cv.height/2+30-s*vert]; };
+  const line=(a,b,col,w=1.5,dash)=>{ const p=proj(a),q=proj(b); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.setLineDash(dash||[]); ctx.beginPath(); ctx.moveTo(...p); ctx.lineTo(...q); ctx.stroke(); ctx.setLineDash([]); };
+  const arr=(a,b,col,w=3)=>{ const p=proj(a),q=proj(b); const L=Math.hypot(q[0]-p[0],q[1]-p[1]); if(L<2) return; const ux=(q[0]-p[0])/L,uy=(q[1]-p[1])/L,hh=Math.min(12,L*.4),hw=hh*.45;
+    ctx.strokeStyle=col; ctx.fillStyle=col; ctx.lineWidth=w; ctx.beginPath(); ctx.moveTo(...p); ctx.lineTo(q[0]-ux*hh,q[1]-uy*hh); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...q); ctx.lineTo(q[0]-ux*hh-uy*hw,q[1]-uy*hh+ux*hw); ctx.lineTo(q[0]-ux*hh+uy*hw,q[1]-uy*hh-ux*hw); ctx.closePath(); ctx.fill(); };
+  const label=(v,s,col,dx=6,dy=-6)=>{ const p=proj(v); ctx.fillStyle=col; ctx.font="600 14px "+css("--f-body"); ctx.fillText(s,p[0]+dx,p[1]+dy); };
+  const draw=()=>{
+    const x=+X.value,y=+Y.value,z=+Z.value;
+    $("#ax-x-o").textContent=x.toFixed(1)+" m"; $("#ax-y-o").textContent=y.toFixed(1)+" m"; $("#ax-z-o").textContent=z.toFixed(1)+" m";
+    ctx.clearRect(0,0,cv.width,cv.height); ctx.fillStyle=css("--surface"); ctx.fillRect(0,0,cv.width,cv.height);
+    // floor grid
+    for(let k=-4;k<=4;k++){ line([k,-4,0],[k,4,0],css("--grid"),1); line([-4,k,0],[4,k,0],css("--grid"),1); }
+    const ax=css("--axis");
+    line([-4.5,0,0],[0,0,0],ax,1.2,[4,4]); line([0,-4.5,0],[0,0,0],ax,1.2,[4,4]); line([0,0,-4.5],[0,0,0],ax,1.2,[4,4]);
+    arr([0,0,0],[4.8,0,0],ax,1.4); arr([0,0,0],[0,4.8,0],ax,1.4); arr([0,0,0],[0,0,4.6],ax,1.4);
+    label([4.9,0,0],"x",css("--muted")); label([0,4.9,0],"y",css("--muted")); label([0,0,4.7],hand==="R"?"z":"z (mirrored)",css("--muted"));
+    // box
+    const c=css("--axis");
+    line([x,y,0],[x,0,0],c,1,[3,4]); line([x,y,0],[0,y,0],c,1,[3,4]); line([x,y,0],[x,y,z],c,1,[3,4]);
+    line([0,0,0],[x,y,0],c,1,[3,4]);
+    const ub=css("--vB"); arr([0,0,0],[1,0,0],ub,3.5); arr([0,0,0],[0,1,0],ub,3.5); arr([0,0,0],[0,0,1],ub,3.5);
+    label([1,0,0],"î",ub,-4,16); label([0,1,0],"ĵ",ub,2,16); label([0,0,1],"k̂",ub,-18,0);
+    arr([0,0,0],[x,y,z],css("--vA"),3);
+    const p=proj([x,y,z]); ctx.fillStyle=css("--vA"); ctx.beginPath(); ctx.arc(p[0],p[1],4,0,2*Math.PI); ctx.fill();
+    label([x,y,z],`r (${x}, ${y}, ${z})`,css("--vA"),8,-8);
+    ctx.fillStyle=css("--muted"); ctx.font="11px "+css("--f-mono"); ctx.fillText("drag to rotate",12,cv.height-12);
+    const m=Math.hypot(x,y,z);
+    readout($("#ax-out"),[["r",`${x} î + ${y} ĵ + ${z} k̂`],["|r| = √(x² + y² + z²)",fmt(m,2)+" m"],["unit vector r/|r|",m?`(${fmt(x/m,2)}, ${fmt(y/m,2)}, ${fmt(z/m,2)})`:"—"],["î × ĵ",hand==="R"?"+k̂":"−k̂  (left-handed)"]]);
+    $("#ax-key").textContent = hand==="R" ? "Corkscrew rule: turn from +x towards +y; a right-handed screw advances along +z." : "In the mirror image the screw advances along −z: a left-handed system. No rotation can turn it back into a right-handed one.";
+  };
+  [X,Y,Z].forEach(i=>i.addEventListener("input",draw));
+  seg("#ax-hand",ds=>{hand=ds.h;draw();});
+  cv.addEventListener("pointerdown",e=>{ drag=[e.clientX,e.clientY,psi,phi]; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener("pointermove",e=>{ if(!drag) return; psi=drag[2]+(e.clientX-drag[0])*0.01; phi=Math.max(rad(-10),Math.min(rad(80),drag[3]+(e.clientY-drag[1])*0.01)); draw(); });
+  cv.addEventListener("pointerup",()=>drag=null); cv.addEventListener("pointercancel",()=>drag=null);
+  draw(); return draw;
+}
+
+/* ---------- 7. PRODUCTS ---------- */
+function products(){
+  const svg=$("#prd-svg"); const P=Plane(svg,{xmin:-5,xmax:5,ymin:-4,ymax:4,step:1,pad:16,labelStep:2});
+  const st={A:[4,1],B:[1.5,3],mode:"dot"}; let foc=null;
+  const draw=()=>{
+    svg.innerHTML=""; const g=el("g",{},svg); P.drawGrid(g);
+    const [ax,ay]=st.A,[bx,by]=st.B, cA=css("--vA"), cB=css("--vB"), cC=css("--vC");
+    const dot=ax*bx+ay*by, cross=ax*by-ay*bx, mA=Math.hypot(ax,ay), mB=Math.hypot(bx,by);
+    const phi = (mA&&mB)? deg(Math.acos(Math.max(-1,Math.min(1,dot/(mA*mB))))) : NaN;
+    if(st.mode==="cross"){
+      const pg=el("polygon",{points:`${P.toX(0)},${P.toY(0)} ${P.toX(ax)},${P.toY(ay)} ${P.toX(ax+bx)},${P.toY(ay+by)} ${P.toX(bx)},${P.toY(by)}`,"stroke-dasharray":"4 4"},g);
+      pg.style.fill=css("--accent-soft"); pg.style.stroke=css("--accent");
+      const cx=P.toX((ax+bx)/2), cy=P.toY((ay+by)/2);
+      const sym=el("circle",{cx,cy,r:13,"stroke-width":2},g); sym.style.fill=css("--surface"); sym.style.stroke=cC;
+      if(cross>1e-9){ const d=el("circle",{cx,cy,r:3.5},g); d.style.fill=cC; }
+      else if(cross<-1e-9){ const l1=el("path",{d:`M ${cx-7} ${cy-7} L ${cx+7} ${cy+7} M ${cx+7} ${cy-7} L ${cx-7} ${cy+7}`,"stroke-width":2},g); l1.style.stroke=cC; }
+    } else if(mA>0){
+      const k=dot/(mA*mA), px=k*ax, py=k*ay;
+      const pr=el("line",{x1:P.toX(bx),y1:P.toY(by),x2:P.toX(px),y2:P.toY(py),"stroke-dasharray":"4 4","stroke-width":1.5},g); pr.style.stroke=css("--axis");
+      const ex=el("line",{x1:P.toX(0),y1:P.toY(0),x2:P.toX(px),y2:P.toY(py),"stroke-width":8,"stroke-linecap":"round","stroke-opacity":0.35},g); ex.style.stroke=cC;
+      txt(g,P.toX(px)+12,P.toY(py)+16,"B cos φ","svg-m","start");
+    }
+    arrow(g,P.toX(0),P.toY(0),P.toX(ax),P.toY(ay),cA); arrow(g,P.toX(0),P.toY(0),P.toX(bx),P.toY(by),cB);
+    tipLabel(P,g,ax,ay,"A",cA,-16); tipLabel(P,g,bx,by,"B",cB,-16);
+    if(!isNaN(phi)&&mA>0.2&&mB>0.2){ const a0=Math.atan2(ay,ax), a1=Math.atan2(by,bx); let da=a1-a0; while(da>Math.PI) da-=2*Math.PI; while(da<-Math.PI) da+=2*Math.PI;
+      const r=30, sweep=da>0?0:1; const pth=el("path",{d:`M ${P.toX(0)+r*Math.cos(a0)} ${P.toY(0)-r*Math.sin(a0)} A ${r} ${r} 0 0 ${sweep} ${P.toX(0)+r*Math.cos(a0+da)} ${P.toY(0)-r*Math.sin(a0+da)}`,fill:"none","stroke-width":1.5},g); pth.style.stroke=css("--ink");
+      txt(g,P.toX(0)+46*Math.cos(a0+da/2),P.toY(0)-46*Math.sin(a0+da/2),"φ","svg-t"); }
+    const hA=P.handle(g,()=>st.A,(x,y)=>{st.A=[x,y];foc="A";draw();},cA,0.5);
+    const hB=P.handle(g,()=>st.B,(x,y)=>{st.B=[x,y];foc="B";draw();},cB,0.5);
+    if(foc==="A") hA.focus({preventScroll:true}); if(foc==="B") hB.focus({preventScroll:true});
+    const rows=[["A",`${fmt(ax,1)} î + ${fmt(ay,1)} ĵ`],["B",`${fmt(bx,1)} î + ${fmt(by,1)} ĵ`],["angle φ",isNaN(phi)?"—":fmt(phi,1)+"°"]];
+    if(st.mode==="dot"){ rows.push(["AₓBₓ + AᵧBᵧ",fmt(dot,2)],["AB cos φ",isNaN(phi)?"—":fmt(mA*mB*Math.cos(rad(phi)),2)]); }
+    else { rows.push(["AₓBᵧ − AᵧBₓ",fmt(cross,2)],["|A × B| = AB sin φ",isNaN(phi)?"—":fmt(mA*mB*Math.sin(rad(phi)),2)],["direction",cross>1e-9?"+k̂ (out of screen ⊙)":cross<-1e-9?"−k̂ (into screen ⊗)":"zero vector"]); }
+    readout($("#prd-out"),rows);
+    $("#prd-key").textContent = st.mode==="dot"
+      ? (Math.abs(dot)<1e-9?"A · B = 0: the vectors are perpendicular.":dot>0?"A · B > 0: the angle is less than 90°.":"A · B < 0: the angle is greater than 90°.")
+      : "|A × B| is the shaded area. Drag B across A: the product flips from ⊙ to ⊗, because B × A = −A × B.";
+  };
+  seg("#prd-mode",ds=>{st.mode=ds.m;foc=null;draw();});
+  $("#prd-perp").onclick=()=>{ const [ax,ay]=st.A; st.B=[-ay*0.75,ax*0.75].map(v=>Math.round(v*2)/2); foc=null; draw(); };
+  $("#prd-par").onclick=()=>{ const [ax,ay]=st.A; st.B=[ax*0.5,ay*0.5].map(v=>Math.round(v*2)/2); foc=null; draw(); };
+  draw(); return draw;
+}
+
+/* ---------- chapter cards ---------- */
+const CHAPTERS=[
+ [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],true],
+ [2,"Motion Along a Straight Line",["Linked x–t, v–t, a–t graphs","Constant acceleration","Free fall"]],
+ [3,"Motion in Two or Three Dimensions",["Projectile launcher","Tangential and normal acceleration","River crossing"]],
+ [4,"Newton's Laws of Motion",["Free-body diagram builder","Inertial frames"]],
+ [5,"Applying Newton's Laws",["Incline with friction","Conical pendulum","Rotating frame and inertial forces"]],
+ [6,"Work and Kinetic Energy",["Work as area under F(x)","Power"]],
+ [7,"Potential Energy and Energy Conservation",["Energy bars on a track","Potential-curve explorer"]],
+ [8,"Momentum, Impulse, and Collisions",["Collision lab","Centre of mass","Rocket with variable mass"]],
+ [9,"Rotation of Rigid Bodies",["Angular kinematics","Moments of inertia, Steiner theorem"]],
+ [10,"Dynamics of Rotational Motion",["Torque","Rolling down an incline","Gyroscope precession"]],
+ [11,"Equilibrium and Elasticity",["Beam and ladder balance","Stress–strain curve"]],
+ [12,"Gravitation",["Orbit simulator","Cosmic velocities"]],
+ [13,"Periodic Motion",["Rotating-vector SHM","Damped and forced oscillations"]],
+];
+$("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
+  <article class="card${live?" live":""}">
+    <div class="num">CHAPTER ${n}</div>
+    <h3>${t}</h3>
+    <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
+    <div class="foot">${live?`<span class="chip live">7 instruments</span><a class="go" href="#ch${n}">Open lab →</a>`:`<span class="chip">Planned</span><span class="hint">opens with the chapter</span>`}</div>
+  </article>`).join("");
+
+/* ---------- routing ---------- */
+const views={home:$("#view-home"),ch1:$("#view-ch1"),about:$("#view-about")};
+const redraws=[];
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  let v="home", target=null;
+  if(h.startsWith("ch1")){ v="ch1"; if(h!=="ch1") target=h; }
+  else if(h==="about") v="about";
+  else if(h==="chapters"){ v="home"; target="chapters"; }
+  for(const k in views) views[k].hidden = k!==v;
+  document.querySelectorAll("[data-nav]").forEach(a=>{ if(a.dataset.nav===v) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  redraws.forEach(f=>f());
+  const t=target && document.getElementById(target);
+  if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
+}
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products());
+addEventListener("hashchange",route);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
+new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+route();
+})();
+</script>
+</body></html>
