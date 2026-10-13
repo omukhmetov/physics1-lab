@@ -143,6 +143,7 @@ footer .muted{opacity:.75}
     <nav class="nav" aria-label="Main">
       <a href="#home" data-nav="home">Chapters</a>
       <a href="#ch1" data-nav="ch1">Chapter 1</a>
+      <a href="#ch2" data-nav="ch2">Chapter 2</a>
       <a href="#about" data-nav="about">About</a>
     </nav>
   </div>
@@ -316,6 +317,114 @@ footer .muted{opacity:.75}
             <dl class="readout" id="prd-out"></dl>
             <div class="row"><button class="small-btn" id="prd-perp">Make perpendicular</button><button class="small-btn" id="prd-par">Make parallel</button></div>
             <div class="key" id="prd-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER 2 ===================== -->
+<section id="view-ch2" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 2</div>
+    <h1 style="margin-bottom:.2em">Motion Along a Straight Line</h1>
+    <p class="lede">Five instruments for one-dimensional motion. Each loads the numbers of a worked example from the book, then lets you change them.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 2 instruments">
+      <ol>
+        <li><a href="#ch2-graphs"><span class="sn">2.2</span>Linked motion graphs</a></li>
+        <li><a href="#ch2-constant"><span class="sn">2.4</span>Constant acceleration</a></li>
+        <li><a href="#ch2-freefall"><span class="sn">2.5</span>Free fall</a></li>
+        <li><a href="#ch2-ruler"><span class="sn">2.5</span>Reaction-time ruler</a></li>
+        <li><a href="#ch2-integration"><span class="sn">2.6</span>Area under a velocity graph</a></li>
+      </ol>
+      <div class="note">Opening question: what are the velocity and acceleration of a ball at the top of its flight? Check it in <a href="#ch2-freefall">Free fall</a>.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch2-graphs">
+        <div class="sim-h"><h3>Linked motion graphs</h3><span class="ref">Sections 2.1–2.3 · Example 2.2 · Fig. 2.2</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="g2-cv" width="640" height="560" aria-label="Particle on a line with x–t, v–t and a–t graphs"></canvas></div>
+          <div class="panel">
+            <p>The orange line is the secant over Δt (average velocity); the green line is the tangent (instantaneous velocity). Shrink Δt and watch them merge.</p>
+            <div class="seg" id="g2-preset" role="group" aria-label="Motion">
+              <button data-p="ex22" aria-pressed="true">Example 2.2</button><button data-p="uniform" aria-pressed="false">Uniform</button><button data-p="brake" aria-pressed="false">Speed up, cruise, brake</button><button data-p="osc" aria-pressed="false">Back and forth</button>
+            </div>
+            <div class="ctrl"><label for="g2-t">Time t <output id="g2-t-o"></output></label><input type="range" id="g2-t" min="0" max="1000" step="1" value="500"></div>
+            <div class="ctrl"><label for="g2-dt">Interval Δt <output id="g2-dt-o"></output></label><input type="range" id="g2-dt" min="0.01" max="2" step="0.01" value="1"></div>
+            <div class="row"><button class="small-btn" id="g2-play">Play</button></div>
+            <dl class="readout" id="g2-out"></dl>
+            <div class="key" id="g2-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch2-constant">
+        <div class="sim-h"><h3>Constant acceleration</h3><span class="ref">Section 2.4 · Examples 2.4, 2.5 · Strategy 2.1</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="c2-cv" width="640" height="460" aria-label="Car on a road and its x–t graph"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="c2-preset" role="group" aria-label="Example">
+              <button data-p="ex24" aria-pressed="true">Example 2.4 braking</button><button data-p="ex25" aria-pressed="false">Example 2.5 car and truck</button><button data-p="tyu" aria-pressed="false">Turning back</button>
+            </div>
+            <div class="ctrl"><label for="c2-v0">Initial velocity v₀ₓ <output id="c2-v0-o"></output></label><input type="range" id="c2-v0" min="-20" max="35" step="0.5" value="25"></div>
+            <div class="ctrl"><label for="c2-a">Acceleration aₓ <output id="c2-a-o"></output></label><input type="range" id="c2-a" min="-10" max="10" step="0.1" value="-6"></div>
+            <div class="ctrl"><label for="c2-tau">Reaction time before aₓ starts <output id="c2-tau-o"></output></label><input type="range" id="c2-tau" min="0" max="2.5" step="0.05" value="0.8"></div>
+            <div class="ctrl"><label for="c2-vb">Truck velocity (0 = no truck) <output id="c2-vb-o"></output></label><input type="range" id="c2-vb" min="0" max="30" step="0.5" value="0"></div>
+            <div class="ctrl"><label for="c2-t">Time t <output id="c2-t-o"></output></label><input type="range" id="c2-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><label class="hint"><input type="checkbox" id="c2-stop" checked> Brakes hold the car at rest once v = 0</label></div>
+            <div class="row"><button class="small-btn" id="c2-play">Play</button></div>
+            <dl class="readout" id="c2-out"></dl>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch2-freefall">
+        <div class="sim-h"><h3>Free fall</h3><span class="ref">Section 2.5 · Examples 2.6, 2.7 · Fig. 2.4</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="f2-cv" width="640" height="440" aria-label="Ball thrown from a height and its y–t and v–t graphs"></canvas></div>
+          <div class="panel">
+            <p>Height is measured from the launch point; the ground is below it. Upward is positive.</p>
+            <div class="ctrl"><label for="f2-h">Launch height above ground <output id="f2-h-o"></output></label><input type="range" id="f2-h" min="0" max="60" step="0.5" value="20"></div>
+            <div class="ctrl"><label for="f2-v0">Initial velocity v₀ᵧ <output id="f2-v0-o"></output></label><input type="range" id="f2-v0" min="-20" max="25" step="0.5" value="10"></div>
+            <div class="row"><span class="hint">Gravity:</span>
+              <div class="seg" id="f2-g" role="group" aria-label="Free-fall acceleration"><button data-g="9.8" aria-pressed="true">Earth</button><button data-g="3.71" aria-pressed="false">Mars</button><button data-g="1.62" aria-pressed="false">Moon</button></div></div>
+            <div class="ctrl"><label for="f2-t">Time t <output id="f2-t-o"></output></label><input type="range" id="f2-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="f2-play">Throw</button><button class="small-btn" id="f2-ex">Load Example 2.6</button><button class="small-btn" id="f2-top">Go to the top</button></div>
+            <dl class="readout" id="f2-out"></dl>
+            <div class="key" id="f2-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch2-ruler">
+        <div class="sim-h"><h3>Reaction-time ruler</h3><span class="ref">Section 2.5 · Application · Exercise E18</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="r2-cv" width="640" height="360" aria-label="Falling ruler"></canvas></div>
+          <div class="panel">
+            <p>Press <b>Ready</b>. After a random delay the ruler drops. Press <b>Catch</b> (or the space bar) as fast as you can. The distance it fell gives your reaction time, t = √(2d/g).</p>
+            <div class="row"><button class="btn primary" id="r2-go">Ready</button><button class="btn" id="r2-catch" disabled>Catch</button></div>
+            <dl class="readout" id="r2-out"></dl>
+            <div class="hint" id="r2-hist"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch2-integration">
+        <div class="sim-h"><h3>Area under a velocity graph</h3><span class="ref">Section 2.6 · Examples 2.8, 2.9 · Fig. 2.5</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="i2-cv" width="640" height="400" aria-label="Velocity graph with rectangles approximating the area"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="i2-preset" role="group" aria-label="Velocity function">
+              <button data-p="ex29" aria-pressed="true">Example 2.9</button><button data-p="ex28" aria-pressed="false">Example 2.8 train</button><button data-p="osc" aria-pressed="false">Oscillating</button>
+            </div>
+            <div class="ctrl"><label for="i2-n">Number of rectangles <output id="i2-n-o"></output></label><input type="range" id="i2-n" min="1" max="60" step="1" value="6"></div>
+            <dl class="readout" id="i2-out"></dl>
+            <div class="key">Blue rectangles count as positive displacement, red ones as negative. For the distance travelled, every rectangle counts as positive.</div>
           </div>
         </div>
       </article>
@@ -705,10 +814,245 @@ function products(){
   draw(); return draw;
 }
 
+/* =====================  CHAPTER 2  ===================== */
+function niceStep(range,n){ const raw=range/n, p=10**Math.floor(Math.log10(raw)), f=raw/p; return (f<1.5?1:f<3.5?2:f<7.5?5:10)*p; }
+function frame(ctx,box,xr,yr,labx,laby){
+  const {x,y,w,h}=box, X=t=>x+(t-xr[0])/(xr[1]-xr[0])*w, Y=v=>y+h-(v-yr[0])/(yr[1]-yr[0])*h;
+  ctx.save(); ctx.lineWidth=1; ctx.font="11px "+css("--f-mono"); ctx.fillStyle=css("--muted");
+  const sx=niceStep(xr[1]-xr[0],6), sy=niceStep(yr[1]-yr[0],4);
+  ctx.strokeStyle=css("--grid"); ctx.textAlign="center"; ctx.textBaseline="top";
+  for(let t=Math.ceil(xr[0]/sx)*sx;t<=xr[1]+1e-9;t+=sx){ ctx.beginPath(); ctx.moveTo(X(t),y); ctx.lineTo(X(t),y+h); ctx.stroke(); ctx.fillText(+t.toFixed(6),X(t),y+h+3); }
+  ctx.textAlign="right"; ctx.textBaseline="middle";
+  for(let v=Math.ceil(yr[0]/sy)*sy;v<=yr[1]+1e-9;v+=sy){ ctx.beginPath(); ctx.moveTo(x,Y(v)); ctx.lineTo(x+w,Y(v)); ctx.stroke(); ctx.fillText(+v.toFixed(6),x-5,Y(v)); }
+  ctx.strokeStyle=css("--axis"); ctx.lineWidth=1.3;
+  if(yr[0]<=0&&yr[1]>=0){ ctx.beginPath(); ctx.moveTo(x,Y(0)); ctx.lineTo(x+w,Y(0)); ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x,y+h); ctx.stroke();
+  ctx.fillStyle=css("--ink"); ctx.font="600 12px "+css("--f-body"); ctx.textAlign="left"; ctx.textBaseline="alphabetic";
+  ctx.fillText(laby,x+6,y+12); ctx.textAlign="right"; ctx.fillText(labx,x+w,y+h-6);
+  ctx.restore(); return {X,Y};
+}
+function curve(ctx,F,f,t0,t1,col,w=2.5,n=240){ ctx.strokeStyle=col; ctx.lineWidth=w; ctx.beginPath(); for(let i=0;i<=n;i++){ const t=t0+(t1-t0)*i/n, X=F.X(t), Y=F.Y(f(t)); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y);} ctx.stroke(); }
+function dot(ctx,x,y,col,r=5){ ctx.fillStyle=col; ctx.beginPath(); ctx.arc(x,y,r,0,2*Math.PI); ctx.fill(); }
+function rangeOf(f,t0,t1,pad=0.12){ let lo=Infinity,hi=-Infinity; for(let i=0;i<=200;i++){ const v=f(t0+(t1-t0)*i/200); lo=Math.min(lo,v); hi=Math.max(hi,v);} if(hi-lo<1e-6){ lo-=1; hi+=1; } const p=(hi-lo)*pad; return [Math.min(lo-p, lo>=0?0:lo-p), Math.max(hi+p, hi<=0?0:hi+p)]; }
+function clearCv(ctx,cv){ ctx.clearRect(0,0,cv.width,cv.height); ctx.fillStyle=css("--surface"); ctx.fillRect(0,0,cv.width,cv.height); }
+function hArrow(ctx,x1,y,x2,col,w=3){ if(Math.abs(x2-x1)<2) return; const s=Math.sign(x2-x1); ctx.strokeStyle=col; ctx.fillStyle=col; ctx.lineWidth=w; ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2-s*8,y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x2,y); ctx.lineTo(x2-s*10,y-5); ctx.lineTo(x2-s*10,y+5); ctx.closePath(); ctx.fill(); }
+function vArrow(ctx,x,y1,y2,col,w=3){ if(Math.abs(y2-y1)<2) return; const s=Math.sign(y2-y1); ctx.strokeStyle=col; ctx.fillStyle=col; ctx.lineWidth=w; ctx.beginPath(); ctx.moveTo(x,y1); ctx.lineTo(x,y2-s*8); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x,y2); ctx.lineTo(x-5,y2-s*10); ctx.lineTo(x+5,y2-s*10); ctx.closePath(); ctx.fill(); }
+function player(btn,slider,durationFn,onTick){
+  let raf=null,last=null;
+  const stop=()=>{ if(raf) cancelAnimationFrame(raf); raf=null; btn.textContent=btn.dataset.label||"Play"; };
+  btn.dataset.label=btn.textContent;
+  btn.addEventListener("click",()=>{ if(raf){ stop(); return; } if(+slider.value>=1000) slider.value=0; btn.textContent="Pause"; last=null;
+    const step=ts=>{ if(last===null) last=ts; const dt=(ts-last)/1000; last=ts; const D=durationFn();
+      let v=+slider.value+dt/D*1000; if(v>=1000){ v=1000; slider.value=v; onTick(); stop(); return; } slider.value=v; onTick(); raf=requestAnimationFrame(step); };
+    raf=requestAnimationFrame(step); });
+  return stop;
+}
+
+/* ---------- 2.2 linked graphs ---------- */
+function ch2graphs(){
+  const cv=$("#g2-cv"), ctx=cv.getContext("2d"), T=$("#g2-t"), DT=$("#g2-dt");
+  const P={
+    ex22:{T:4,x:t=>1.5*t*t-4*t+10,v:t=>3*t-4,a:t=>3,
+      key:"Example 2.2: the particle moves towards −x until t = 1.33 s, stops for an instant, then moves towards +x."},
+    uniform:{T:6,x:t=>-8+3*t,v:t=>3,a:t=>0,key:"Uniform motion: the secant and the tangent coincide for every Δt, and the acceleration is zero."},
+    brake:{T:9,x:t=>t<=3?t*t:t<=5?9+6*(t-3):t<=8?21+6*(t-5)-(t-5)**2:30,
+      v:t=>t<=3?2*t:t<=5?6:t<=8?6-2*(t-5):0, a:t=>t<3?2:t<5?0:t<8?-2:0,
+      key:"Speed up at 2 m/s², cruise at 6 m/s, brake at −2 m/s². Corners on the v–t graph are jumps on the a–t graph."},
+    osc:{T:8,x:t=>5*Math.sin(Math.PI*t/4),v:t=>5*Math.PI/4*Math.cos(Math.PI*t/4),a:t=>-5*(Math.PI/4)**2*Math.sin(Math.PI*t/4),
+      key:"Back and forth: the acceleration always points back towards x = 0. Where |x| is largest, v = 0 but a is largest."}
+  };
+  let p=P.ex22;
+  const draw=()=>{
+    const t=+T.value/1000*p.T, dt=+DT.value;
+    let t2=Math.min(p.T,t+dt), t1=t; if(t2-t1<1e-6){ t1=Math.max(0,t-dt); t2=t; }
+    $("#g2-t-o").textContent=t.toFixed(2)+" s"; $("#g2-dt-o").textContent=dt.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const xr=rangeOf(p.x,0,p.T), vr=rangeOf(p.v,0,p.T), ar=rangeOf(p.a,0,p.T);
+    // track
+    const tx0=56,tx1=624, TX=x=>tx0+(x-xr[0])/(xr[1]-xr[0])*(tx1-tx0);
+    ctx.strokeStyle=css("--axis"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(tx0,40); ctx.lineTo(tx1,40); ctx.stroke();
+    ctx.fillStyle=css("--muted"); ctx.font="11px "+css("--f-mono"); ctx.textAlign="center";
+    const sx=niceStep(xr[1]-xr[0],8); for(let x=Math.ceil(xr[0]/sx)*sx;x<=xr[1];x+=sx){ ctx.fillRect(TX(x)-0.5,35,1,10); ctx.fillText(+x.toFixed(4),TX(x),60); }
+    ctx.textAlign="left"; ctx.fillText("x (m)",tx1-30,24);
+    const px=TX(p.x(t)); hArrow(ctx,px,24,px+p.v(t)*12,css("--vB"),2.5); dot(ctx,px,40,css("--vA"),8);
+    // plots
+    const L={x:56,w:568};
+    const Fx=frame(ctx,{...L,y:80,h:140},[0,p.T],xr,"t (s)","x (m)");
+    curve(ctx,Fx,p.x,0,p.T,css("--vB"));
+    // secant
+    ctx.strokeStyle=css("--vA"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(Fx.X(t1),Fx.Y(p.x(t1))); ctx.lineTo(Fx.X(t2),Fx.Y(p.x(t2))); ctx.stroke();
+    dot(ctx,Fx.X(t1),Fx.Y(p.x(t1)),css("--vA"),3.5); dot(ctx,Fx.X(t2),Fx.Y(p.x(t2)),css("--vA"),3.5);
+    // tangent
+    const span=p.T*0.16; ctx.setLineDash([6,4]); ctx.strokeStyle=css("--vC"); ctx.beginPath();
+    ctx.moveTo(Fx.X(t-span),Fx.Y(p.x(t)-p.v(t)*span)); ctx.lineTo(Fx.X(t+span),Fx.Y(p.x(t)+p.v(t)*span)); ctx.stroke(); ctx.setLineDash([]);
+    dot(ctx,Fx.X(t),Fx.Y(p.x(t)),css("--ink"),4.5);
+    const Fv=frame(ctx,{...L,y:248,h:140},[0,p.T],vr,"t (s)","vₓ (m/s)");
+    curve(ctx,Fv,p.v,0,p.T,css("--vA"));
+    dot(ctx,Fv.X(t),Fv.Y(p.v(t)),css("--ink"),4.5);
+    const Fa=frame(ctx,{...L,y:416,h:118},[0,p.T],ar,"t (s)","aₓ (m/s²)");
+    curve(ctx,Fa,p.a,0,p.T,css("--vC"));
+    dot(ctx,Fa.X(t),Fa.Y(p.a(t)),css("--ink"),4.5);
+    const x=p.x(t),v=p.v(t),a=p.a(t), vav=(p.x(t2)-p.x(t1))/(t2-t1);
+    const state=Math.abs(v)<1e-6?(Math.abs(a)<1e-6?"at rest":"momentarily at rest"):Math.abs(a)<1e-6?"constant velocity":(v*a>0?"speeding up":"slowing down");
+    readout($("#g2-out"),[["t",t.toFixed(2)+" s"],["x",x.toFixed(2)+" m"],["vₓ (tangent slope)",v.toFixed(2)+" m/s"],["aₓ",a.toFixed(2)+" m/s²"],[`average vₓ over ${(t2-t1).toFixed(2)} s`,vav.toFixed(3)+" m/s"],["motion",state]]);
+    $("#g2-key").textContent=p.key;
+  };
+  seg("#g2-preset",ds=>{p=P[ds.p];draw();});
+  [T,DT].forEach(i=>i.addEventListener("input",draw));
+  player($("#g2-play"),T,()=>p.T,draw);
+  draw(); return draw;
+}
+
+/* ---------- 2.4 constant acceleration ---------- */
+function ch2constant(){
+  const cv=$("#c2-cv"), ctx=cv.getContext("2d"), V0=$("#c2-v0"),A=$("#c2-a"),TAU=$("#c2-tau"),VB=$("#c2-vb"),TT=$("#c2-t"),STOP=$("#c2-stop");
+  const presets={ex24:{v0:25,a:-6,tau:0.8,vb:0,stop:true},ex25:{v0:0,a:3,tau:0,vb:15,stop:false},tyu:{v0:4,a:-2,tau:0,vb:0,stop:false}};
+  const car=(t)=>{ const v0=+V0.value,a=+A.value,tau=+TAU.value;
+    if(t<tau) return {x:v0*t,v:v0,ph:tau>0?"reacting (no acceleration yet)":"moving"};
+    const s=t-tau, x1=v0*tau;
+    if(STOP.checked && a*v0<0){ const ts=-v0/a; if(s>=ts) return {x:x1+v0*ts+0.5*a*ts*ts,v:0,ph:"stopped"}; }
+    const vv=v0+a*s; return {x:x1+v0*s+0.5*a*s*s,v:vv,ph:a===0?"uniform motion":Math.abs(vv)<1e-9?"momentarily at rest":vv*a>0?"speeding up":"slowing down"}; };
+  const duration=()=>{ const v0=+V0.value,a=+A.value,tau=+TAU.value,vb=+VB.value;
+    let T=6; if(STOP.checked&&a*v0<0) T=tau+(-v0/a)+1.2;
+    const m=meet(12+30); if(vb>0&&m) T=Math.max(T,m*1.25); else if(vb>0) T=Math.max(T,10);
+    if(!(STOP.checked&&a*v0<0) && a*v0<0) T=Math.max(T,tau+2*Math.abs(v0/a)+1);
+    return Math.min(Math.max(T,2),60); };
+  function meet(Tmax){ const vb=+VB.value; if(vb<=0) return null; let prev=car(0.01).x-vb*0.01;
+    for(let i=2;i<=4000;i++){ const t=i*Tmax/4000, d=car(t).x-vb*t; if(prev*d<=0 && t>0.05){ let lo=t-Tmax/4000,hi=t; for(let k=0;k<40;k++){ const mid=(lo+hi)/2, dm=car(mid).x-vb*mid; if((car(lo).x-vb*lo)*dm<=0) hi=mid; else lo=mid; } return (lo+hi)/2; } prev=d; } return null; }
+  const draw=()=>{
+    const v0=+V0.value,a=+A.value,tau=+TAU.value,vb=+VB.value, T=duration(), t=+TT.value/1000*T;
+    $("#c2-v0-o").textContent=v0.toFixed(1)+" m/s"; $("#c2-a-o").textContent=a.toFixed(1)+" m/s²"; $("#c2-tau-o").textContent=tau.toFixed(2)+" s";
+    $("#c2-vb-o").textContent=vb>0?vb.toFixed(1)+" m/s":"off"; $("#c2-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const xr=rangeOf(s=>car(s).x,0,T,0.06); if(vb>0){ xr[1]=Math.max(xr[1],vb*T*1.04); }
+    // road
+    const rx0=56,rx1=624,RX=x=>rx0+(x-xr[0])/(xr[1]-xr[0])*(rx1-rx0);
+    ctx.fillStyle=css("--surface-2"); ctx.fillRect(rx0-10,18,rx1-rx0+20,74);
+    ctx.strokeStyle=css("--axis"); ctx.setLineDash([10,8]); ctx.beginPath(); ctx.moveTo(rx0-10,55); ctx.lineTo(rx1+10,55); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle=css("--muted"); ctx.font="11px "+css("--f-mono"); ctx.textAlign="center";
+    const sx=niceStep(xr[1]-xr[0],8); for(let x=Math.ceil(xr[0]/sx)*sx;x<=xr[1];x+=sx){ ctx.fillRect(RX(x)-0.5,92,1,6); ctx.fillText(+x.toFixed(3),RX(x),110); }
+    const c=car(t); const cx=RX(c.x);
+    ctx.fillStyle=css("--vA"); ctx.fillRect(cx-16,62,32,18); ctx.fillStyle=css("--ink"); ctx.font="600 11px "+css("--f-body"); ctx.fillText("car",cx,90-4+0);
+    if(vb>0){ const bx=RX(vb*t); ctx.fillStyle=css("--vB"); ctx.fillRect(bx-22,24,44,22); ctx.fillStyle=css("--ink"); ctx.fillText("truck",bx,20); }
+    const F=frame(ctx,{x:56,y:132,w:568,h:300},[0,T],[xr[0],xr[1]],"t (s)","x (m)");
+    curve(ctx,F,s=>car(s).x,0,T,css("--vA"));
+    if(vb>0) curve(ctx,F,s=>vb*s,0,T,css("--vB"),2);
+    if(tau>0){ ctx.setLineDash([3,4]); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(F.X(tau),132); ctx.lineTo(F.X(tau),432); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle=css("--muted"); ctx.textAlign="left"; ctx.fillText("brakes on",F.X(tau)+4,146); }
+    dot(ctx,F.X(t),F.Y(c.x),css("--ink"),5);
+    const rows=[["t",t.toFixed(2)+" s"],["car x",c.x.toFixed(1)+" m"],["car vₓ",c.v.toFixed(2)+" m/s"],["car",c.ph]];
+    if(STOP.checked&&a*v0<0){ const ts=-v0/a, d=v0*tau+v0*ts+0.5*a*ts*ts; rows.push(["reaction distance",(v0*tau).toFixed(1)+" m"],["braking distance",(v0*ts+0.5*a*ts*ts).toFixed(1)+" m"],["stops at",`t = ${(tau+ts).toFixed(2)} s, x = ${d.toFixed(1)} m`]);
+      const sx2=F.X(tau+ts), sy2=F.Y(d); dot(ctx,sx2,sy2,css("--vC"),5); }
+    if(vb>0){ const m=meet(T); rows.push(["truck x",(vb*t).toFixed(1)+" m"],["car meets truck",m?`t = ${m.toFixed(2)} s, x = ${(vb*m).toFixed(1)} m`:"not within this time"]); if(m) dot(ctx,F.X(m),F.Y(vb*m),css("--vC"),6); }
+    if(!(STOP.checked) && a*v0<0 && tau===0){ const tr=-v0/a; if(tr>0) rows.push(["turns back at",`t = ${tr.toFixed(2)} s, x = ${(v0*tr+0.5*a*tr*tr).toFixed(2)} m`]); }
+    readout($("#c2-out"),rows);
+  };
+  seg("#c2-preset",ds=>{ const q=presets[ds.p]; V0.value=q.v0; A.value=q.a; TAU.value=q.tau; VB.value=q.vb; STOP.checked=q.stop; TT.value=ds.p==="ex24"?1000:0; draw(); });
+  [V0,A,TAU,VB,TT,STOP].forEach(i=>i.addEventListener("input",draw));
+  player($("#c2-play"),TT,()=>Math.min(duration(),8),draw);
+  draw(); return draw;
+}
+
+/* ---------- 2.5 free fall ---------- */
+function ch2freefall(){
+  const cv=$("#f2-cv"), ctx=cv.getContext("2d"), H=$("#f2-h"), V0=$("#f2-v0"), TT=$("#f2-t");
+  let g=9.8;
+  const flight=()=>{ const h=+H.value, v0=+V0.value; const tg=(v0+Math.sqrt(v0*v0+2*g*h))/g; return Math.max(tg,0.05); };
+  const draw=()=>{
+    const h=+H.value, v0=+V0.value, tg=flight(), t=+TT.value/1000*tg;
+    const y=v0*t-0.5*g*t*t, v=v0-g*t, ttop=v0>0?v0/g:0, ymax=v0>0?v0*v0/(2*g):0;
+    $("#f2-h-o").textContent=h.toFixed(1)+" m"; $("#f2-v0-o").textContent=v0.toFixed(1)+" m/s"; $("#f2-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const yr=[-h-Math.max(1,0.06*(h+ymax)), ymax+Math.max(1,0.1*(h+ymax))];
+    // tower
+    const TY=yy=>420-(yy-yr[0])/(yr[1]-yr[0])*400;
+    ctx.fillStyle=css("--surface-2"); ctx.fillRect(40,TY(0),40,TY(-h)-TY(0));
+    ctx.strokeStyle=css("--axis"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(10,TY(-h)); ctx.lineTo(190,TY(-h)); ctx.stroke();
+    ctx.fillStyle=css("--muted"); ctx.font="11px "+css("--f-mono"); ctx.textAlign="left"; ctx.fillText("ground",12,TY(-h)+14); ctx.fillText("y = 0",12,TY(0)-6);
+    if(v0>0){ ctx.setLineDash([3,4]); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(90,TY(ymax)); ctx.lineTo(190,TY(ymax)); ctx.stroke(); ctx.setLineDash([]); ctx.fillText(`top ${ymax.toFixed(2)} m`,120,TY(ymax)-4); }
+    const by=TY(y); dot(ctx,120,by,css("--vA"),9);
+    vArrow(ctx,104,by,by-v*4,css("--vB"),2.5); vArrow(ctx,136,by,by+g*4,css("--vC"),2.5);
+    ctx.font="600 11px "+css("--f-body"); ctx.fillStyle=css("--vB"); ctx.fillText("v",92,by-v*2); ctx.fillStyle=css("--vC"); ctx.fillText("a",142,by+g*2);
+    const Fy=frame(ctx,{x:250,y:16,w:374,h:180},[0,tg],yr,"t (s)","y (m)"); curve(ctx,Fy,s=>v0*s-0.5*g*s*s,0,tg,css("--vB")); dot(ctx,Fy.X(t),Fy.Y(y),css("--ink"),4.5);
+    const vr=[Math.min(-1,v0-g*tg)*1.1,Math.max(1,v0)*1.15];
+    const Fv=frame(ctx,{x:250,y:232,w:374,h:180},[0,tg],vr,"t (s)","vᵧ (m/s)"); curve(ctx,Fv,s=>v0-g*s,0,tg,css("--vA")); dot(ctx,Fv.X(t),Fv.Y(v),css("--ink"),4.5);
+    const rows=[["t",t.toFixed(2)+" s"],["y",y.toFixed(2)+" m"],["vᵧ",v.toFixed(2)+" m/s"],["aᵧ",(-g).toFixed(2)+" m/s²  (always)"]];
+    if(v0>0) rows.push(["highest point",`${ymax.toFixed(2)} m at t = ${ttop.toFixed(2)} s`]);
+    rows.push(["hits the ground",`t = ${tg.toFixed(2)} s, speed ${Math.abs(v0-g*tg).toFixed(1)} m/s`]);
+    readout($("#f2-out"),rows);
+    $("#f2-key").textContent = (v0>0 && Math.abs(t-ttop)<0.03) ? "At the top: vᵧ = 0, but aᵧ = −g. The velocity is still changing." : "The green arrow (acceleration) never changes: same size and direction on the way up, at the top, and on the way down.";
+  };
+  [H,V0,TT].forEach(i=>i.addEventListener("input",draw));
+  seg("#f2-g",ds=>{g=+ds.g;draw();});
+  $("#f2-ex").onclick=()=>{ H.value=20; V0.value=10; g=9.8; setPressed("#f2-g","g","9.8"); TT.value=0; draw(); };
+  $("#f2-top").onclick=()=>{ const v0=+V0.value; if(v0>0){ TT.value=(v0/g)/flight()*1000; draw(); } };
+  player($("#f2-play"),TT,()=>Math.min(flight(),6),draw);
+  draw(); return draw;
+}
+
+/* ---------- 2.5 reaction-time ruler ---------- */
+function ch2ruler(){
+  const cv=$("#r2-cv"), ctx=cv.getContext("2d"), go=$("#r2-go"), ca=$("#r2-catch");
+  let state="idle", t0=0, timer=null, d=0, raf=null, hist=[];
+  const g=9.8, PX=10; // 10 px per cm
+  const draw=()=>{
+    clearCv(ctx,cv);
+    const fy=330; // finger level
+    // ruler: zero mark at bottom, at finger level when d=0; moves down by d
+    const off=d*100*PX; const top=fy-300+off, bot=fy+off;
+    ctx.fillStyle=css("--surface-2"); ctx.fillRect(280,top,60,300); ctx.strokeStyle=css("--axis"); ctx.lineWidth=1.5; ctx.strokeRect(280,top,60,300);
+    ctx.fillStyle=css("--ink"); ctx.font="10px "+css("--f-mono"); ctx.textAlign="left";
+    for(let cm=0;cm<=30;cm++){ const yy=bot-cm*PX; ctx.fillRect(280,yy,cm%5===0?18:9,1); if(cm%5===0) ctx.fillText(String(cm),302,yy+4); }
+    // fingers
+    ctx.fillStyle=css("--vA"); ctx.globalAlpha=0.85;
+    ctx.beginPath(); ctx.ellipse(262,fy,22,10,0,0,2*Math.PI); ctx.fill(); ctx.beginPath(); ctx.ellipse(358,fy,22,10,0,0,2*Math.PI); ctx.fill(); ctx.globalAlpha=1;
+    ctx.fillStyle=css("--muted"); ctx.font="12px "+css("--f-body"); ctx.textAlign="left";
+    ctx.fillText(state==="idle"?"Press Ready":state==="waiting"?"Get ready… the ruler will drop":state==="falling"?"CATCH!":state==="caught"?`Caught after ${(d*100).toFixed(1)} cm`:state==="missed"?"Missed: the ruler fell through":"Too early: wait for the drop",380,40);
+  };
+  const finish=(st)=>{ state=st; if(raf) cancelAnimationFrame(raf); raf=null; ca.disabled=true; go.disabled=false; go.textContent="Try again";
+    if(st==="caught"){ const tr=Math.sqrt(2*d/g); hist.push(tr); hist=hist.slice(-5);
+      readout($("#r2-out"),[["distance fallen d",(d*100).toFixed(1)+" cm"],["reaction time √(2d/g)",(tr*1000).toFixed(0)+" ms"],["average of last tries",(hist.reduce((s,x)=>s+x,0)/hist.length*1000).toFixed(0)+" ms"]]);
+      $("#r2-hist").textContent="Last tries: "+hist.map(x=>(x*1000).toFixed(0)+" ms").join(", "); }
+    else if(st==="missed") readout($("#r2-out"),[["result","more than 30 cm: reaction time over 247 ms"]]);
+    else readout($("#r2-out"),[["result","caught before the drop: try again"]]);
+    draw(); };
+  const fall=ts=>{ const t=(ts-t0)/1000; d=0.5*g*t*t; if(d>0.32){ d=0.32; finish("missed"); return; } draw(); raf=requestAnimationFrame(fall); };
+  go.addEventListener("click",()=>{ d=0; state="waiting"; go.disabled=true; ca.disabled=false; draw(); clearTimeout(timer);
+    timer=setTimeout(()=>{ if(state!=="waiting") return; state="falling"; t0=performance.now(); raf=requestAnimationFrame(fall); },1000+Math.random()*2000); });
+  const doCatch=()=>{ if(state==="falling"){ const t=(performance.now()-t0)/1000; d=0.5*g*t*t; if(d>0.30) finish("missed"); else finish("caught"); } else if(state==="waiting"){ clearTimeout(timer); finish("early"); } };
+  ca.addEventListener("click",doCatch);
+  document.addEventListener("keydown",e=>{ if(e.code==="Space" && (state==="falling"||state==="waiting") && !$("#view-ch2").hidden){ e.preventDefault(); doCatch(); } });
+  readout($("#r2-out"),[["typical result","15–20 cm, 0.17–0.20 s"]]);
+  draw(); return draw;
+}
+
+/* ---------- 2.6 area under v-t ---------- */
+function ch2integration(){
+  const cv=$("#i2-cv"), ctx=cv.getContext("2d"), N=$("#i2-n");
+  const P={ ex29:{f:t=>12-3*t,T:6,name:"vₓ = 12 − 3t"}, ex28:{f:t=>1.2*t-0.02*t*t,T:30,name:"vₓ = 1.2t − 0.02t²"}, osc:{f:t=>4*Math.sin(Math.PI*t/3),T:9,name:"vₓ = 4 sin(πt/3)"} };
+  let p=P.ex29;
+  const integ=(f,a,b,abs)=>{ const n=6000,h=(b-a)/n; let s=0; for(let i=0;i<=n;i++){ const w=i===0||i===n?1:i%2?4:2; const v=f(a+i*h); s+=w*(abs?Math.abs(v):v);} return s*h/3; };
+  const draw=()=>{
+    const n=+N.value; $("#i2-n-o").textContent=n;
+    clearCv(ctx,cv);
+    const vr=rangeOf(p.f,0,p.T,0.15);
+    const F=frame(ctx,{x:56,y:16,w:568,h:350},[0,p.T],vr,"t (s)","vₓ (m/s)");
+    const dt=p.T/n; let sum=0,dist=0;
+    for(let i=0;i<n;i++){ const tm=(i+0.5)*dt, v=p.f(tm); sum+=v*dt; dist+=Math.abs(v)*dt;
+      const x0=F.X(i*dt), x1=F.X((i+1)*dt), y0=F.Y(0), y1=F.Y(v);
+      ctx.fillStyle=v>=0?css("--accent-soft"):css("--warn-soft"); ctx.fillRect(x0,Math.min(y0,y1),x1-x0,Math.abs(y1-y0));
+      ctx.strokeStyle=v>=0?css("--vB"):css("--vA"); ctx.lineWidth=1; ctx.strokeRect(x0,Math.min(y0,y1),x1-x0,Math.abs(y1-y0)); }
+    curve(ctx,F,p.f,0,p.T,css("--ink"),2.2);
+    const ex=integ(p.f,0,p.T,false), exd=integ(p.f,0,p.T,true);
+    readout($("#i2-out"),[["velocity",p.name],["Δt per rectangle",dt.toFixed(3)+" s"],["sum of signed areas",sum.toFixed(3)+" m"],["exact displacement ∫vₓdt",ex.toFixed(3)+" m"],["difference",(sum-ex).toFixed(3)+" m"],["distance (sum of |areas|)",dist.toFixed(3)+" m"],["exact distance ∫|vₓ|dt",exd.toFixed(3)+" m"]]);
+  };
+  seg("#i2-preset",ds=>{p=P[ds.p];draw();}); N.addEventListener("input",draw);
+  draw(); return draw;
+}
+
 /* ---------- chapter cards ---------- */
 const CHAPTERS=[
- [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],true],
- [2,"Motion Along a Straight Line",["Linked x–t, v–t, a–t graphs","Constant acceleration","Free fall"]],
+ [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],7],
+ [2,"Motion Along a Straight Line",["Linked x–t, v–t, a–t graphs","Constant acceleration","Free fall and reaction time","Area under a velocity graph"],5],
  [3,"Motion in Two or Three Dimensions",["Projectile launcher","Tangential and normal acceleration","River crossing"]],
  [4,"Newton's Laws of Motion",["Free-body diagram builder","Inertial frames"]],
  [5,"Applying Newton's Laws",["Incline with friction","Conical pendulum","Rotating frame and inertial forces"]],
@@ -726,16 +1070,17 @@ $("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
     <div class="num">CHAPTER ${n}</div>
     <h3>${t}</h3>
     <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
-    <div class="foot">${live?`<span class="chip live">7 instruments</span><a class="go" href="#ch${n}">Open lab →</a>`:`<span class="chip">Planned</span><span class="hint">opens with the chapter</span>`}</div>
+    <div class="foot">${live?`<span class="chip live">${live} instruments</span><a class="go" href="#ch${n}">Open lab →</a>`:`<span class="chip">Planned</span><span class="hint">opens with the chapter</span>`}</div>
   </article>`).join("");
 
 /* ---------- routing ---------- */
-const views={home:$("#view-home"),ch1:$("#view-ch1"),about:$("#view-about")};
+const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),about:$("#view-about")};
 const redraws=[];
 function route(){
   const h=(location.hash||"#home").slice(1);
   let v="home", target=null;
-  if(h.startsWith("ch1")){ v="ch1"; if(h!=="ch1") target=h; }
+  const m=h.match(/^(ch[12])(-.*)?$/);
+  if(m){ v=m[1]; if(m[2]) target=h; }
   else if(h==="about") v="about";
   else if(h==="chapters"){ v="home"; target="chapters"; }
   for(const k in views) views[k].hidden = k!==v;
@@ -744,7 +1089,7 @@ function route(){
   const t=target && document.getElementById(target);
   if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
 }
-redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products());
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration());
 addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
 new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});

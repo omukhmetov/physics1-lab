@@ -18,4 +18,15 @@ The site is a single file, `index.html`, with no build step.
 | Interactive 1.6 3D axes | `#ch1-axes` |
 | Interactive 1.7 Products of vectors | `#ch1-products` |
 
+
+## Instrument addresses (Chapter 2)
+
+| Book box | Address ending |
+|---|---|
+| Interactive 2.1 Linked motion graphs | `#ch2-graphs` |
+| Interactive 2.2 Constant acceleration | `#ch2-constant` |
+| Interactive 2.3 Free fall | `#ch2-freefall` |
+| Interactive 2.4 Area under a velocity graph | `#ch2-integration` |
+| (website only) Reaction-time ruler | `#ch2-ruler` |
+
 Do not rename these anchors once the book is printed: the QR codes point to them.
