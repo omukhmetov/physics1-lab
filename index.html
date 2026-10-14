@@ -144,6 +144,7 @@ footer .muted{opacity:.75}
       <a href="#home" data-nav="home">Chapters</a>
       <a href="#ch1" data-nav="ch1">Chapter 1</a>
       <a href="#ch2" data-nav="ch2">Chapter 2</a>
+      <a href="#ch3" data-nav="ch3">Chapter 3</a>
       <a href="#about" data-nav="about">About</a>
     </nav>
   </div>
@@ -425,6 +426,108 @@ footer .muted{opacity:.75}
             <div class="ctrl"><label for="i2-n">Number of rectangles <output id="i2-n-o"></output></label><input type="range" id="i2-n" min="1" max="60" step="1" value="6"></div>
             <dl class="readout" id="i2-out"></dl>
             <div class="key">Blue rectangles count as positive displacement, red ones as negative. For the distance travelled, every rectangle counts as positive.</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER 3 ===================== -->
+<section id="view-ch3" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 3</div>
+    <h1 style="margin-bottom:.2em">Motion in Two or Three Dimensions</h1>
+    <p class="lede">Four instruments for motion in a plane. Each loads the numbers of a worked example from the book, then lets you change them.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 3 instruments">
+      <ol>
+        <li><a href="#ch3-vectors"><span class="sn">3.2</span>Velocity and acceleration on a curved path</a></li>
+        <li><a href="#ch3-projectile"><span class="sn">3.3</span>Projectile launcher</a></li>
+        <li><a href="#ch3-circle"><span class="sn">3.4</span>Circular motion</a></li>
+        <li><a href="#ch3-relative"><span class="sn">3.5</span>River crossing</a></li>
+      </ol>
+      <div class="note">Opening question: a cyclist rides round a curve at constant speed. Which way does the acceleration point? Check it in <a href="#ch3-circle">Circular motion</a> with a<sub>tan</sub> = 0.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch3-vectors">
+        <div class="sim-h"><h3>Velocity and acceleration on a curved path</h3><span class="ref">Sections 3.1–3.2 · Examples 3.1–3.3 · Fig. 3.3</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="v3-cv" width="640" height="480" aria-label="Particle on a curved path with its velocity, acceleration and circle of curvature"></canvas></div>
+          <div class="panel">
+            <p>Blue: velocity, always tangent to the path. Red: acceleration. Green dashed: its parts along the velocity (a∥, changes the speed) and across it (a⊥, bends the path).</p>
+            <div class="seg" id="v3-preset" role="group" aria-label="Motion">
+              <button data-p="rover" aria-pressed="true">Examples 3.1–3.3 rover</button><button data-p="circle" aria-pressed="false">Circle, constant speed</button><button data-p="spin" aria-pressed="false">Circle, speeding up</button><button data-p="proj" aria-pressed="false">Projectile</button>
+            </div>
+            <div class="ctrl"><label for="v3-t">Time t <output id="v3-t-o"></output></label><input type="range" id="v3-t" min="0" max="1000" step="1" value="500"></div>
+            <div class="row"><button class="small-btn" id="v3-play">Play</button><label class="hint"><input type="checkbox" id="v3-circ" checked> Show the circle of curvature</label></div>
+            <dl class="readout" id="v3-out"></dl>
+            <div class="key" id="v3-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch3-projectile">
+        <div class="sim-h"><h3>Projectile launcher</h3><span class="ref">Section 3.3 · Examples 3.4, 3.5, 3.7 · Strategy 3.1</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="p3-cv" width="640" height="440" aria-label="Projectile path with velocity components"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="p3-preset" role="group" aria-label="Example">
+              <button data-p="ex34" aria-pressed="true">Example 3.4 football</button><button data-p="ex35" aria-pressed="false">Example 3.5 cliff</button><button data-p="max" aria-pressed="false">45°, maximum range</button>
+            </div>
+            <div class="ctrl"><label for="p3-v0">Launch speed v₀ <output id="p3-v0-o"></output></label><input type="range" id="p3-v0" min="1" max="40" step="0.5" value="20"></div>
+            <div class="ctrl"><label for="p3-al">Launch angle α₀ <output id="p3-al-o"></output></label><input type="range" id="p3-al" min="-80" max="85" step="0.01" value="36.87"></div>
+            <div class="ctrl"><label for="p3-h">Launch height above the ground <output id="p3-h-o"></output></label><input type="range" id="p3-h" min="0" max="60" step="0.5" value="0"></div>
+            <div class="ctrl"><label for="p3-k">Air resistance k (a = −k|v|v) <output id="p3-k-o"></output></label><input type="range" id="p3-k" min="0" max="0.06" step="0.002" value="0"></div>
+            <div class="ctrl"><label for="p3-t">Time t <output id="p3-t-o"></output></label><input type="range" id="p3-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="p3-play">Fire</button><button class="small-btn" id="p3-top">Go to the top</button><label class="hint"><input type="checkbox" id="p3-comp"> Compare with 90° − α₀</label></div>
+            <dl class="readout" id="p3-out"></dl>
+            <div class="key" id="p3-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch3-circle">
+        <div class="sim-h"><h3>Circular motion</h3><span class="ref">Section 3.4 · Examples 3.8, 3.9 · Fig. 3.7</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="c3-cv" width="640" height="420" aria-label="Particle moving on a circle with radial and tangential acceleration"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="c3-preset" role="group" aria-label="Example">
+              <button data-p="ex39" aria-pressed="true">Example 3.9 speeding up</button><button data-p="unif" aria-pressed="false">Constant speed</button><button data-p="ferris" aria-pressed="false">Ferris wheel (E15)</button><button data-p="brake" aria-pressed="false">Braking</button>
+            </div>
+            <div class="ctrl"><label for="c3-r">Radius R <output id="c3-r-o"></output></label><input type="range" id="c3-r" min="1" max="60" step="0.5" value="50"></div>
+            <div class="ctrl"><label for="c3-v0">Initial speed v₀ <output id="c3-v0-o"></output></label><input type="range" id="c3-v0" min="0" max="30" step="0.01" value="12"></div>
+            <div class="ctrl"><label for="c3-at"><span>Tangential acceleration a<sub>tan</sub></span> <output id="c3-at-o"></output></label><input type="range" id="c3-at" min="-3" max="3" step="0.1" value="1.5"></div>
+            <div class="ctrl"><label for="c3-t">Time t <output id="c3-t-o"></output></label><input type="range" id="c3-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="c3-play">Play</button></div>
+            <dl class="readout" id="c3-out"></dl>
+            <div class="key" id="c3-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch3-relative">
+        <div class="sim-h"><h3>River crossing</h3><span class="ref">Section 3.5 · Examples 3.10, 3.11 · Strategy 3.2 · Fig. 3.9</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="r3-cv" width="640" height="440" aria-label="Boat crossing a river, seen from the bank or from the water"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="r3-preset" role="group" aria-label="Example">
+              <button data-p="a" aria-pressed="true">Example 3.10(a)</button><button data-p="b" aria-pressed="false">Example 3.10(b)</button><button data-p="slow" aria-pressed="false">Slow boat (3.10d)</button>
+            </div>
+            <div class="row"><span class="hint">Seen from:</span>
+              <div class="seg" id="r3-frame" role="group" aria-label="Reference frame"><button data-f="bank" aria-pressed="true">the bank (E)</button><button data-f="water" aria-pressed="false">the water (W)</button></div></div>
+            <div class="ctrl"><label for="r3-w">River width <output id="r3-w-o"></output></label><input type="range" id="r3-w" min="40" max="200" step="5" value="120"></div>
+            <div class="ctrl"><label for="r3-u"><span>Current v<sub>W/E</sub></span> <output id="r3-u-o"></output></label><input type="range" id="r3-u" min="0" max="3" step="0.05" value="1.5"></div>
+            <div class="ctrl"><label for="r3-vb"><span>Boat speed relative to the water v<sub>B/W</sub></span> <output id="r3-vb-o"></output></label><input type="range" id="r3-vb" min="0.5" max="4" step="0.05" value="2.5"></div>
+            <div class="ctrl"><label for="r3-th"><span>Heading θ from straight across</span> <output id="r3-th-o"></output></label><input type="range" id="r3-th" min="-80" max="80" step="0.1" value="0"></div>
+            <div class="ctrl"><label for="r3-t">Time t <output id="r3-t-o"></output></label><input type="range" id="r3-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="r3-play">Go</button><button class="small-btn" id="r3-fast">Shortest time</button><button class="small-btn" id="r3-short">Shortest path</button></div>
+            <dl class="readout" id="r3-out"></dl>
+            <div class="flag" id="r3-flag" hidden></div>
+            <div class="key" id="r3-key"></div>
           </div>
         </div>
       </article>
@@ -1049,11 +1152,280 @@ function ch2integration(){
   draw(); return draw;
 }
 
+/* =====================  CHAPTER 3  ===================== */
+function arrow2(ctx,x1,y1,x2,y2,col,w=3,dash){ const L=Math.hypot(x2-x1,y2-y1); if(L<3) return;
+  const ux=(x2-x1)/L, uy=(y2-y1)/L, h=Math.min(12,L*0.45), hw=h*0.48, bx=x2-ux*h, by=y2-uy*h;
+  ctx.save(); ctx.strokeStyle=col; ctx.fillStyle=col; ctx.lineWidth=w; ctx.lineCap="round"; if(dash) ctx.setLineDash(dash);
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(bx,by); ctx.stroke(); ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(x2,y2); ctx.lineTo(bx-uy*hw,by+ux*hw); ctx.lineTo(bx+uy*hw,by-ux*hw); ctx.closePath(); ctx.fill(); ctx.restore(); }
+function fitWorld(box,xr,yr){ const s=Math.min(box.w/(xr[1]-xr[0]), box.h/(yr[1]-yr[0]));
+  const ox=box.x+(box.w-s*(xr[1]-xr[0]))/2, oy=box.y+box.h-(box.h-s*(yr[1]-yr[0]))/2;
+  const M={s,X:x=>ox+(x-xr[0])*s,Y:y=>oy-(y-yr[0])*s}; M.x0=xr[0]-(ox-box.x)/s; M.x1=M.x0+box.w/s; M.y0=yr[0]-(box.y+box.h-oy)/s; M.y1=M.y0+box.h/s; return M; }
+function worldGrid(ctx,M,box,labx,laby){
+  const st=niceStep(Math.max(M.x1-M.x0,M.y1-M.y0),8);
+  ctx.save(); ctx.lineWidth=1; ctx.font="11px "+css("--f-mono"); ctx.fillStyle=css("--muted");
+  for(let x=Math.ceil(M.x0/st)*st;x<=M.x1+1e-9;x+=st){ ctx.strokeStyle=Math.abs(x)<1e-9?css("--axis"):css("--grid"); ctx.beginPath(); ctx.moveTo(M.X(x),box.y); ctx.lineTo(M.X(x),box.y+box.h); ctx.stroke();
+    ctx.textAlign="center"; ctx.textBaseline="top"; ctx.fillText(+x.toFixed(6),M.X(x),box.y+box.h+3); }
+  for(let y=Math.ceil(M.y0/st)*st;y<=M.y1+1e-9;y+=st){ ctx.strokeStyle=Math.abs(y)<1e-9?css("--axis"):css("--grid"); ctx.beginPath(); ctx.moveTo(box.x,M.Y(y)); ctx.lineTo(box.x+box.w,M.Y(y)); ctx.stroke();
+    ctx.textAlign="right"; ctx.textBaseline="middle"; ctx.fillText(+y.toFixed(6),box.x-5,M.Y(y)); }
+  ctx.fillStyle=css("--ink"); ctx.font="600 12px "+css("--f-body"); ctx.textAlign="left"; ctx.textBaseline="alphabetic";
+  ctx.fillText(laby,box.x+6,box.y+12); ctx.textAlign="right"; ctx.fillText(labx,box.x+box.w-4,box.y+box.h-6); ctx.restore(); }
+function cvText(ctx,x,y,s,col,align="left",font="600 12px "){ ctx.save(); ctx.fillStyle=col; ctx.font=font+css("--f-body"); ctx.textAlign=align; ctx.textBaseline="middle"; ctx.fillText(s,x,y); ctx.restore(); }
+
+/* ---------- 3.2 velocity and acceleration on a curved path ---------- */
+function ch3vectors(){
+  const cv=$("#v3-cv"), ctx=cv.getContext("2d"), T=$("#v3-t"), CI=$("#v3-circ");
+  const w=2*Math.PI/8;
+  const P={
+    rover:{T:4,t0:2,r:t=>[4*t-0.5*t*t,1+0.1*t**3],v:t=>[4-t,0.3*t*t],a:t=>[-1,0.6*t],
+      key:"Examples 3.1–3.3: at t = 2.0 s, v = 2.33 m/s, a∥ = −0.24 m/s² (slowing gently), a⊥ = 1.54 m/s², R = 3.5 m."},
+    circle:{T:8,t0:1,r:t=>[3*Math.cos(w*t),3*Math.sin(w*t)],v:t=>[-3*w*Math.sin(w*t),3*w*Math.cos(w*t)],a:t=>[-3*w*w*Math.cos(w*t),-3*w*w*Math.sin(w*t)],
+      key:"Constant speed on a circle: a∥ = 0 everywhere, and the whole acceleration points to the centre. The circle of curvature is the circle itself, R = 3 m."},
+    spin:{T:8,t0:4,r:t=>{const f=0.06*t*t; return [3*Math.cos(f),3*Math.sin(f)];},
+      v:t=>{const f=0.06*t*t, d=0.12*t; return [-3*d*Math.sin(f),3*d*Math.cos(f)];},
+      a:t=>{const f=0.06*t*t, d=0.12*t, dd=0.12; return [-3*dd*Math.sin(f)-3*d*d*Math.cos(f), 3*dd*Math.cos(f)-3*d*d*Math.sin(f)];},
+      key:"Speeding up on a circle: a∥ = dv/dt stays constant while a⊥ = v²/R grows, so the acceleration swings round towards the centre."},
+    proj:{T:2.449,t0:1.2245,r:t=>[16*t,12*t-4.9*t*t],v:t=>[16,12-9.8*t],a:t=>[0,-9.8],
+      key:"Examples 3.4 and 3.7: the acceleration is g all the way. At the top all of g is perpendicular to v, and R = vₓ²/g = 26.1 m; at launch R = 51.0 m."}
+  };
+  let p=P.rover;
+  const stats=()=>{ let xr=[Infinity,-Infinity], yr=[Infinity,-Infinity], vm=0, am=0;
+    for(let i=0;i<=200;i++){ const t=p.T*i/200, [x,y]=p.r(t), v=p.v(t), a=p.a(t);
+      xr=[Math.min(xr[0],x),Math.max(xr[1],x)]; yr=[Math.min(yr[0],y),Math.max(yr[1],y)]; vm=Math.max(vm,Math.hypot(...v)); am=Math.max(am,Math.hypot(...a)); }
+    const span=Math.max(xr[1]-xr[0],yr[1]-yr[0]), pd=0.2*span;
+    return {xr:[xr[0]-pd,xr[1]+pd], yr:[yr[0]-pd,yr[1]+pd], vm, am, span}; };
+  const draw=()=>{
+    const t=+T.value/1000*p.T; $("#v3-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const S=stats(), box={x:50,y:16,w:574,h:434}, M=fitWorld(box,S.xr,S.yr);
+    worldGrid(ctx,M,box,"x (m)","y (m)");
+    // path
+    ctx.save(); ctx.strokeStyle=css("--axis"); ctx.lineWidth=2.5; ctx.beginPath();
+    for(let i=0;i<=300;i++){ const [x,y]=p.r(p.T*i/300); i?ctx.lineTo(M.X(x),M.Y(y)):ctx.moveTo(M.X(x),M.Y(y)); } ctx.stroke(); ctx.restore();
+    const [x,y]=p.r(t), [vx,vy]=p.v(t), [ax,ay]=p.a(t), sp=Math.hypot(vx,vy), A=Math.hypot(ax,ay);
+    const apar=sp>1e-9?(ax*vx+ay*vy)/sp:0, cr=vx*ay-vy*ax, aper=sp>1e-9?Math.abs(cr)/sp:A, R=aper>1e-9?sp*sp/aper:Infinity;
+    const X0=M.X(x), Y0=M.Y(y);
+    // circle of curvature
+    if(CI.checked && isFinite(R) && R<4*S.span && sp>1e-9){ const nx=-vy/sp*Math.sign(cr), ny=vx/sp*Math.sign(cr), cx=x+R*nx, cy=y+R*ny;
+      ctx.save(); ctx.setLineDash([5,5]); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(M.X(cx),M.Y(cy),R*M.s,0,2*Math.PI); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(X0,Y0); ctx.lineTo(M.X(cx),M.Y(cy)); ctx.stroke(); ctx.restore(); dot(ctx,M.X(cx),M.Y(cy),css("--muted"),3.5);
+      cvText(ctx,M.X(cx)+6,M.Y(cy)+12,"centre of curvature",css("--muted"),"left","500 11px "); }
+    const kv=0.42*S.span/Math.max(S.vm,1e-6)*M.s, ka=0.34*S.span/Math.max(S.am,1e-6)*M.s;
+    if(sp>1e-9){ const ux=vx/sp, uy=vy/sp;
+      arrow2(ctx,X0,Y0,X0+ux*apar*ka,Y0-uy*apar*ka,css("--vC"),2,[5,4]);
+      const px=ax-apar*ux, py=ay-apar*uy; arrow2(ctx,X0,Y0,X0+px*ka,Y0-py*ka,css("--vC"),2,[5,4]);
+      if(Math.abs(apar)*ka>14) cvText(ctx,X0+ux*apar*ka+6,Y0-uy*apar*ka-8,"a∥",css("--vC"));
+      if(aper*ka>14) cvText(ctx,X0+px*ka+6,Y0-py*ka+10,"a⊥",css("--vC")); }
+    arrow2(ctx,X0,Y0,X0+ax*ka,Y0-ay*ka,css("--vA"),3); cvText(ctx,X0+ax*ka+8,Y0-ay*ka,"a",css("--vA"));
+    arrow2(ctx,X0,Y0,X0+vx*kv,Y0-vy*kv,css("--vB"),3); cvText(ctx,X0+vx*kv+8,Y0-vy*kv,"v",css("--vB"));
+    dot(ctx,X0,Y0,css("--ink"),6);
+    const state=Math.abs(apar)<1e-3?"constant speed":apar>0?"speeding up":"slowing down";
+    const turn=Math.abs(cr)<1e-9?"moving straight":cr>0?"turning left":"turning right";
+    readout($("#v3-out"),[["t",t.toFixed(2)+" s"],["r",`(${fmt(x,2)}, ${fmt(y,2)}) m`],["v",`(${fmt(vx,2)}, ${fmt(vy,2)}) m/s`],["speed v",sp.toFixed(2)+" m/s"],
+      ["a",`(${fmt(ax,2)}, ${fmt(ay,2)}) m/s²`],["|a|",A.toFixed(2)+" m/s²"],["a∥ = a·v / v",fmt(apar,2)+" m/s²"],["a⊥ = |v × a| / v",aper.toFixed(2)+" m/s²"],
+      ["R = v²/a⊥",isFinite(R)&&R<1e5?R.toFixed(2)+" m":"∞ (straight)"],["motion",state],["path",turn]]);
+    $("#v3-key").textContent=p.key;
+  };
+  seg("#v3-preset",ds=>{ p=P[ds.p]; T.value=p.t0/p.T*1000; draw(); });
+  [T,CI].forEach(i=>i.addEventListener("input",draw));
+  player($("#v3-play"),T,()=>p.T,draw);
+  draw(); return draw;
+}
+
+/* ---------- 3.3 projectile launcher ---------- */
+function ch3projectile(){
+  const cv=$("#p3-cv"), ctx=cv.getContext("2d"), V0=$("#p3-v0"), AL=$("#p3-al"), H=$("#p3-h"), K=$("#p3-k"), TT=$("#p3-t"), CO=$("#p3-comp"), g=9.8;
+  const presets={ex34:{v0:20,al:36.87,h:0,k:0,t:0},ex35:{v0:15,al:0,h:45,k:0,t:0},max:{v0:20,al:45,h:0,k:0,t:0}};
+  function sim(v0,al,h,k){ const c=Math.cos(rad(al)), s=Math.sin(rad(al));
+    const pts=[]; let t=0,x=0,y=0,vx=v0*c,vy=v0*s;
+    if(k<=0){ const T=(vy+Math.sqrt(vy*vy+2*g*h))/g; for(let i=0;i<=400;i++){ const tt=T*i/400; pts.push([tt,vx*tt,vy*tt-0.5*g*tt*tt,vx,vy-g*tt]); } return pts; }
+    const f=(vx,vy)=>{ const sp=Math.hypot(vx,vy); return [-k*sp*vx,-g-k*sp*vy]; }, dt=0.002;
+    pts.push([0,0,0,vx,vy]);
+    for(let i=0;i<200000;i++){
+      const [a1x,a1y]=f(vx,vy), [a2x,a2y]=f(vx+a1x*dt/2,vy+a1y*dt/2), [a3x,a3y]=f(vx+a2x*dt/2,vy+a2y*dt/2), [a4x,a4y]=f(vx+a3x*dt,vy+a3y*dt);
+      const nvx=vx+dt*(a1x+2*a2x+2*a3x+a4x)/6, nvy=vy+dt*(a1y+2*a2y+2*a3y+a4y)/6;
+      const nx=x+dt*(vx+nvx)/2, ny=y+dt*(vy+nvy)/2; t+=dt;
+      if(ny<-h){ const fr=(y+h)/(y-ny); pts.push([t-dt+fr*dt,x+fr*(nx-x),-h,vx+fr*(nvx-vx),vy+fr*(nvy-vy)]); break; }
+      x=nx; y=ny; vx=nvx; vy=nvy; if(i%5===0) pts.push([t,x,y,vx,vy]); }
+    return pts; }
+  const at=(pts,t)=>{ let i=1; while(i<pts.length-1 && pts[i][0]<t) i++; const a=pts[i-1], b=pts[i], f=b[0]>a[0]?Math.min(1,Math.max(0,(t-a[0])/(b[0]-a[0]))):0; return a.map((u,j)=>u+f*(b[j]-u)); };
+  let pts=[], vac=[], comp=[];
+  const draw=()=>{
+    const v0=+V0.value, al=+AL.value, h=+H.value, k=+K.value;
+    $("#p3-v0-o").textContent=v0.toFixed(1)+" m/s"; $("#p3-al-o").textContent=al.toFixed(2)+"°"; $("#p3-h-o").textContent=h.toFixed(1)+" m"; $("#p3-k-o").textContent=k>0?k.toFixed(3)+" 1/m":"off (vacuum)";
+    pts=sim(v0,al,h,k); vac=k>0?sim(v0,al,h,0):[]; comp=CO.checked?sim(v0,90-al,h,k):[];
+    const Tf=pts[pts.length-1][0], t=+TT.value/1000*Tf; $("#p3-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const all=[...pts,...vac,...comp]; let xmax=1, ymax=0.5; all.forEach(q=>{ xmax=Math.max(xmax,q[1]); ymax=Math.max(ymax,q[2]); });
+    const xmin=Math.min(0,...all.map(q=>q[1]));
+    const span=Math.max(xmax-xmin,ymax+h), pd=0.06*span;
+    const box={x:50,y:16,w:574,h:394}, M=fitWorld(box,[xmin-Math.max(pd,h>0?0.12*span:pd),xmax+pd],[-h-0.02*span,ymax+pd*2]);
+    worldGrid(ctx,M,box,"x (m)","y (m)");
+    // ground and cliff
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.fillRect(box.x,M.Y(-h),box.w,box.y+box.h-M.Y(-h));
+    if(h>0) ctx.fillRect(box.x,M.Y(0),M.X(0)-box.x,M.Y(-h)-M.Y(0));
+    ctx.strokeStyle=css("--axis"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(box.x,M.Y(-h)); ctx.lineTo(box.x+box.w,M.Y(-h)); ctx.stroke(); ctx.restore();
+    const path=(arr,col,wd,dash)=>{ if(!arr.length) return; ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=wd; if(dash) ctx.setLineDash(dash); ctx.beginPath(); arr.forEach((q,i)=>i?ctx.lineTo(M.X(q[1]),M.Y(q[2])):ctx.moveTo(M.X(q[1]),M.Y(q[2]))); ctx.stroke(); ctx.restore(); };
+    path(vac,css("--muted"),1.5,[6,5]); path(comp,css("--vC"),1.8,[3,4]); path(pts,css("--axis"),2.5);
+    // top and landing
+    let top=pts[0]; pts.forEach(q=>{ if(q[2]>top[2]) top=q; });
+    const land=pts[pts.length-1];
+    if(top[2]>0.01){ ctx.save(); ctx.setLineDash([3,4]); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(M.X(top[1]),M.Y(top[2])); ctx.lineTo(M.X(top[1]),M.Y(-h)); ctx.stroke(); ctx.restore();
+      cvText(ctx,M.X(top[1]),M.Y(top[2])-12,`top: ${top[2].toFixed(2)} m above launch`,css("--muted"),"center","500 11px "); }
+    dot(ctx,M.X(land[1]),M.Y(land[2]),css("--muted"),4);
+    // current state
+    const [, x,y,vx,vy]=at(pts,t), X0=M.X(x), Y0=M.Y(y), kv=0.2*span/Math.max(v0,1)*M.s;
+    arrow2(ctx,X0,Y0,X0+vx*kv,Y0,css("--vB"),2.5); arrow2(ctx,X0,Y0,X0,Y0-vy*kv,css("--vC"),2.5); arrow2(ctx,X0,Y0,X0+vx*kv,Y0-vy*kv,css("--vA"),3);
+    cvText(ctx,X0+vx*kv+6,Y0+10,"vₓ",css("--vB")); if(Math.abs(vy*kv)>12) cvText(ctx,X0-8,Y0-vy*kv/2,"vᵧ",css("--vC"),"right");
+    dot(ctx,X0,Y0,css("--ink"),6);
+    const sp=Math.hypot(vx,vy), dir=deg(Math.atan2(vy,vx));
+    const rows=[["t",t.toFixed(2)+" s"],["x",x.toFixed(2)+" m"],["y (from launch point)",y.toFixed(2)+" m"],["vₓ",vx.toFixed(2)+" m/s"],["vᵧ",vy.toFixed(2)+" m/s"],
+      ["speed",sp.toFixed(2)+" m/s"],["direction",`${Math.abs(dir).toFixed(1)}° ${dir>=0?"up":"down"}`],
+      ["max height (above launch)",top[2]>0.01?top[2].toFixed(2)+" m":"— (no rise)"],["time to the top",top[2]>0.01?top[0].toFixed(2)+" s":"—"],
+      ["flight time",land[0].toFixed(2)+" s"],["horizontal distance",land[1].toFixed(2)+" m"],["impact speed",Math.hypot(land[3],land[4]).toFixed(2)+" m/s"]];
+    if(k===0){ const Rc=(v0*Math.cos(rad(al)))**2/g; if(top[2]>0.01) rows.push(["R at top = vₓ²/g",Rc.toFixed(1)+" m"]); }
+    if(vac.length){ const lv=vac[vac.length-1]; rows.push(["distance without air",lv[1].toFixed(2)+" m"]); }
+    if(comp.length){ const lc=comp[comp.length-1]; rows.push([`distance at ${(90-al).toFixed(1)}°`,lc[1].toFixed(2)+" m"],[`flight time at ${(90-al).toFixed(1)}°`,lc[0].toFixed(2)+" s"]); }
+    readout($("#p3-out"),rows);
+    $("#p3-key").textContent= k>0 ? "With air resistance the path is no longer a parabola: it is lower and shorter, and comes down more steeply than it went up. The dashed grey curve is the vacuum path."
+      : (Math.abs(vy)<0.15 && top[2]>0.01) ? "At the top vᵧ = 0, but vₓ is not zero and the acceleration is still g, downward."
+      : "Without air resistance vₓ never changes (blue arrow) while vᵧ decreases by 9.8 m/s every second (green arrow).";
+  };
+  seg("#p3-preset",ds=>{ const q=presets[ds.p]; V0.value=q.v0; AL.value=q.al; H.value=q.h; K.value=q.k; TT.value=0; draw(); });
+  [V0,AL,H,K,TT,CO].forEach(i=>i.addEventListener("input",draw));
+  $("#p3-top").onclick=()=>{ let top=pts[0]; pts.forEach(q=>{ if(q[2]>top[2]) top=q; }); TT.value=top[0]/pts[pts.length-1][0]*1000; draw(); };
+  player($("#p3-play"),TT,()=>Math.min(Math.max(pts.length?pts[pts.length-1][0]:2,1.5),8),draw);
+  draw(); return draw;
+}
+
+/* ---------- 3.4 circular motion ---------- */
+function ch3circle(){
+  const cv=$("#c3-cv"), ctx=cv.getContext("2d"), R=$("#c3-r"), V0=$("#c3-v0"), AT=$("#c3-at"), TT=$("#c3-t");
+  const presets={ex39:{R:50,v0:12,at:1.5},unif:{R:50,v0:12,at:0},ferris:{R:14,v0:3.67,at:0},brake:{R:30,v0:15,at:-2.5}};
+  const motion=(t)=>{ const v0=+V0.value, at=+AT.value;
+    if(at<0){ const ts=v0/(-at); if(t>=ts) return {s:v0*ts+0.5*at*ts*ts,v:0,at:0}; }
+    return {s:v0*t+0.5*at*t*t,v:Math.max(0,v0+at*t),at}; };
+  const duration=()=>{ const r=+R.value, v0=+V0.value, at=+AT.value;
+    if(at===0) return v0>0?Math.min(2*Math.PI*r/v0,60):5;
+    if(at>0){ const L=2*Math.PI*r; return Math.min((-v0+Math.sqrt(v0*v0+2*at*L))/at,40); }
+    return Math.min(v0/(-at)+1.5,40); };
+  const draw=()=>{
+    const r=+R.value, v0=+V0.value, at0=+AT.value, T=duration(), t=+TT.value/1000*T;
+    $("#c3-r-o").textContent=r.toFixed(1)+" m"; $("#c3-v0-o").textContent=v0.toFixed(2)+" m/s"; $("#c3-at-o").textContent=at0.toFixed(1)+" m/s²"; $("#c3-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const m=motion(t), v=m.v, arad=v*v/r, atan=m.at, A=Math.hypot(arad,atan), phi=m.s/r;
+    let vmax=0, amax=0; for(let i=0;i<=100;i++){ const q=motion(T*i/100); vmax=Math.max(vmax,q.v); amax=Math.max(amax,Math.hypot(q.v*q.v/r,q.at)); }
+    // circle
+    const cx=200, cy=210, Rp=130;
+    ctx.save(); ctx.strokeStyle=css("--axis"); ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(cx,cy,Rp,0,2*Math.PI); ctx.stroke(); ctx.restore();
+    dot(ctx,cx,cy,css("--muted"),3.5); cvText(ctx,cx+6,cy+12,"centre",css("--muted"),"left","500 11px ");
+    cvText(ctx,cx,cy+Rp+22,`R = ${r.toFixed(1)} m`,css("--muted"),"center","500 11px ");
+    const px=cx+Rp*Math.cos(phi), py=cy-Rp*Math.sin(phi);
+    const tx=-Math.sin(phi), ty=-Math.cos(phi), nx=-Math.cos(phi), ny=Math.sin(phi); // canvas units: tangent (ccw), inward normal
+    const kv=95/Math.max(vmax,0.5), ka=85/Math.max(amax,0.05);
+    arrow2(ctx,px,py,px+nx*arad*ka,py+ny*arad*ka,css("--vC"),2,[5,4]);
+    if(Math.abs(atan)>1e-9) arrow2(ctx,px,py,px+tx*atan*ka,py+ty*atan*ka,css("--vC"),2,[5,4]);
+    const axp=nx*arad*ka+tx*atan*ka, ayp=ny*arad*ka+ty*atan*ka;
+    arrow2(ctx,px,py,px+axp,py+ayp,css("--vA"),3); cvText(ctx,px+axp*1.08,py+ayp*1.08-8,"a",css("--vA"),"center");
+    if(arad*ka>16) cvText(ctx,px+nx*arad*ka*0.55+10,py+ny*arad*ka*0.55+10,"a_rad",css("--vC"),"left","600 11px ");
+    if(Math.abs(atan)*ka>16) cvText(ctx,px+tx*atan*ka+6,py+ty*atan*ka-10,"a_tan",css("--vC"),"left","600 11px ");
+    arrow2(ctx,px,py,px+tx*v*kv,py+ty*v*kv,css("--vB"),3); if(v>0.01) cvText(ctx,px+tx*v*kv*1.1,py+ty*v*kv*1.1-8,"v",css("--vB"),"center");
+    dot(ctx,px,py,css("--ink"),7);
+    // graphs
+    const F1=frame(ctx,{x:420,y:18,w:204,h:160},[0,T],[0,Math.max(vmax*1.15,1)],"t (s)","v (m/s)");
+    curve(ctx,F1,s=>motion(s).v,0,T,css("--vB")); dot(ctx,F1.X(t),F1.Y(v),css("--ink"),4);
+    const amn=Math.min(0,...[0,0.5,1].map(f=>motion(T*f).at)), F2=frame(ctx,{x:420,y:224,w:204,h:160},[0,T],[amn*1.2-0.05,Math.max(amax*1.15,0.5)],"t (s)","a (m/s²)");
+    curve(ctx,F2,s=>{const q=motion(s); return q.v*q.v/r;},0,T,css("--vC")); curve(ctx,F2,s=>motion(s).at,0,T,css("--vC"),1.5);
+    curve(ctx,F2,s=>{const q=motion(s); return Math.hypot(q.v*q.v/r,q.at);},0,T,css("--vA"),2);
+    dot(ctx,F2.X(t),F2.Y(A),css("--ink"),4);
+    const qe=motion(T); cvText(ctx,622,F2.Y(Math.hypot(qe.v*qe.v/r,qe.at))-10,"|a|",css("--vA"),"right","600 11px ");
+    cvText(ctx,424,F2.Y(motion(0).at)+(motion(0).at>=0?10:-10),"a_tan",css("--vC"),"left","500 10px ");
+    const ang=deg(Math.atan2(arad,atan));
+    const rows=[["t",t.toFixed(2)+" s"],["speed v",v.toFixed(2)+" m/s"],["a_rad = v²/R",arad.toFixed(3)+" m/s²"],["a_tan = dv/dt",atan.toFixed(2)+" m/s²"],["|a|",A.toFixed(3)+" m/s²"],
+      ["angle of a from v",v>0.01||A>0?ang.toFixed(1)+"°":"—"],["ω = v/R",(v/r).toFixed(3)+" rad/s"],["arc length s",m.s.toFixed(1)+" m"]];
+    if(atan===0 && v>0) rows.push(["period T = 2πR/v",(2*Math.PI*r/v).toFixed(2)+" s"]);
+    readout($("#c3-out"),rows);
+    $("#c3-key").textContent= at0===0 ? "Uniform circular motion: the speed is constant, yet the acceleration is not zero. It points to the centre at every instant (the answer to the opening question)."
+      : at0>0 ? "Speeding up: the total acceleration points ahead of the centre. As v grows, a_rad = v²/R grows and the acceleration swings towards the centre."
+      : "Slowing down: the total acceleration points behind the centre. When the particle stops, both components vanish.";
+  };
+  seg("#c3-preset",ds=>{ const q=presets[ds.p]; R.value=q.R; V0.value=q.v0; AT.value=q.at; TT.value=0; draw(); });
+  [R,V0,AT,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#c3-play"),TT,()=>Math.min(duration(),10),draw);
+  draw(); return draw;
+}
+
+/* ---------- 3.5 river crossing ---------- */
+function ch3relative(){
+  const cv=$("#r3-cv"), ctx=cv.getContext("2d"), W=$("#r3-w"), U=$("#r3-u"), VB=$("#r3-vb"), TH=$("#r3-th"), TT=$("#r3-t");
+  let frameW=false;
+  const presets={a:{w:120,u:1.5,vb:2.5,th:0},b:{w:120,u:1.5,vb:2.5,th:36.87},slow:{w:120,u:1.5,vb:1.2,th:53.13}};
+  const draw=()=>{
+    const w=+W.value, u=+U.value, vb=+VB.value, th=+TH.value, c=Math.cos(rad(th)), s=Math.sin(rad(th));
+    $("#r3-w-o").textContent=w.toFixed(0)+" m"; $("#r3-u-o").textContent=u.toFixed(2)+" m/s"; $("#r3-vb-o").textContent=vb.toFixed(2)+" m/s";
+    $("#r3-th-o").textContent=Math.abs(th)<0.05?"0°":`${Math.abs(th).toFixed(1)}° ${th>0?"up":"down"}stream`;
+    const bw=[-vb*s,vb*c], we=[u,0], be=[u-vb*s,vb*c];         // x downstream, y across
+    const Tc=w/be[1], xl=be[0]*Tc, t=+TT.value/1000*Tc;
+    $("#r3-t-o").textContent=t.toFixed(1)+" s";
+    clearCv(ctx,cv);
+    // world in the chosen frame
+    const shift=frameW?-u:0;                                  // bank points move at -u in the water frame
+    const boat=frameW?[bw[0]*t,bw[1]*t]:[be[0]*t,be[1]*t];
+    const endB=frameW?[bw[0]*Tc,bw[1]*Tc]:[xl,w];
+    const xs=[0,endB[0],shift*Tc,-0.35*w,0.35*w];
+    const box={x:20,y:20,w:600,h:400}, M=fitWorld(box,[Math.min(...xs)-0.15*w,Math.max(...xs)+0.15*w],[-0.18*w,1.18*w]);
+    // land and water
+    ctx.save(); ctx.fillStyle=css("--accent-soft"); ctx.fillRect(box.x,M.Y(w),box.w,M.Y(0)-M.Y(w));
+    ctx.fillStyle=css("--surface-2"); ctx.fillRect(box.x,box.y,box.w,M.Y(w)-box.y); ctx.fillRect(box.x,M.Y(0),box.w,box.y+box.h-M.Y(0));
+    ctx.strokeStyle=css("--axis"); ctx.lineWidth=2; [0,w].forEach(yy=>{ ctx.beginPath(); ctx.moveTo(box.x,M.Y(yy)); ctx.lineTo(box.x+box.w,M.Y(yy)); ctx.stroke(); });
+    // ripples move with the water (bank frame) or stay put (water frame)
+    const sp=niceStep(M.x1-M.x0,10), off=frameW?0:(u*t)%sp; ctx.strokeStyle=css("--accent"); ctx.globalAlpha=0.45; ctx.lineWidth=1.5;
+    for(let j=1;j<=4;j++){ const yy=w*j/5; for(let xx=Math.floor(M.x0/sp)*sp-sp;xx<=M.x1+sp;xx+=sp){ const X=M.X(xx+off+(j%2)*sp/2); ctx.beginPath(); ctx.moveTo(X-8,M.Y(yy)); ctx.lineTo(X+8,M.Y(yy)); ctx.stroke(); } }
+    ctx.restore();
+    cvText(ctx,box.x+8,M.Y(0)+14,frameW?"near bank (moving at −v_W/E)":"near bank",css("--muted"),"left","500 11px ");
+    cvText(ctx,box.x+8,M.Y(w)-14,frameW?"far bank (moving at −v_W/E)":"far bank",css("--muted"),"left","500 11px ");
+    if(!frameW && u>0) arrow2(ctx,box.x+box.w-90,M.Y(w*0.5)+0,box.x+box.w-20,M.Y(w*0.5),css("--accent"),2);
+    if(!frameW && u>0) cvText(ctx,box.x+box.w-55,M.Y(w*0.5)-12,"current",css("--accent"),"center","500 11px ");
+    // start and opposite point (they move in the water frame)
+    const sx=shift*t; dot(ctx,M.X(sx),M.Y(0),css("--ink"),4); cvText(ctx,M.X(sx)+6,M.Y(0)+14,"start",css("--ink"),"left","500 11px ");
+    ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; const ox=M.X(sx), oy=M.Y(w); ctx.beginPath(); ctx.moveTo(ox-6,oy-6); ctx.lineTo(ox+6,oy+6); ctx.moveTo(ox+6,oy-6); ctx.lineTo(ox-6,oy+6); ctx.stroke(); ctx.restore();
+    cvText(ctx,ox+8,oy-12,"directly opposite",css("--ink"),"left","500 11px ");
+    // path
+    ctx.save(); ctx.setLineDash([6,5]); ctx.strokeStyle=css("--vA"); ctx.lineWidth=1.6; ctx.beginPath(); ctx.moveTo(M.X(0),M.Y(0)); ctx.lineTo(M.X(endB[0]),M.Y(endB[1])); ctx.stroke(); ctx.restore();
+    if(!frameW){ dot(ctx,M.X(xl),M.Y(w),css("--vA"),4); }
+    // boat
+    const BX=M.X(boat[0]), BY=M.Y(boat[1]), hx=-s, hy=-c;           // canvas heading unit vector
+    ctx.save(); ctx.fillStyle=css("--ink"); ctx.beginPath(); ctx.moveTo(BX+hx*14,BY+hy*14); ctx.lineTo(BX-hx*9-hy*6,BY-hy*9+hx*6); ctx.lineTo(BX-hx*9+hy*6,BY-hy*9-hx*6); ctx.closePath(); ctx.fill(); ctx.restore();
+    // vector triangle at the boat
+    const kv=0.3*w*M.s/Math.max(vb,u,0.5);
+    if(frameW){ arrow2(ctx,BX,BY,BX+bw[0]*kv,BY-bw[1]*kv,css("--vB"),3); cvText(ctx,BX+bw[0]*kv+8,BY-bw[1]*kv,"v_B/W",css("--vB"));
+      if(u>0){ arrow2(ctx,M.X(sx)+40,M.Y(0)+28,M.X(sx)+40-u*kv,M.Y(0)+28,css("--vC"),2.5); cvText(ctx,M.X(sx)+46,M.Y(0)+28,"bank: −v_W/E",css("--vC")); } }
+    else { arrow2(ctx,BX,BY,BX+bw[0]*kv,BY-bw[1]*kv,css("--vB"),3); arrow2(ctx,BX+bw[0]*kv,BY-bw[1]*kv,BX+be[0]*kv,BY-be[1]*kv,css("--vC"),2.5);
+      arrow2(ctx,BX,BY,BX+be[0]*kv,BY-be[1]*kv,css("--vA"),3);
+      cvText(ctx,BX+bw[0]*kv-6,BY-bw[1]*kv-10,"v_B/W",css("--vB"),"right"); cvText(ctx,BX+(bw[0]+be[0])/2*kv,BY-be[1]*kv-12,"v_W/E",css("--vC"),"center");
+      cvText(ctx,BX+be[0]*kv*0.6+10,BY-be[1]*kv*0.6+8,"v_B/E",css("--vA")); }
+    const vbe=Math.hypot(...be), dirB=deg(Math.atan2(be[0],be[1]));
+    const rows=[["t",t.toFixed(1)+" s"],["v_B/E = v_B/W + v_W/E",`${vbe.toFixed(2)} m/s`],["v_B/E direction",Math.abs(dirB)<0.05?"straight across":`${Math.abs(dirB).toFixed(1)}° ${dirB>0?"downstream":"upstream"}`],
+      ["speed across",be[1].toFixed(2)+" m/s"],["crossing time",Tc.toFixed(1)+" s"],["lands",Math.abs(xl)<0.05?"opposite":`${Math.abs(xl).toFixed(1)} m ${xl>0?"down":"up"}stream`],["path length",Math.hypot(xl,w).toFixed(1)+" m"]];
+    readout($("#r3-out"),rows);
+    const fl=$("#r3-flag"); if(vb<=u){ fl.hidden=false; fl.textContent=`The boat (${vb.toFixed(2)} m/s) is not faster than the current (${u.toFixed(2)} m/s): it cannot reach the point directly opposite. Least drift: head ${deg(Math.asin(vb/u)).toFixed(1)}° upstream.`; } else fl.hidden=true;
+    $("#r3-key").textContent= frameW ? "Seen from the water, the boat simply moves along its heading at v_B/W, and the banks slide past at −v_W/E. Both descriptions give the same crossing time."
+      : "Seen from the bank, the boat's velocity is the vector sum v_B/E = v_B/W + v_W/E (red). Only its component across the river carries the boat to the other side.";
+  };
+  seg("#r3-preset",ds=>{ const q=presets[ds.p]; W.value=q.w; U.value=q.u; VB.value=q.vb; TH.value=q.th; TT.value=0; draw(); });
+  seg("#r3-frame",ds=>{ frameW=ds.f==="water"; draw(); });
+  $("#r3-fast").onclick=()=>{ TH.value=0; draw(); };
+  $("#r3-short").onclick=()=>{ const u=+U.value, vb=+VB.value; TH.value=u<vb?deg(Math.asin(u/vb)):deg(Math.asin(vb/u)); draw(); };
+  [W,U,VB,TH,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#r3-play"),TT,()=>6,draw);
+  draw(); return draw;
+}
+
 /* ---------- chapter cards ---------- */
 const CHAPTERS=[
  [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],7],
  [2,"Motion Along a Straight Line",["Linked x–t, v–t, a–t graphs","Constant acceleration","Free fall and reaction time","Area under a velocity graph"],5],
- [3,"Motion in Two or Three Dimensions",["Projectile launcher","Tangential and normal acceleration","River crossing"]],
+ [3,"Motion in Two or Three Dimensions",["Tangential and normal acceleration","Projectile launcher","Circular motion","River crossing"],4],
  [4,"Newton's Laws of Motion",["Free-body diagram builder","Inertial frames"]],
  [5,"Applying Newton's Laws",["Incline with friction","Conical pendulum","Rotating frame and inertial forces"]],
  [6,"Work and Kinetic Energy",["Work as area under F(x)","Power"]],
@@ -1074,12 +1446,12 @@ $("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
   </article>`).join("");
 
 /* ---------- routing ---------- */
-const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),about:$("#view-about")};
+const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),about:$("#view-about")};
 const redraws=[];
 function route(){
   const h=(location.hash||"#home").slice(1);
   let v="home", target=null;
-  const m=h.match(/^(ch[12])(-.*)?$/);
+  const m=h.match(/^(ch[123])(-.*)?$/);
   if(m){ v=m[1]; if(m[2]) target=h; }
   else if(h==="about") v="about";
   else if(h==="chapters"){ v="home"; target="chapters"; }
@@ -1089,7 +1461,7 @@ function route(){
   const t=target && document.getElementById(target);
   if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
 }
-redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration());
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative());
 addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
 new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});

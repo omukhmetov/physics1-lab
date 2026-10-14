@@ -29,4 +29,13 @@ The site is a single file, `index.html`, with no build step.
 | Interactive 2.4 Area under a velocity graph | `#ch2-integration` |
 | (website only) Reaction-time ruler | `#ch2-ruler` |
 
+## Instrument addresses (Chapter 3)
+
+| Book box | Address ending |
+|---|---|
+| Interactive 3.1 Velocity and acceleration on a curved path | `#ch3-vectors` |
+| Interactive 3.2 Projectile launcher | `#ch3-projectile` |
+| Interactive 3.3 Circular motion | `#ch3-circle` |
+| Interactive 3.4 River crossing | `#ch3-relative` |
+
 Do not rename these anchors once the book is printed: the QR codes point to them.
