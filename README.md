@@ -38,4 +38,14 @@ The site is a single file, `index.html`, with no build step.
 | Interactive 3.3 Circular motion | `#ch3-circle` |
 | Interactive 3.4 River crossing | `#ch3-relative` |
 
+## Instrument addresses (Chapter 4)
+
+| Book box | Address ending |
+|---|---|
+| Interactive 4.1 Inertial and non-inertial frames | `#ch4-inertia` |
+| Interactive 4.2 Forces on a puck | `#ch4-forces` |
+| Interactive 4.3 Action–reaction pairs and a heavy rope | `#ch4-third` |
+| Interactive 4.4 Scale in a lift | `#ch4-elevator` |
+| Interactive 4.5 Free-body diagram trainer | `#ch4-fbd` |
+
 Do not rename these anchors once the book is printed: the QR codes point to them.
