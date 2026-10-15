@@ -49,3 +49,13 @@ The site is a single file, `index.html`, with no build step.
 | Interactive 4.5 Free-body diagram trainer | `#ch4-fbd` |
 
 Do not rename these anchors once the book is printed: the QR codes point to them.
+
+## Instrument addresses (Chapter 5)
+
+| Book box | Address ending |
+|---|---|
+| Interactive 5.1 Connected bodies | `#ch5-pulleys` |
+| Interactive 5.2 Block on an incline with friction | `#ch5-incline` |
+| Interactive 5.3 Falling with air resistance | `#ch5-drag` |
+| Interactive 5.4 Circular motion: what supplies the force? | `#ch5-curve` |
+| Interactive 5.5 Inertial forces on a turntable | `#ch5-rotating` |
