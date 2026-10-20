@@ -59,3 +59,21 @@ Do not rename these anchors once the book is printed: the QR codes point to them
 | Interactive 5.3 Falling with air resistance | `#ch5-drag` |
 | Interactive 5.4 Circular motion: what supplies the force? | `#ch5-curve` |
 | Interactive 5.5 Inertial forces on a turntable | `#ch5-rotating` |
+
+## Instrument addresses (Chapter 6)
+
+| Book box | Address ending |
+|---|---|
+| Interactive 6.1 The work done by a constant force | `#ch6-work` |
+| Interactive 6.2 The work–energy theorem | `#ch6-energy` |
+| Interactive 6.3 Work as the area under F(x) | `#ch6-spring` |
+| Interactive 6.4 Power, force, and speed | `#ch6-power` |
+
+## Instrument addresses (Chapter 7)
+
+| Book box | Address ending |
+|---|---|
+| Interactive 7.1 Energy on a track | `#ch7-track` |
+| Interactive 7.2 A body on a spring | `#ch7-spring` |
+| Interactive 7.3 Conservative or not? | `#ch7-paths` |
+| Interactive 7.4 Energy diagrams | `#ch7-curve` |

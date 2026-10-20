@@ -148,6 +148,7 @@ footer .muted{opacity:.75}
       <a href="#ch4" data-nav="ch4">Chapter 4</a>
       <a href="#ch5" data-nav="ch5">Chapter 5</a>
       <a href="#ch6" data-nav="ch6">Chapter 6</a>
+      <a href="#ch7" data-nav="ch7">Chapter 7</a>
       <a href="#about" data-nav="about">About</a>
     </nav>
   </div>
@@ -871,6 +872,101 @@ footer .muted{opacity:.75}
             <div class="row"><button class="small-btn" id="p6-play">Start</button><span class="hint">driving force limited to 0.8 mg at low speed</span></div>
             <dl class="readout" id="p6-out"></dl>
             <div class="key" id="p6-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER 7 ===================== -->
+<section id="view-ch7" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 7</div>
+    <h1 style="margin-bottom:.2em">Potential Energy and Energy Conservation</h1>
+    <p class="lede">Four instruments for gravitational and elastic potential energy, conservative and nonconservative forces, and energy diagrams. Each loads a worked example from the book; then change the numbers and watch the energy move between its forms.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 7 instruments">
+      <ol>
+        <li><a href="#ch7-track"><span class="sn">7.1</span>Energy on a track</a></li>
+        <li><a href="#ch7-spring"><span class="sn">7.2</span>A body on a spring</a></li>
+        <li><a href="#ch7-paths"><span class="sn">7.3</span>Conservative or not?</a></li>
+        <li><a href="#ch7-curve"><span class="sn">7.5</span>Energy diagrams</a></li>
+      </ol>
+      <div class="note">Opening question: how high could a pole vaulter running at 9.5 m/s raise his centre of mass? Open <a href="#ch7-track">Energy on a track</a>, choose the valley, and set the release height to 4.6 m: the bead reaches 9.5 m/s at the bottom. Run it backwards in your head: 9.5 m/s buys 4.6 m of height, whatever the mass.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch7-track">
+        <div class="sim-h"><h3>Energy on a track</h3><span class="ref">Section 7.1 · Examples 7.4, 7.5 · Eqs. (7.4), (7.6)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="t7-cv" width="640" height="400" aria-label="A bead moving along a track, with bar charts of kinetic, potential and total energy"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="t7-preset" role="group" aria-label="Track">
+              <button data-p="sled" aria-pressed="false">Sled run (Ex. 7.5)</button><button data-p="valley" aria-pressed="false">Valley</button><button data-p="loop" aria-pressed="true">Loop (Ex. 7.4)</button><button data-p="hill" aria-pressed="false">Hill and loop</button>
+            </div>
+            <div class="ctrl"><label for="t7-h">Release height h <output id="t7-h-o"></output></label><input type="range" id="t7-h" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl" id="t7-rw"><label for="t7-r">Loop radius R <output id="t7-r-o"></output></label><input type="range" id="t7-r" min="0.1" max="0.4" step="0.005" value="0.2"></div>
+            <div class="ctrl"><label for="t7-mu">Friction: constant resistance μmg, μ = <output id="t7-mu-o"></output></label><input type="range" id="t7-mu" min="0" max="0.3" step="0.005" value="0"></div>
+            <div class="ctrl"><label for="t7-t">Time t <output id="t7-t-o"></output></label><input type="range" id="t7-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="t7-play">Release</button></div>
+            <dl class="readout" id="t7-out"></dl>
+            <div class="key" id="t7-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch7-spring">
+        <div class="sim-h"><h3>A body on a spring</h3><span class="ref">Section 7.2 · Examples 7.6–7.8 · Eqs. (7.8), (7.9)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="s7-cv" width="640" height="400" aria-label="A block on a spring, the potential energy curve, and energy bar charts"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="s7-preset" role="group" aria-label="Example">
+              <button data-p="glider" aria-pressed="false">Glider (Ex. 7.6)</button><button data-p="drop" aria-pressed="true">Dropped on a spring (Ex. 7.7)</button><button data-p="hang" aria-pressed="false">Hung suddenly (Ex. 7.8)</button>
+            </div>
+            <div class="ctrl"><label for="s7-k">Force constant k <output id="s7-k-o"></output></label><input type="range" id="s7-k" min="20" max="3000" step="10" value="1960"></div>
+            <div class="ctrl"><label for="s7-m">Mass m <output id="s7-m-o"></output></label><input type="range" id="s7-m" min="0.1" max="10" step="0.1" value="2"></div>
+            <div class="ctrl"><label for="s7-a"><span id="s7-a-l">Drop height h</span> <output id="s7-a-o"></output></label><input type="range" id="s7-a" min="0" max="1" step="0.001" value="0.4"></div>
+            <div class="ctrl" id="s7-fw"><label for="s7-f">Friction force f <output id="s7-f-o"></output></label><input type="range" id="s7-f" min="0" max="3" step="0.05" value="0"></div>
+            <div class="ctrl"><label for="s7-t">Time t <output id="s7-t-o"></output></label><input type="range" id="s7-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="s7-play">Release</button></div>
+            <dl class="readout" id="s7-out"></dl>
+            <div class="key" id="s7-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch7-paths">
+        <div class="sim-h"><h3>Conservative or not?</h3><span class="ref">Section 7.3 · Examples 7.9, 7.10 · Eqs. (7.10), (7.13)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="p7-cv" width="640" height="400" aria-label="A path in the plane, and the work done along it by five different forces"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="p7-preset" role="group" aria-label="Path">
+              <button data-p="p1" aria-pressed="true">Path 1 (Ex. 7.10)</button><button data-p="p2" aria-pressed="false">Path 2</button><button data-p="diag" aria-pressed="false">Diagonal</button><button data-p="loop" aria-pressed="false">Closed: out by 1, back by 2</button><button data-p="draw" aria-pressed="false">Draw your own</button>
+            </div>
+            <div class="row"><span class="hint" id="p7-hint">Choose “Draw your own”, then drag on the grid to draw a path.</span></div>
+            <dl class="readout" id="p7-out"></dl>
+            <div class="key" id="p7-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch7-curve">
+        <div class="sim-h"><h3>Energy diagrams</h3><span class="ref">Sections 7.4, 7.5 · Examples 7.14, 7.15 · Eq. (7.16)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="c7-cv" width="640" height="400" aria-label="A potential energy curve with the total energy line, turning points, and a moving bead"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="c7-mode" role="group" aria-label="Potential">
+              <button data-m="spring" aria-pressed="false">Spring</button><button data-m="well" aria-pressed="true">Double well (Ex. 7.14)</button><button data-m="pend" aria-pressed="false">Pendulum on a rod (Ex. 7.15)</button><button data-m="atom" aria-pressed="false">Two atoms</button><button data-m="fig" aria-pressed="false">Fig. 7.11</button>
+            </div>
+            <div class="ctrl"><label for="c7-x">Starting position <output id="c7-x-o"></output></label><input type="range" id="c7-x" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl"><label for="c7-e">Total energy E <output id="c7-e-o"></output></label><input type="range" id="c7-e" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl"><label for="c7-t">Time t <output id="c7-t-o"></output></label><input type="range" id="c7-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="c7-play">Go</button></div>
+            <dl class="readout" id="c7-out"></dl>
+            <div class="key" id="c7-key"></div>
           </div>
         </div>
       </article>
@@ -2573,6 +2669,262 @@ function ch6power(){
   K.value=(150-50)/350; draw(); return draw;
 }
 
+/* ---------- 7.1 energy on a track ---------- */
+function ch7track(){
+  const cv=$("#t7-cv"), ctx=cv.getContext("2d"), H=$("#t7-h"), R=$("#t7-r"), MU=$("#t7-mu"), TT=$("#t7-t"), g=9.8;
+  let preset="loop", sim=null;
+  const HR={sled:[2,12,8],valley:[0.5,10,4],loop:[0.2,1.2,0.5],hill:[0.4,1.6,1.0]};
+  const hval=()=>{ const r=HR[preset]; return r[0]+(r[1]-r[0])*(+H.value); };
+  const build=(h,Rl)=>{ // returns dense polyline [{x,y}]
+    const P=[], add=(x,y)=>P.push({x,y});
+    if(preset==="sled"){ const L1=20; for(let i=0;i<=200;i++){ const x=L1*i/200; add(x,h*(1-x/L1)**2); } for(let i=1;i<=300;i++) add(L1+70*i/300,0); }
+    else if(preset==="valley"){ const L=Math.max(8,2.4*h+6); for(let i=0;i<=400;i++){ const x=L*i/400; add(x,h*(1+Math.cos(2*Math.PI*x/L))/2); } }
+    else { const L1=preset==="hill"?1.4:1.0; for(let i=0;i<=150;i++){ const x=L1*i/150; add(x,h*(1+Math.cos(Math.PI*x/L1))/2); }
+      let x0=L1;
+      if(preset==="hill"){ const hh=0.3, Lh=3.0; for(let i=1;i<=120;i++){ const x=Lh*i/120; add(x0+x,hh*(1-Math.cos(2*Math.PI*x/Lh))/2); } x0+=Lh; }
+      for(let i=1;i<=30;i++) add(x0+0.3*i/30,0); x0+=0.3;
+      for(let i=1;i<=360;i++){ const a=-Math.PI/2+2*Math.PI*i/360; add(x0+Rl*Math.cos(a),Rl+Rl*Math.sin(a)); }
+      for(let i=1;i<=60;i++) add(x0+1.0*i/60,0); }
+    let s=0; P.forEach((p,i)=>{ if(i) s+=Math.hypot(p.x-P[i-1].x,p.y-P[i-1].y); p.s=s; });
+    for(let i=0;i<P.length;i++){ const a=P[Math.max(0,i-1)], b=P[Math.min(P.length-1,i+1)], L=Math.hypot(b.x-a.x,b.y-a.y)||1; P[i].tx=(b.x-a.x)/L; P[i].ty=(b.y-a.y)/L; }
+    for(let i=0;i<P.length;i++){ const a=P[Math.max(0,i-1)], b=P[Math.min(P.length-1,i+1)], ds=(b.s-a.s)||1; let d=Math.atan2(b.ty,b.tx)-Math.atan2(a.ty,a.tx); while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI; P[i].k=d/ds; }
+    return P; };
+  const at=(P,s)=>{ let lo=0,hi=P.length-1; if(s<=0) return P[0]; if(s>=P[hi].s) return P[hi];
+    while(hi-lo>1){ const m=(lo+hi)>>1; (P[m].s<=s)?lo=m:hi=m; } const a=P[lo],b=P[hi],u=(s-a.s)/((b.s-a.s)||1);
+    return {x:a.x+u*(b.x-a.x),y:a.y+u*(b.y-a.y),tx:a.tx+u*(b.tx-a.tx),ty:a.ty+u*(b.ty-a.ty),k:a.k+u*(b.k-a.k),s}; };
+  const run=()=>{ const h=hval(), Rl=+R.value, mu=+MU.value, P=build(h,Rl), Send=P[P.length-1].s;
+    const dt=preset==="sled"||preset==="valley"?0.004:0.0008, Tmax=preset==="sled"?25:preset==="valley"?Math.max(6,4*Math.sqrt(2*h/g)*3):3;
+    let s=0, v=0, t=0, path=0, out=[{t,s,v,path,n:g}], why="";
+    const acc=(s,v)=>{ const q=at(P,s); let a=-g*q.ty; if(Math.abs(v)>1e-6) a-=Math.sign(v)*mu*g; else if(Math.abs(a)<=mu*g) a=0; else a-=Math.sign(a)*mu*g; return a; };
+    while(t<Tmax){ const a1=acc(s,v), v1=v+a1*dt/2, a2=acc(s+v*dt/2,v1); let vn=v+a2*dt;
+      if(mu>0 && v!==0 && Math.sign(vn)!==Math.sign(v)){ const q=at(P,s); if(Math.abs(g*q.ty)<=mu*g){ vn=0; } }
+      const sn=s+(v+vn)/2*dt; path+=Math.abs(sn-s); s=sn; v=vn; t+=dt;
+      const q=at(P,s), nn=v*v*q.k+g*q.tx; // normal N=(−ty,tx), so N_y = tx
+      out.push({t,s,v,path,n:nn});
+      if(nn<-0.02){ why="leaves"; break; }
+      if(s>=Send){ why="end"; break; }
+      if(s<0){ s=0; v=0; }
+      if(v===0 && acc(s,0)===0 && t>0.05){ why="stops"; break; } }
+    sim={P,out,h,mu,why,Tend:t,Rl}; };
+  const draw=()=>{
+    if(!sim) run();
+    const {P,out,h,mu,why,Tend,Rl}=sim, T=Tend, t=+TT.value/1000*T, i=Math.min(out.length-1,Math.round(t/(out[1].t-out[0].t))), o=out[i], q=at(P,o.s);
+    $("#t7-h-o").textContent=hval().toFixed(preset==="loop"||preset==="hill"?3:2)+" m"; $("#t7-r-o").textContent=(+R.value).toFixed(3)+" m"; $("#t7-mu-o").textContent=(+MU.value).toFixed(3); $("#t7-t-o").textContent=t.toFixed(2)+" s";
+    $("#t7-rw").style.display=(preset==="loop"||preset==="hill")?"":"none";
+    clearCv(ctx,cv);
+    const xs=P.map(p=>p.x), ys=P.map(p=>p.y), xr=[Math.min(...xs)-0.05*(Math.max(...xs)-Math.min(...xs)),Math.max(...xs)*1.02], yr=[-0.08*Math.max(h,0.3),Math.max(...ys)*1.12+0.02];
+    const M=fitWorld({x:20,y:20,w:410,h:330},xr,yr);
+    hatchFloor(ctx,M.X(xr[0]),M.X(xr[1]),M.Y(0)+3);
+    ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=3; ctx.beginPath(); P.forEach((p,j)=>j?ctx.lineTo(M.X(p.x),M.Y(p.y)):ctx.moveTo(M.X(p.x),M.Y(p.y))); ctx.stroke(); ctx.restore();
+    // energy line E/(mg) as a height
+    const m=1, K=0.5*o.v*o.v, U=g*q.y, Q=mu*g*o.path, E0=g*h;
+    ctx.save(); ctx.setLineDash([6,5]); ctx.strokeStyle=css("--vC"); ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(M.X(xr[0]),M.Y(h)); ctx.lineTo(M.X(xr[1]),M.Y(h)); ctx.stroke(); ctx.restore();
+    cvText(ctx,M.X(xr[1])-4,M.Y(h)-10,"release height",css("--vC"),"right","600 11px ");
+    const nx=-q.ty, ny=q.tx, rb=7, bx=M.X(q.x)+nx*rb, by=M.Y(q.y)-ny*rb;
+    dot(ctx,bx,by,css("--vA"),rb);
+    if(Math.abs(o.v)>0.01) arrow2(ctx,bx,by,bx+Math.sign(o.v)*q.tx*Math.min(70,14+Math.abs(o.v)*8),by-Math.sign(o.v)*q.ty*Math.min(70,14+Math.abs(o.v)*8),css("--vB"),2.5);
+    bars(ctx,{x:450,y:40,w:180,h:330},[["K",K*m,css("--vB")],["U = mgy",U*m,css("--vA")],["heat",Q*m,css("--warn")],["K + U",(K+U)*m,css("--vC")]],"energy per kg (J/kg)");
+    const ended=t>=T-1e-9;
+    readout($("#t7-out"),[["height y",q.y.toFixed(3)+" m"],["speed v",Math.abs(o.v).toFixed(2)+" m/s"],["√(2g(h − y)) (no friction)",Math.sqrt(Math.max(0,2*g*(h-q.y))).toFixed(2)+" m/s"],
+      ["normal force / weight, n/mg",(o.n/g).toFixed(2)],["mechanical energy per kg",(K+U).toFixed(2)+" J/kg"],["lost to friction per kg",Q.toFixed(2)+" J/kg"],["path length travelled",o.path.toFixed(2)+" m"]]);
+    let key;
+    if(ended && why==="leaves") key="The normal force has dropped to zero: the track can no longer hold the bead, which leaves it. At the top of a loop this happens when v² < gR; at the crest of a hill, when v² exceeds g times the radius of curvature. For a circular loop the bead must start from at least h = 5R/2 (without friction).";
+    else if(ended && why==="stops") key="Friction has taken the mechanical energy: the bead has stopped. The bar ‘heat’ shows where the energy went (Section 7.3).";
+    else if(preset.startsWith("loop")||preset==="hill") key=`Without friction K + U stays constant, so the bead's speed depends only on its height. The smallest release height for this loop is 5R/2 = ${(2.5*Rl).toFixed(3)} m; at the bottom of the loop the track then pushes with 6mg.`;
+    else if(preset==="sled") key="Example 7.5: with friction the mechanical energy K + U falls steadily, and the lost part reappears as heat. Without friction the sled would never stop on the level snow.";
+    else key="In the valley the bead rises to its release height on the other side, if there is no friction: K and U trade places, their sum stays the same. Set h = 4.6 m: the speed at the bottom is 9.5 m/s, the pole vaulter's run-up speed.";
+    $("#t7-key").textContent=key;
+  };
+  const reset=()=>{ sim=null; TT.value=0; draw(); };
+  const loadT=()=>{ const d={sled:[8,0,0.10],valley:[4,0.2,0],loop:[0.5,0.2,0],hill:[1.0,0.2,0]}[preset]; const r=HR[preset]; H.value=(d[0]-r[0])/(r[1]-r[0]); R.value=d[1]||0.2; MU.value=d[2]; reset(); };
+  seg("#t7-preset",ds=>{ preset=ds.p; loadT(); });
+  [H,R,MU].forEach(i=>i.addEventListener("input",reset)); TT.addEventListener("input",draw);
+  player($("#t7-play"),TT,()=>Math.max(2,Math.min(12,sim?sim.Tend*(preset==="loop"||preset==="hill"?2.5:1):4)),draw);
+  loadT(); return draw;
+}
+
+/* ---------- 7.2 a body on a spring ---------- */
+function ch7spring(){
+  const cv=$("#s7-cv"), ctx=cv.getContext("2d"), K=$("#s7-k"), Mm=$("#s7-m"), A=$("#s7-a"), Fr=$("#s7-f"), TT=$("#s7-t"), g=9.8;
+  let mode="drop", sim=null;
+  const AR={glider:[0.005,0.10],drop:[0,1.0],hang:[0,0]};
+  const aval=()=>{ const r=AR[mode]; return r[0]+(r[1]-r[0])*(+A.value); };
+  // coordinate: glider x (stretch, + right); drop y = height of block bottom above relaxed spring top (spring compressed by −y when y<0); hang x = stretch, downward +
+  const forces=(z,v,P)=>{ const {k,m,f}=P;
+    if(mode==="glider"){ let a=-k*z/m; if(Math.abs(v)>1e-6) a-=Math.sign(v)*f/m; else if(Math.abs(k*z)<=f) a=0; else a-=Math.sign(a)*f/m; return a; }
+    if(mode==="drop") return -g+(z<0?-k*z/m:0);
+    return g-k*z/m; };
+  const energies=(z,v,P)=>{ const {k,m}=P, Kk=0.5*m*v*v;
+    if(mode==="glider") return {K:Kk,Ug:0,Ue:0.5*k*z*z};
+    if(mode==="drop") return {K:Kk,Ug:m*g*z,Ue:z<0?0.5*k*z*z:0};
+    return {K:Kk,Ug:-m*g*z,Ue:0.5*k*z*z}; };
+  const run=()=>{ const P={k:+K.value,m:+Mm.value,f:mode==="glider"?+Fr.value:0}, a0=aval();
+    const w=Math.sqrt(P.k/P.m), Tper=2*Math.PI/w; let z=mode==="glider"?a0:mode==="drop"?a0:0, v=0, t=0, heat=0;
+    const tfall=mode==="drop"?2*Math.sqrt(2*Math.max(a0,0.001)/g):0, Tmax=Math.min(30,3*Tper+2*tfall);
+    const dt=Math.min(Tper/400,0.002), out=[{t,z,v,heat}];
+    while(t<Tmax){ const a1=forces(z,v,P), a2=forces(z+v*dt/2,v+a1*dt/2,P); let vn=v+a2*dt;
+      if(mode==="glider" && P.f>0 && v!==0 && Math.sign(vn)!==Math.sign(v)) vn=0;
+      const zn=z+(v+vn)/2*dt; if(mode==="glider") heat+=P.f*Math.abs(zn-z); z=zn; v=vn; t+=dt; out.push({t,z,v,heat}); }
+    sim={P,out,Tmax,a0}; };
+  const draw=()=>{
+    if(!sim) run();
+    const {P,out,Tmax,a0}=sim, t=+TT.value/1000*Tmax, o=out[Math.min(out.length-1,Math.round(t/(out[1].t-out[0].t)))], {k,m}=P;
+    $("#s7-k-o").textContent=k+" N/m"; $("#s7-m-o").textContent=m.toFixed(1)+" kg"; $("#s7-f-o").textContent=(+Fr.value).toFixed(2)+" N"; $("#s7-t-o").textContent=t.toFixed(3)+" s";
+    $("#s7-a-l").textContent=mode==="glider"?"Starting stretch A":mode==="drop"?"Drop height h":"Released at the relaxed length";
+    $("#s7-a-o").textContent=mode==="hang"?"":(aval()*100).toFixed(1)+" cm"; A.disabled=mode==="hang";
+    $("#s7-fw").style.display=mode==="glider"?"":"none";
+    clearCv(ctx,cv);
+    const E=energies(o.z,o.v,P), Etot=E.K+E.Ug+E.Ue;
+    // picture
+    const zs=out.map(p=>p.z), zmin=Math.min(...zs), zmax=Math.max(...zs);
+    if(mode==="glider"){
+      const y0=120, X0=60, sc=Math.min(1600,120/Math.max(0.02,a0)), xr=170, bxl=X0+xr+o.z*sc;
+      hatchFloor(ctx,20,330,y0+22);
+      ctx.save(); ctx.fillStyle=css("--ink"); ctx.fillRect(X0-8,y0-40,8,62); ctx.restore();
+      springDraw(ctx,X0,y0,bxl,y0,12,css("--ink"));
+      ctx.save(); ctx.fillStyle="rgba(217,72,15,.2)"; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.fillRect(bxl,y0-20,46,40); ctx.strokeRect(bxl,y0-20,46,40); ctx.restore();
+      ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.beginPath(); ctx.moveTo(X0+xr,y0-48); ctx.lineTo(X0+xr,y0+30); ctx.stroke(); ctx.restore(); cvText(ctx,X0+xr,y0-56,"x = 0",css("--muted"),"center","600 11px ");
+      if(Math.abs(k*o.z)>0.01) arrow2(ctx,bxl+23,y0-28,bxl+23-Math.max(-60,Math.min(60,k*o.z*12/Math.max(1,k*a0/5))),y0-28,css("--vA"),2.5);
+    } else {
+      const X=170, base=330, Lr=110, top=Math.max(zmax,0.02), sc=Math.min(150/(top+0.0001),(Lr-15)/Math.max(0.01,-zmin+0.0001), 2500);
+      if(mode==="drop"){ hatchFloor(ctx,90,250,base+3); const ytop=base-Lr, comp=Math.min(0,o.z)*sc; springDraw(ctx,X,base,X,ytop-comp,9,css("--ink"));
+        ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(X-20,ytop-comp); ctx.lineTo(X+20,ytop-comp); ctx.stroke(); ctx.restore();
+        const by=ytop-o.z*sc; ctx.save(); ctx.fillStyle="rgba(217,72,15,.2)"; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.fillRect(X-22,by-34,44,34); ctx.strokeRect(X-22,by-34,44,34); ctx.restore();
+        ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.beginPath(); ctx.moveTo(X+40,ytop); ctx.lineTo(X+110,ytop); ctx.stroke(); ctx.restore(); cvText(ctx,X+112,ytop,"relaxed top",css("--muted"),"left","600 11px ");
+      } else { const yc=40; ctx.save(); ctx.fillStyle=css("--ink"); ctx.fillRect(X-40,yc-8,80,8); ctx.restore(); const L0=90, scz=Math.min(1400,180/Math.max(0.01,zmax)), yb=yc+L0+o.z*scz;
+        springDraw(ctx,X,yc,X,yb,10,css("--ink")); ctx.save(); ctx.fillStyle="rgba(217,72,15,.2)"; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.fillRect(X-22,yb,44,34); ctx.strokeRect(X-22,yb,44,34); ctx.restore();
+        [[0,"relaxed"],[m*g/k,"equilibrium mg/k"],[2*m*g/k,"lowest 2mg/k"]].forEach(([zz,lab])=>{ const Y=yc+L0+zz*scz; ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.beginPath(); ctx.moveTo(X+30,Y); ctx.lineTo(X+80,Y); ctx.stroke(); ctx.restore(); cvText(ctx,X+84,Y,lab,css("--muted"),"left","600 10px "); }); }
+    }
+    // U(z) graph
+    const zr=[Math.min(zmin,0)-0.15*(zmax-zmin+1e-3),Math.max(zmax,0)+0.15*(zmax-zmin+1e-3)], Uf=z=>{ const e=energies(z,0,P); return e.Ug+e.Ue; };
+    let lo=Infinity,hi=-Infinity; for(let j=0;j<=100;j++){ const u=Uf(zr[0]+(zr[1]-zr[0])*j/100); lo=Math.min(lo,u); hi=Math.max(hi,u); }
+    const E0=out[0]?energies(out[0].z,0,P):E, Etop=E0.Ug+E0.Ue; hi=Math.max(hi,Etop)*1.1+1e-6; lo=Math.min(lo,0);
+    const Fg=frame(ctx,{x:370,y:22,w:255,h:150},zr,[lo,hi],mode==="drop"?"y (m)":"x (m)","U (J)");
+    curve(ctx,Fg,Uf,zr[0],zr[1],css("--vA"),2.2);
+    ctx.save(); ctx.strokeStyle=css("--vC"); ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(Fg.X(zr[0]),Fg.Y(Etot)); ctx.lineTo(Fg.X(zr[1]),Fg.Y(Etot)); ctx.stroke(); ctx.restore();
+    dot(ctx,Fg.X(o.z),Fg.Y(Uf(o.z)),css("--ink"),4.5);
+    bars(ctx,{x:370,y:215,w:255,h:170},[["K",E.K,css("--vB")],["U_grav",E.Ug,css("--vA")],["U_el",E.Ue,css("--vC")],["heat",o.heat,css("--warn")],["E",Etot,css("--ink")]],"energy (J)");
+    const rows=[["position",(o.z*100).toFixed(2)+" cm"],["speed",Math.abs(o.v).toFixed(3)+" m/s"],["K",E.K.toFixed(3)+" J"],["U_grav",E.Ug.toFixed(3)+" J"],["U_el = ½k·(compression)²",E.Ue.toFixed(3)+" J"],["K + U",Etot.toFixed(3)+" J"]];
+    if(mode==="drop"){ const d=(m*g+Math.sqrt((m*g)**2+2*k*m*g*a0))/k; rows.push(["greatest compression d",(d*100).toFixed(2)+" cm"],["greatest spring force kd",(k*d).toFixed(1)+" N = "+(k*d/(m*g)).toFixed(1)+" mg"]); }
+    if(mode==="hang") rows.push(["equilibrium stretch mg/k",(m*g/k*100).toFixed(2)+" cm"],["lowest point 2mg/k",(2*m*g/k*100).toFixed(2)+" cm"]);
+    if(mode==="glider") rows.push(["energy lost to friction",o.heat.toFixed(4)+" J"]);
+    readout($("#s7-out"),rows);
+    $("#s7-key").textContent = mode==="glider" ? (P.f>0?"With friction each swing is shorter, and K + U drains into heat. The speed is greatest not at x = 0 but where kx = f.":"On a frictionless track ½mv² + ½kx² is constant: the glider swings between x = ±A, fastest at x = 0 (Example 7.6).")
+      : mode==="drop" ? "Gravity and the spring trade energy with the kinetic energy; the total stays fixed. The block is fastest where the spring force equals its weight, at y = −mg/k, not where it first touches the spring."
+      : "Released at the relaxed length, the load falls to 2mg/k, twice the equilibrium stretch, and oscillates about mg/k. The bottom of the U-curve is the equilibrium position (Example 7.8).";
+  };
+  const reset=()=>{ sim=null; TT.value=0; draw(); };
+  seg("#s7-preset",ds=>{ mode=ds.p; const d={glider:[200,0.5,0.04,0],drop:[1960,2,0.4,0],hang:[500,5,0,0]}[mode]; K.value=d[0]; Mm.value=d[1]; const r=AR[mode]; A.value=r[1]>r[0]?(d[2]-r[0])/(r[1]-r[0]):0; Fr.value=d[3]; reset(); });
+  [K,Mm,A,Fr].forEach(i=>i.addEventListener("input",reset)); TT.addEventListener("input",draw);
+  player($("#s7-play"),TT,()=>Math.min(14,Math.max(3,sim?sim.Tmax*1.5:4)),draw);
+  draw(); return draw;
+}
+function springDraw(ctx,x1,y1,x2,y2,n,col){ const L=Math.hypot(x2-x1,y2-y1)||1, ux=(x2-x1)/L, uy=(y2-y1)/L, px=-uy, py=ux, lead=Math.min(10,L*0.12), w=8;
+  ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=1.6; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x1+ux*lead,y1+uy*lead);
+  const sg=(L-2*lead)/n; for(let i=0;i<n;i++){ const b=lead+sg*i; ctx.lineTo(x1+ux*(b+sg/4)+px*w,y1+uy*(b+sg/4)+py*w); ctx.lineTo(x1+ux*(b+3*sg/4)-px*w,y1+uy*(b+3*sg/4)-py*w); ctx.lineTo(x1+ux*(b+sg),y1+uy*(b+sg)); }
+  ctx.lineTo(x2,y2); ctx.stroke(); ctx.restore(); }
+
+/* ---------- 7.3 conservative or not? ---------- */
+function ch7paths(){
+  const cv=$("#p7-cv"), ctx=cv.getContext("2d"), g=9.8, m=1, k=2, mu=0.3, al=2, L=3;
+  let pts=[], preset="p1", drawing=false;
+  const M=fitWorld({x:24,y:24,w:330,h:350},[-0.6,4.2],[-0.6,4.2]);
+  const line=(a,b,n=60)=>{ const r=[]; for(let i=0;i<=n;i++) r.push([a[0]+(b[0]-a[0])*i/n,a[1]+(b[1]-a[1])*i/n]); return r; };
+  const make=p=>{ const O=[0,0],A=[L,0],B=[0,L],C=[L,L];
+    if(p==="p1") return line(O,A).concat(line(A,C).slice(1));
+    if(p==="p2") return line(O,B).concat(line(B,C).slice(1));
+    if(p==="diag") return line(O,C);
+    if(p==="loop") return line(O,A).concat(line(A,C).slice(1),line(C,B).slice(1),line(B,O).slice(1));
+    return []; };
+  const works=P=>{ let Wg=0,Ws=0,Wf=0,Wa=0,Wb=0,len=0;
+    for(let i=1;i<P.length;i++){ const [x0,y0]=P[i-1],[x1,y1]=P[i], dx=x1-x0, dy=y1-y0, xm=(x0+x1)/2, ym=(y0+y1)/2, ds=Math.hypot(dx,dy);
+      Wg+=-m*g*dy; Ws+=-k*(xm*dx+ym*dy); Wf+=-mu*m*g*ds; Wa+=al*(ym*dx+xm*dy); Wb+=al*(ym*dx-xm*dy); len+=ds; }
+    return {Wg,Ws,Wf,Wa,Wb,len}; };
+  const draw=()=>{
+    clearCv(ctx,cv);
+    ctx.save(); ctx.strokeStyle=css("--grid"); ctx.lineWidth=1; for(let i=-0;i<=4;i++){ ctx.beginPath(); ctx.moveTo(M.X(i),M.Y(-0.5)); ctx.lineTo(M.X(i),M.Y(4.1)); ctx.stroke(); ctx.beginPath(); ctx.moveTo(M.X(-0.5),M.Y(i)); ctx.lineTo(M.X(4.1),M.Y(i)); ctx.stroke(); cvText(ctx,M.X(i),M.Y(-0.35),i+"",css("--muted"),"center","500 10px "); if(i) cvText(ctx,M.X(-0.3),M.Y(i),i+"",css("--muted"),"center","500 10px "); } ctx.restore();
+    cvText(ctx,M.X(4.1),M.Y(-0.35),"x (m)",css("--muted"),"right","600 11px "); cvText(ctx,M.X(-0.3),M.Y(4.15),"y (m), up",css("--muted"),"left","600 11px ");
+    // whirl field (b) hint arrows faint
+    ctx.save(); ctx.globalAlpha=0.25; for(let x=0.5;x<4;x+=1) for(let y=0.5;y<4;y+=1){ const fx=y, fy=-x, s=0.12; arrow2(ctx,M.X(x),M.Y(y),M.X(x+fx*s),M.Y(y+fy*s),css("--muted"),1.2); } ctx.restore();
+    dot(ctx,M.X(0),M.Y(0),css("--ink"),5); cvText(ctx,M.X(0)-8,M.Y(0)+12,"1",css("--ink"),"right");
+    dot(ctx,M.X(L),M.Y(L),css("--ink"),5); cvText(ctx,M.X(L)+8,M.Y(L)-12,"2",css("--ink"));
+    if(pts.length>1){ ctx.save(); ctx.strokeStyle=css("--vB"); ctx.lineWidth=3; ctx.beginPath(); pts.forEach((p,i)=>i?ctx.lineTo(M.X(p[0]),M.Y(p[1])):ctx.moveTo(M.X(p[0]),M.Y(p[1]))); ctx.stroke(); ctx.restore();
+      const n=pts.length; [0.3,0.7].forEach(f=>{ const i=Math.max(1,Math.floor(f*(n-1))); arrow2(ctx,M.X(pts[i-1][0]),M.Y(pts[i-1][1]),M.X(pts[i][0]+(pts[i][0]-pts[i-1][0])*8),M.Y(pts[i][1]+(pts[i][1]-pts[i-1][1])*8),css("--vB"),3); }); }
+    const W=works(pts), st=pts.length?pts[0]:[0,0], en=pts.length?pts[pts.length-1]:[0,0], closed=pts.length>2&&Math.hypot(st[0]-en[0],st[1]-en[1])<0.15;
+    bars(ctx,{x:380,y:40,w:250,h:330},[["gravity",W.Wg,css("--vA")],["spring",W.Ws,css("--vC")],["friction",W.Wf,css("--warn")],["force (a)",W.Wa,css("--vB")],["force (b)",W.Wb,css("--muted")]],"work along the path (J)");
+    readout($("#p7-out"),[["path from → to","("+st.map(v=>v.toFixed(1))+") → ("+en.map(v=>v.toFixed(1))+")"],["path length",W.len.toFixed(2)+" m"],
+      ["gravity, m = 1 kg: −mgΔy",W.Wg.toFixed(1)+" J"],["spring k = 2 N/m from 1: −½kΔ(r²)",W.Ws.toFixed(1)+" J"],["friction μ = 0.3: −μmg·length",W.Wf.toFixed(1)+" J"],
+      ["force (a) α(y î + x ĵ), α = 2 N/m",W.Wa.toFixed(1)+" J"],["force (b) α(y î − x ĵ) (faint arrows)",W.Wb.toFixed(1)+" J"]]);
+    $("#p7-key").textContent = closed ? "Round a closed path the conservative forces (gravity, spring, force (a)) do zero total work. Friction and force (b) do not: they are nonconservative."
+      : "Compare paths with the same end points: gravity, the spring and force (a) always give the same work (they depend only on the end points); friction and force (b) change from path to path.";
+  };
+  seg("#p7-preset",ds=>{ preset=ds.p; pts=make(preset); $("#p7-hint").textContent=preset==="draw"?"Drag on the grid to draw a path. Start near point 1 and finish near point 2, or close the loop.":"Choose “Draw your own”, then drag on the grid to draw a path."; draw(); });
+  const toW=e=>{ const r=cv.getBoundingClientRect(), px=(e.clientX-r.left)*cv.width/r.width, py=(e.clientY-r.top)*cv.height/r.height; return [(px-M.X(0))/M.s,(M.Y(0)-py)/M.s]; };
+  cv.addEventListener("pointerdown",e=>{ if(preset!=="draw") return; drawing=true; cv.setPointerCapture(e.pointerId); pts=[toW(e)]; draw(); });
+  cv.addEventListener("pointermove",e=>{ if(!drawing) return; const p=toW(e), q=pts[pts.length-1]; if(Math.hypot(p[0]-q[0],p[1]-q[1])>0.03){ pts.push(p); draw(); } });
+  cv.addEventListener("pointerup",()=>{ drawing=false; });
+  cv.style.touchAction="none";
+  pts=make("p1"); draw(); return draw;
+}
+
+/* ---------- 7.5 energy diagrams ---------- */
+function ch7curve(){
+  const cv=$("#c7-cv"), ctx=cv.getContext("2d"), XS=$("#c7-x"), ES=$("#c7-e"), TT=$("#c7-t"), g=9.8;
+  const MODES={
+    spring:{U:x=>100*x*x, xr:[-0.3,0.3], m:0.5, unit:"m", lab:"x (m)", Er:[0,6], T:3, d:[0.2,0.4]},
+    well:{U:x=>0.4*((x/0.2)**4-2*(x/0.2)**2), xr:[-0.32,0.32], m:0.5, unit:"m", lab:"x (m)", Er:[-0.4,0.4], T:4, d:[0.261,0.25]},
+    pend:{U:x=>1*g*0.5*(1-Math.cos(x)), xr:[-2*Math.PI,2*Math.PI], m:1*0.25, unit:"rad", lab:"θ (rad)", Er:[0,12], T:6, d:[0,0.48]},
+    atom:{U:x=>(1/x)**12-2*(1/x)**6, xr:[0.86,3.2], m:1, unit:"", lab:"r (units of r₀)", Er:[-1,0.6], T:12, d:[0.95,0.4]},
+    fig:{U:x=>4.0*Math.exp(-1.6*(x-0.35))+2.0-1.6*Math.exp(-((x-2.4)**2)/1.0)+1.4*Math.exp(-((x-5.0)**2)/1.2)-1.5/(1+Math.exp(-(x-6.6)*1.4)), xr:[0.5,10], m:1, unit:"", lab:"x", Er:[0.3,4.5], T:12, d:[2.46,0.25]}
+  };
+  let mode="well", sim=null;
+  const par=()=>{ const Md=MODES[mode], x0=Md.xr[0]+(Md.xr[1]-Md.xr[0])*(+XS.value), E=Md.Er[0]+(Md.Er[1]-Md.Er[0])*(+ES.value); return {Md,x0,E}; };
+  const dU=(U,x)=>{ const h=1e-5*(1+Math.abs(x)); return (U(x+h)-U(x-h))/(2*h); };
+  const run=()=>{ const {Md,x0,E}=par(), U=Md.U, m=Md.m, K0=E-U(x0); const out=[]; let x=x0, v=K0>0?Math.sqrt(2*K0/m):0, t=0; const dt=Md.T/6000;
+    if(K0<0){ sim={bad:true,out:[{t:0,x:x0,v:0}],E,x0}; return; }
+    out.push({t,x,v}); while(t<Md.T){ const a=-dU(U,x)/m, vh=v+a*dt/2, xn=x+vh*dt, an=-dU(U,xn)/m; v=vh+an*dt/2; x=xn; t+=dt;
+      if(x<Md.xr[0]-0.5*(Md.xr[1]-Md.xr[0])||x>Md.xr[1]+0.5*(Md.xr[1]-Md.xr[0])) break; out.push({t,x,v}); }
+    // energy correction to avoid drift: rescale speed
+    sim={bad:false,out,E,x0}; };
+  const draw=()=>{
+    if(!sim) run();
+    const {Md,x0,E}=par(), U=Md.U, xr=Md.xr, out=sim.out, T=Md.T, t=+TT.value/1000*T, o=out[Math.min(out.length-1,Math.max(0,Math.round(t/(T/6000))))];
+    $("#c7-x-o").textContent=x0.toFixed(3)+(Md.unit?" "+Md.unit:""); $("#c7-e-o").textContent=E.toFixed(3)+(mode==="atom"||mode==="fig"?" (units of U₀)":" J"); $("#c7-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    let lo=Infinity,hi=-Infinity; for(let j=0;j<=300;j++){ const u=U(xr[0]+(xr[1]-xr[0])*j/300); lo=Math.min(lo,u); hi=Math.max(hi,u); }
+    hi=Math.min(hi,Md.Er[1]*1.15+0.1*(Md.Er[1]-Md.Er[0])); lo=Math.min(lo,Md.Er[0]); const pad=(hi-lo)*0.08;
+    const F=frame(ctx,{x:56,y:24,w:560,h:300},xr,[lo-pad,hi+pad],Md.lab,"U");
+    // forbidden regions
+    ctx.save(); ctx.fillStyle="rgba(120,120,120,.13)"; const N=400; for(let j=0;j<N;j++){ const xa=xr[0]+(xr[1]-xr[0])*j/N, xb=xr[0]+(xr[1]-xr[0])*(j+1)/N; if(U((xa+xb)/2)>E) ctx.fillRect(F.X(xa),24,F.X(xb)-F.X(xa)+0.5,300); } ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.rect(56,24,560,300); ctx.clip(); curve(ctx,F,U,xr[0],xr[1],css("--vB"),2.6,500); ctx.restore();
+    ctx.save(); ctx.strokeStyle=css("--vC"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(F.X(xr[0]),F.Y(E)); ctx.lineTo(F.X(xr[1]),F.Y(E)); ctx.stroke(); ctx.restore();
+    cvText(ctx,F.X(xr[1])-4,F.Y(E)-10,"E",css("--vC"),"right","700 13px ");
+    // turning points and equilibria
+    const tp=[], eq=[]; for(let j=0;j<N;j++){ const xa=xr[0]+(xr[1]-xr[0])*j/N, xb=xa+(xr[1]-xr[0])/N; if((U(xa)-E)*(U(xb)-E)<0) tp.push((xa+xb)/2); const da=dU(U,xa), db=dU(U,xb); if(da*db<0) eq.push([(xa+xb)/2, db>da?"stable":"unstable"]); }
+    tp.forEach(x=>{ ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--warn"); ctx.beginPath(); ctx.moveTo(F.X(x),F.Y(E)); ctx.lineTo(F.X(x),324); ctx.stroke(); ctx.restore(); dot(ctx,F.X(x),F.Y(E),css("--warn"),4); });
+    eq.forEach(([x,s])=>{ cvText(ctx,F.X(x),F.Y(U(x))+(s==="stable"?14:-14),s,css("--muted"),"center","600 10px "); });
+    // bead
+    const x=o.x, Ux=U(x), Kx=E-Ux, Fx=-dU(U,x);
+    if(!sim.bad){ dot(ctx,F.X(x),F.Y(Ux),css("--vA"),7);
+      if(Kx>0) { ctx.save(); ctx.strokeStyle=css("--warn"); ctx.lineWidth=2.5; ctx.beginPath(); ctx.moveTo(F.X(x),F.Y(Ux)); ctx.lineTo(F.X(x),F.Y(E)); ctx.stroke(); ctx.restore(); cvText(ctx,F.X(x)+6,(F.Y(Ux)+F.Y(E))/2,"K",css("--warn"),"left","700 12px "); }
+      const sc=40/Math.max(1e-9,...out.map(p=>Math.abs(dU(U,p.x)))); arrow2(ctx,F.X(x),352,F.X(x)+Fx*sc,352,css("--vA"),3); cvText(ctx,F.X(x),372,"force F = −dU/dx",css("--vA"),"center","600 11px "); dot(ctx,F.X(x),352,css("--ink"),4); }
+    readout($("#c7-out"),[["position",x.toFixed(3)+(Md.unit?" "+Md.unit:"")],["U",Ux.toFixed(3)],["K = E − U",sim.bad?"negative: not allowed":Kx.toFixed(3)],["speed",sim.bad?"—":Math.abs(o.v).toFixed(3)+(mode==="pend"?" rad/s":mode==="atom"||mode==="fig"?"":" m/s")],["force −dU/dx",fmt(Fx,3)],
+      ["turning points",tp.length?tp.map(v=>v.toFixed(3)).join(", "):"none in view"],["equilibria",eq.map(([v,s])=>(Math.abs(v)<5e-3?0:v).toFixed(2)+" ("+s+")").join(", ")||"none"]]);
+    $("#c7-key").textContent = sim.bad ? "Here U is greater than E, so K would be negative: the body cannot be at this point with this energy. Raise E or move the starting point."
+      : mode==="well" ? "Example 7.14: below E = 0 the bead is trapped in one well between its turning points; above 0 it passes over the barrier at x = 0 into the other well."
+      : mode==="pend" ? "Example 7.15: with E < 2mgL = 9.8 J (per kg·m) the ball swings in a well; above 2mgL it goes over the top and keeps turning."
+      : mode==="atom" ? "Two atoms: with E < 0 the atom vibrates about r₀, bound; with E ≥ 0 it escapes to large r, and the bond is broken."
+      : mode==="fig" ? "The curve of Fig. 7.11: wells, a barrier, and unbounded motion to the right. Find the energy at which the body first gets over the barrier."
+      : "A spring: a single well, a parabola. Every energy gives bounded motion between x = ±√(2E/k).";
+  };
+  const reset=()=>{ sim=null; TT.value=0; draw(); };
+  const load=()=>{ const Md=MODES[mode]; XS.value=(Md.d[0]-Md.xr[0])/(Md.xr[1]-Md.xr[0]); const E0=Md.U(Md.d[0]); ES.value=Math.min(1,Math.max(0,(mode==="well"?-0.2:mode==="pend"?E0+4.5:mode==="atom"?-0.5:mode==="fig"?1.35:E0+1)-Md.Er[0])/(Md.Er[1]-Md.Er[0])); reset(); };
+  seg("#c7-mode",ds=>{ mode=ds.m; load(); });
+  [XS,ES].forEach(i=>i.addEventListener("input",reset)); TT.addEventListener("input",draw);
+  player($("#c7-play"),TT,()=>8,draw);
+  load(); return draw;
+}
+
 /* ---------- chapter cards ---------- */
 const CHAPTERS=[
  [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],7],
@@ -2581,7 +2933,7 @@ const CHAPTERS=[
  [4,"Newton's Laws of Motion",["Inertial and non-inertial frames","Forces on a puck","Action–reaction pairs, heavy rope","Scale in a lift","Free-body diagram trainer"],5],
  [5,"Applying Newton's Laws",["Connected bodies, Atwood machine","Incline with friction","Falling with air resistance","Circular motion","Rotating frame and inertial forces"],5],
  [6,"Work and Kinetic Energy",["Work of a constant force","Work–energy theorem bars","Work as area under F(x)","Power, force, and speed"],4],
- [7,"Potential Energy and Energy Conservation",["Energy bars on a track","Potential-curve explorer"]],
+ [7,"Potential Energy and Energy Conservation",["Energy bars on a track","Body on a spring","Conservative or not? Work along paths","Energy diagrams and equilibrium"],4],
  [8,"Momentum, Impulse, and Collisions",["Collision lab","Centre of mass","Rocket with variable mass"]],
  [9,"Rotation of Rigid Bodies",["Angular kinematics","Moments of inertia, Steiner theorem"]],
  [10,"Dynamics of Rotational Motion",["Torque","Rolling down an incline","Gyroscope precession"]],
@@ -2598,12 +2950,12 @@ $("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
   </article>`).join("");
 
 /* ---------- routing ---------- */
-const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),about:$("#view-about")};
+const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),ch7:$("#view-ch7"),about:$("#view-about")};
 const redraws=[];
 function route(){
   const h=(location.hash||"#home").slice(1);
   let v="home", target=null;
-  const m=h.match(/^(ch[1-6])(-.*)?$/);
+  const m=h.match(/^(ch[1-7])(-.*)?$/);
   if(m){ v=m[1]; if(m[2]) target=h; }
   else if(h==="about") v="about";
   else if(h==="chapters"){ v="home"; target="chapters"; }
@@ -2613,7 +2965,7 @@ function route(){
   const t=target && document.getElementById(target);
   if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
 }
-redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power());
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power(),ch7track(),ch7spring(),ch7paths(),ch7curve());
 addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
 new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
