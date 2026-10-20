@@ -147,6 +147,7 @@ footer .muted{opacity:.75}
       <a href="#ch3" data-nav="ch3">Chapter 3</a>
       <a href="#ch4" data-nav="ch4">Chapter 4</a>
       <a href="#ch5" data-nav="ch5">Chapter 5</a>
+      <a href="#ch6" data-nav="ch6">Chapter 6</a>
       <a href="#about" data-nav="about">About</a>
     </nav>
   </div>
@@ -770,6 +771,106 @@ footer .muted{opacity:.75}
             <div class="row"><button class="small-btn" id="r5-play">Launch</button><label class="hint"><input type="checkbox" id="r5-forces" checked> show inertial forces</label></div>
             <dl class="readout" id="r5-out"></dl>
             <div class="key" id="r5-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="view-ch6" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 6</div>
+    <h1 style="margin-bottom:.2em">Work and Kinetic Energy</h1>
+    <p class="lede">Four instruments for work, the work–energy theorem, varying forces, and power. Each loads a worked example from the book; then change the numbers and watch the work and the energy respond.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 6 instruments">
+      <ol>
+        <li><a href="#ch6-work"><span class="sn">6.1</span>The work done by a constant force</a></li>
+        <li><a href="#ch6-energy"><span class="sn">6.2</span>The work–energy theorem</a></li>
+        <li><a href="#ch6-spring"><span class="sn">6.3</span>Work as the area under F(x)</a></li>
+        <li><a href="#ch6-power"><span class="sn">6.4</span>Power, force, and speed</a></li>
+      </ol>
+      <div class="note">Opening question: how much work does a weightlifter do while holding a barbell still? Open <a href="#ch6-work">The work done by a constant force</a> and set the displacement to zero: whatever the force, the work is zero.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch6-work">
+        <div class="sim-h"><h3>The work done by a constant force</h3><span class="ref">Section 6.1 · Examples 6.1, 6.2 · Eqs. (6.1)–(6.3)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="w6-cv" width="640" height="400" aria-label="A box pulled by a force at an angle, with the work done by every force shown as bars"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="w6-preset" role="group" aria-label="Example">
+              <button data-p="ex1" aria-pressed="true">Sled (Ex. 6.1)</button><button data-p="free" aria-pressed="false">Smooth floor</button><button data-p="hold" aria-pressed="false">Holding still</button>
+            </div>
+            <div class="ctrl"><label for="w6-f">Force F <output id="w6-f-o"></output></label><input type="range" id="w6-f" min="0" max="100" step="1" value="40"></div>
+            <div class="ctrl"><label for="w6-a">Angle φ between F and the floor <output id="w6-a-o"></output></label><input type="range" id="w6-a" min="0" max="180" step="1" value="30"></div>
+            <div class="ctrl"><label for="w6-s">Displacement s <output id="w6-s-o"></output></label><input type="range" id="w6-s" min="0" max="60" step="0.5" value="50"></div>
+            <div class="ctrl"><label for="w6-mu">Friction μₖ <output id="w6-mu-o"></output></label><input type="range" id="w6-mu" min="0" max="0.5" step="0.005" value="0.15"></div>
+            <div class="ctrl"><label for="w6-m">Mass m <output id="w6-m-o"></output></label><input type="range" id="w6-m" min="2" max="50" step="1" value="20"></div>
+            <dl class="readout" id="w6-out"></dl>
+            <div class="key" id="w6-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch6-energy">
+        <div class="sim-h"><h3>The work–energy theorem</h3><span class="ref">Section 6.2 · Examples 6.3, 6.4 · Eq. (6.6) · Strategy 6.1</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="e6-cv" width="640" height="400" aria-label="A body pulled along a rough floor, with bar graphs of work and kinetic energy"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="e6-preset" role="group" aria-label="Example">
+              <button data-p="sled" aria-pressed="true">Sled (Ex. 6.3)</button><button data-p="brake" aria-pressed="false">Braking car (Ex. 6.4)</button><button data-p="push" aria-pressed="false">Constant speed</button>
+            </div>
+            <div class="ctrl"><label for="e6-m">Mass m <output id="e6-m-o"></output></label><input type="range" id="e6-m" min="1" max="2000" step="1" value="20"></div>
+            <div class="ctrl"><label for="e6-v">Initial speed v₁ <output id="e6-v-o"></output></label><input type="range" id="e6-v" min="0" max="30" step="0.1" value="2"></div>
+            <div class="ctrl"><label for="e6-p">Pulling force T (along the rope) <output id="e6-p-o"></output></label><input type="range" id="e6-p" min="0" max="100" step="0.5" value="40"></div>
+            <div class="ctrl"><label for="e6-th">Rope angle θ <output id="e6-th-o"></output></label><input type="range" id="e6-th" min="0" max="60" step="1" value="30"></div>
+            <div class="ctrl"><label for="e6-mu">Friction μₖ <output id="e6-mu-o"></output></label><input type="range" id="e6-mu" min="0" max="1" step="0.005" value="0.15"></div>
+            <div class="ctrl"><label for="e6-x">Distance travelled x <output id="e6-x-o"></output></label><input type="range" id="e6-x" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="e6-play">Go</button></div>
+            <dl class="readout" id="e6-out"></dl>
+            <div class="key" id="e6-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch6-spring">
+        <div class="sim-h"><h3>Work as the area under F(x)</h3><span class="ref">Section 6.3 · Examples 6.8, 6.9 · Eqs. (6.8)–(6.11)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="s6-cv" width="640" height="400" aria-label="Graph of force against position with the area between two points filled in"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="s6-mode" role="group" aria-label="Force law">
+              <button data-m="const" aria-pressed="false">Constant force</button><button data-m="spring" aria-pressed="true">Spring F = kx (Ex. 6.8)</button><button data-m="bow" aria-pressed="false">Bow (Problem P5)</button><button data-m="piece" aria-pressed="false">Exercise E16</button><button data-m="bump" aria-pressed="false">Spring bumper (Ex. 6.9)</button>
+            </div>
+            <div class="ctrl" id="s6-w1"><label for="s6-a"><span id="s6-a-l"></span> <output id="s6-a-o"></output></label><input type="range" id="s6-a" min="0" max="1" step="0.001" value="0"></div>
+            <div class="ctrl" id="s6-w2"><label for="s6-b"><span id="s6-b-l"></span> <output id="s6-b-o"></output></label><input type="range" id="s6-b" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl" id="s6-w3"><label for="s6-c"><span id="s6-c-l"></span> <output id="s6-c-o"></output></label><input type="range" id="s6-c" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl" id="s6-w4"><label for="s6-d"><span id="s6-d-l"></span> <output id="s6-d-o"></output></label><input type="range" id="s6-d" min="0" max="1" step="0.001" value="0.5"></div>
+            <dl class="readout" id="s6-out"></dl>
+            <div class="key" id="s6-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch6-power">
+        <div class="sim-h"><h3>Power, force, and speed</h3><span class="ref">Section 6.4 · Examples 6.13, 6.14 · Eq. (6.15)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="p6-cv" width="640" height="400" aria-label="Speed against time for a vehicle driven at constant power, with the driving and resistance forces"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="p6-mode" role="group" aria-label="Vehicle">
+              <button data-m="boat" aria-pressed="true">Motorboat, f = kv (Ex. 6.13)</button><button data-m="car" aria-pressed="false">Car, f = f₀ + Dv² (Ex. 6.14)</button>
+            </div>
+            <div class="ctrl"><label for="p6-p">Engine power P <output id="p6-p-o"></output></label><input type="range" id="p6-p" min="5" max="120" step="1" value="40"></div>
+            <div class="ctrl"><label for="p6-m">Mass m <output id="p6-m-o"></output></label><input type="range" id="p6-m" min="200" max="3000" step="50" value="1000"></div>
+            <div class="ctrl"><label for="p6-k"><span id="p6-k-l">Resistance constant k</span> <output id="p6-k-o"></output></label><input type="range" id="p6-k" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl" id="p6-gw"><label for="p6-g">Road gradient <output id="p6-g-o"></output></label><input type="range" id="p6-g" min="-5" max="15" step="0.5" value="0"></div>
+            <div class="ctrl"><label for="p6-t">Time t <output id="p6-t-o"></output></label><input type="range" id="p6-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="p6-play">Start</button><span class="hint">driving force limited to 0.8 mg at low speed</span></div>
+            <dl class="readout" id="p6-out"></dl>
+            <div class="key" id="p6-key"></div>
           </div>
         </div>
       </article>
@@ -2293,6 +2394,185 @@ function ch5rotating(){
   draw(); return draw;
 }
 
+
+/* =====================  CHAPTER 6  ===================== */
+function hatchFloor(ctx,x1,x2,y){ ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.stroke();
+  ctx.strokeStyle=css("--axis"); ctx.lineWidth=1; for(let x=x1;x<x2-8;x+=12){ ctx.beginPath(); ctx.moveTo(x,y+9); ctx.lineTo(x+9,y); ctx.stroke(); } ctx.restore(); }
+function bars(ctx,box,items,unit){ // items: [label,value,color]
+  const {x,y,w,h}=box, mx=Math.max(1e-9,...items.map(i=>Math.abs(i[1]))), y0=y+h/2+6, sc=(h/2-34)/mx, bw=Math.min(34,w/items.length-12);
+  ctx.save(); ctx.strokeStyle=css("--axis"); ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(x,y0); ctx.lineTo(x+w,y0); ctx.stroke(); ctx.restore();
+  items.forEach(([lab,v,col],i)=>{ const cx=x+(i+0.5)*w/items.length, hh=v*sc;
+    ctx.save(); ctx.fillStyle=col; ctx.globalAlpha=0.85; ctx.fillRect(cx-bw/2,Math.min(y0,y0-hh),bw,Math.max(1,Math.abs(hh))); ctx.restore();
+    cvText(ctx,cx,v>=0?y0-hh-9:y0-hh+9,(Math.abs(v)>=1e4?(v/1000).toFixed(0)+"k":Math.abs(v)>=100?v.toFixed(0):v.toFixed(1)),css("--ink"),"center","600 11px ");
+    cvText(ctx,cx,v>=0?y0+12:y0-12,lab,css("--muted"),"center","600 11px "); });
+  cvText(ctx,x,y-6,unit,css("--muted"),"left","600 11px ");
+}
+
+/* ---------- 6.1 work done by a constant force ---------- */
+function ch6work(){
+  const cv=$("#w6-cv"), ctx=cv.getContext("2d"), F=$("#w6-f"), A=$("#w6-a"), S=$("#w6-s"), MU=$("#w6-mu"), M=$("#w6-m"), g=9.8;
+  const draw=()=>{
+    const f=+F.value, phd=+A.value, ph=rad(phd), s=+S.value, mu=+MU.value, m=+M.value;
+    $("#w6-f-o").textContent=f+" N"; $("#w6-a-o").textContent=phd+"°"; $("#w6-s-o").textContent=s+" m"; $("#w6-mu-o").textContent=mu.toFixed(3); $("#w6-m-o").textContent=m+" kg";
+    const Fpar=f*Math.cos(ph), Fperp=f*Math.sin(ph); let n=m*g-Fperp; const lifted=n<0; if(lifted) n=0;
+    const fk=s>0?mu*n:0, WF=Fpar*s, Wf=-fk*s, Wt=WF+Wf;
+    clearCv(ctx,cv);
+    const fy=270, bx0=30, L=s/60*230, bx1=bx0+L, bw=64, bh=52;
+    hatchFloor(ctx,20,420,fy);
+    if(L>2){ ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.strokeRect(bx0,fy-bh,bw,bh); ctx.restore(); cvText(ctx,bx0+bw/2,fy-bh/2,"1",css("--muted"),"center"); }
+    ctx.save(); ctx.fillStyle="rgba(217,72,15,.18)"; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.fillRect(bx1,fy-bh,bw,bh); ctx.strokeRect(bx1,fy-bh,bw,bh); ctx.restore();
+    cvText(ctx,bx1+bw/2,fy-bh/2,L>2?"2":"",css("--ink"),"center");
+    if(L>4){ arrow2(ctx,bx0+bw/2,fy+30,bx1+bw/2,fy+30,css("--vB"),3); cvText(ctx,(bx0+bx1)/2+bw/2,fy+46,"displacement s",css("--vB"),"center"); }
+    const k=2.2, cx=bx1+bw/2, cy=fy-bh/2, ex=cx+f*k*Math.cos(ph), ey=cy-f*k*Math.sin(ph);
+    ctx.save(); ctx.setLineDash([5,4]); ctx.strokeStyle=css("--vA"); ctx.globalAlpha=0.7; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(ex,ey); ctx.lineTo(ex,cy); ctx.stroke(); ctx.beginPath(); ctx.moveTo(ex,ey); ctx.lineTo(cx,ey); ctx.stroke(); ctx.restore();
+    arrow2(ctx,cx,cy,cx+Fpar*k,cy,css("--vA"),2,[5,4]); arrow2(ctx,cx,cy,cx,cy-Fperp*k,css("--vA"),2,[5,4]);
+    arrow2(ctx,cx,cy,ex,ey,css("--vA"),3.5); cvText(ctx,ex+(Math.cos(ph)>=0?8:-8),ey-10,"F",css("--vA"),Math.cos(ph)>=0?"left":"right","700 13px ");
+    cvText(ctx,cx+Fpar*k/2,cy+14,"F∥",css("--vA"),"center"); 
+    ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(cx,cy,24,-ph,0); ctx.stroke(); ctx.restore(); cvText(ctx,cx+30*Math.cos(ph/2),cy-30*Math.sin(ph/2),"φ",css("--ink"),"center");
+    if(fk>0.01) { arrow2(ctx,bx1+4,fy-4,bx1+4-fk*k,fy-4,css("--warn"),3); cvText(ctx,bx1-fk*k-4,fy-16,"f",css("--warn"),"right"); }
+    bars(ctx,{x:430,y:40,w:200,h:320},[["W_F",WF,css("--vA")],["W_f",Wf,css("--warn")],["W_n,w",0,css("--vB")],["W_tot",Wt,css("--vC")]],"work (J)");
+    readout($("#w6-out"),[["F∥ = F cos φ",fmt(Fpar,2)+" N"],["F⊥ = F sin φ",fmt(Fperp,2)+" N"],["normal force n",lifted?"0 (box lifted off)":fmt(n,1)+" N"],["friction fₖ = μₖn",fmt(fk,2)+" N"],
+      ["work by F",fmt(WF,1)+" J"],["work by friction",fmt(Wf,1)+" J"],["work by weight, normal force","0 J"],["total work",fmt(Wt,1)+" J"]]);
+    $("#w6-key").textContent = s===0 ? "No displacement, no work: however large the force, a body that does not move has no work done on it. This is the answer to the opening question."
+      : phd===90 ? "The force is perpendicular to the displacement, so it does no work. It still matters: it reduces the normal force and hence friction."
+      : phd>90 ? "The force has a component opposite to the displacement, so its work is negative."
+      : "Only F∥ does work. The upward component F⊥ does none itself, but it reduces the normal force and so the negative work of friction. The total work equals the work of the net force.";
+  };
+  seg("#w6-preset",ds=>{ const p={ex1:[40,30,50,0.15,20],free:[40,30,50,0,20],hold:[98,90,0,0,10]}[ds.p]; [F.value,A.value,S.value,MU.value,M.value]=p; draw(); });
+  [F,A,S,MU,M].forEach(i=>i.addEventListener("input",draw));
+  draw(); return draw;
+}
+
+/* ---------- 6.2 the work-energy theorem ---------- */
+function ch6energy(){
+  const cv=$("#e6-cv"), ctx=cv.getContext("2d"), Mm=$("#e6-m"), V=$("#e6-v"), P=$("#e6-p"), TH=$("#e6-th"), MU=$("#e6-mu"), X=$("#e6-x"), g=9.8;
+  let D=50, kind="sled";
+  const draw=()=>{
+    const m=+Mm.value, v1=+V.value, T=+P.value, th=rad(+TH.value), mu=+MU.value;
+    $("#e6-m-o").textContent=m+" kg"; $("#e6-v-o").textContent=v1.toFixed(1)+" m/s"; $("#e6-p-o").textContent=T+" N"; $("#e6-th-o").textContent=(+TH.value)+"°"; $("#e6-mu-o").textContent=mu.toFixed(3);
+    let n=m*g-T*Math.sin(th); if(n<0) n=0;
+    const Tx=T*Math.cos(th), fk=mu*n, K1=0.5*m*v1*v1;
+    let moving=K1>0||Tx>fk, Fx=moving?Tx-fk:0, xstop=Infinity;
+    if(moving && Fx<0) xstop=K1/(-Fx);
+    const xr=+X.value/1000*D, x=Math.min(xr,xstop), stopped=xr>=xstop;
+    const WT=moving?Tx*x:0, Wf=moving?-fk*x:0, Wt=WT+Wf, K2=Math.max(0,K1+Wt), v2=Math.sqrt(2*K2/m);
+    $("#e6-x-o").textContent=x.toFixed(1)+" m";
+    clearCv(ctx,cv);
+    const fy=150, x0=40, sc=480/D, bw=kind==="brake"?70:56, bh=kind==="brake"?34:30;
+    hatchFloor(ctx,20,620,fy);
+    for(let q=0;q<=D;q+=niceStep(D,5)){ const X0=x0+q*sc; ctx.save(); ctx.strokeStyle=css("--grid"); ctx.beginPath(); ctx.moveTo(X0,fy+14); ctx.lineTo(X0,fy+20); ctx.stroke(); ctx.restore(); cvText(ctx,X0,fy+30,q+" m",css("--muted"),"center","500 10px "); }
+    const bx=x0+x*sc;
+    ctx.save(); ctx.fillStyle="rgba(25,113,194,.18)"; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.fillRect(bx-bw/2,fy-bh,bw,bh); ctx.strokeRect(bx-bw/2,fy-bh,bw,bh); ctx.restore();
+    if(T>0){ const k=0.9; arrow2(ctx,bx+bw/2,fy-bh/2,bx+bw/2+T*k*Math.cos(th),fy-bh/2-T*k*Math.sin(th),css("--vC"),3); cvText(ctx,bx+bw/2+T*k*Math.cos(th)+6,fy-bh/2-T*k*Math.sin(th)-8,"T",css("--vC")); }
+    if(moving&&!stopped&&fk>0){ const L=Math.min(80,fk*(T>0?0.9:60/Math.max(fk,1))); arrow2(ctx,bx-bw/2,fy-4,bx-bw/2-L,fy-4,css("--warn"),3); cvText(ctx,bx-bw/2-L-6,fy-14,"fₖ",css("--warn"),"right"); }
+    arrow2(ctx,bx,fy-bh-12,bx+Math.min(90,v2*(kind==="brake"?3:12)),fy-bh-12,css("--vB"),2.5); cvText(ctx,bx,fy-bh-26,"v = "+v2.toFixed(2)+" m/s",css("--vB"),"left","600 11px ");
+    bars(ctx,{x:60,y:200,w:520,h:190},[["K₁",K1,css("--vB")],["W by T",WT,css("--vC")],["W by friction",Wf,css("--warn")],["W_tot",Wt,css("--vA")],["K₂ = K₁ + W_tot",K2,css("--vB")]],"energy (J)");
+    readout($("#e6-out"),[["normal force n",fmt(n,1)+" N"],["friction fₖ",fmt(moving?fk:0,2)+" N"],["net force along x",fmt(Fx,2)+" N"],["work by T",fmt(WT,1)+" J"],["work by friction",fmt(Wf,1)+" J"],
+      ["total work",fmt(Wt,1)+" J"],["K₁ → K₂",fmt(K1,1)+" J → "+fmt(K2,1)+" J"],["speed v₂",v2.toFixed(2)+" m/s"],["stops after",isFinite(xstop)?xstop.toFixed(1)+" m":"does not stop"]]);
+    $("#e6-key").textContent = !moving ? "The pull is too weak to overcome friction, so the body stays at rest: no displacement, no work."
+      : stopped ? "Friction has done work −K₁: all the kinetic energy is gone. The stopping distance is K₁/fₖ = v₁²/(2μₖg) for a body braked by friction alone; it grows as the square of the speed."
+      : Math.abs(Fx)<1e-6 ? "The pull balances friction: the two works are equal and opposite, the total work is zero, and the speed stays constant."
+      : "At every point K₂ = K₁ + W_tot: the bar for K₂ always equals the bar for K₁ plus the total work. The work of the pull alone is not equal to ΔK.";
+  };
+  seg("#e6-preset",ds=>{ kind=ds.p; const p={sled:[20,2,40,30,0.15,50],brake:[1200,25,0,0,0.7,60],push:[20,2,31.2,30,0.15,50]}[ds.p];
+    [Mm.value,V.value,P.value,TH.value,MU.value]=p.slice(0,5); D=p[5]; X.value=1000; draw(); });
+  [Mm,V,P,TH,MU,X].forEach(i=>i.addEventListener("input",draw));
+  player($("#e6-play"),X,()=>4,draw);
+  draw(); return draw;
+}
+
+/* ---------- 6.3 work as the area under F(x) ---------- */
+function ch6spring(){
+  const cv=$("#s6-cv"), ctx=cv.getContext("2d"), SL=["a","b","c","d"].map(c=>$("#s6-"+c)), g=9.8;
+  const bowX=[0,0.1,0.2,0.3,0.4,0.5], bowF=[0,60,105,140,170,195];
+  const interp=(xs,ys,x)=>{ if(x<=xs[0]) return ys[0]; for(let i=1;i<xs.length;i++) if(x<=xs[i]) return ys[i-1]+(ys[i]-ys[i-1])*(x-xs[i-1])/(xs[i]-xs[i-1]); return ys[ys.length-1]; };
+  const MODES={
+    const:{sl:[["Force F₀",-20,20,10,1," N"],["x₁",0,10,1,1," m"],["x₂",0,10,6,1," m"]],xr:[0,10],F:(x,p)=>p[0]},
+    spring:{sl:[["Force constant k",100,2000,800,0," N/m"],["x₁",0,0.15,0.05,3," m"],["x₂",0,0.15,0.10,3," m"]],xr:[0,0.15],F:(x,p)=>p[0]*x},
+    bow:{sl:[["x₁",0,0.5,0,2," m"],["x₂",0,0.5,0.5,2," m"]],xr:[0,0.5],F:x=>interp(bowX,bowF,x),x12:[0,1]},
+    piece:{sl:[["x₁",0,7,0,1," m"],["x₂",0,7,7,1," m"]],xr:[0,7],F:x=>interp([0,2,5,7],[0,10,10,0],x),x12:[0,1]},
+    bump:{sl:[["Force constant k",10,200,50,0," N/m"],["Mass m",0.05,1,0.2,2," kg"],["Speed v₁",0,3,1.5,2," m/s"],["Friction μₖ",0,0.5,0.2,3,""]]}
+  };
+  let mode="spring";
+  const vals=()=>MODES[mode].sl.map((d,i)=>d[1]+(d[2]-d[1])*(+SL[i].value));
+  const setMode=()=>{ const M=MODES[mode]; ["w1","w2","w3","w4"].forEach((w,i)=>{ const d=M.sl[i]; $("#s6-"+w).style.display=d?"":"none"; if(d){ $("#s6-"+"abcd"[i]+"-l").textContent=d[0]; SL[i].value=(d[3]-d[1])/(d[2]-d[1]); } }); };
+  const integ=(f,a,b,n=600)=>{ let s=0; const h=(b-a)/n; for(let i=0;i<n;i++){ const x=a+(i+0.5)*h; s+=f(x)*h; } return s; };
+  const draw=()=>{
+    const M=MODES[mode], p=vals();
+    M.sl.forEach((d,i)=>{ $("#s6-"+"abcd"[i]+"-o").textContent=p[i].toFixed(d[4])+d[5]; });
+    clearCv(ctx,cv);
+    let F,x1,x2,xr,rows,key;
+    if(mode==="bump"){
+      const [k,m,v1,mu]=p, K1=0.5*m*v1*v1, fr=mu*m*g, A=0.5*k, d=v1>0?(-fr+Math.sqrt(fr*fr+4*A*K1))/(2*A):0;
+      F=x=>-k*x-fr; x1=0; x2=d; xr=[0,Math.max(0.05,d*1.3)];
+      const Ws=-0.5*k*d*d, Wf=-fr*d;
+      rows=[["initial kinetic energy K₁",K1.toFixed(4)+" J"],["maximum compression d",(d*100).toFixed(2)+" cm"],["work by the spring −½kd²",Ws.toFixed(4)+" J"],["work by friction −μₖmgd",Wf.toFixed(4)+" J"],["total work = −K₁",(Ws+Wf).toFixed(4)+" J"],["spring force at d",(k*d).toFixed(2)+" N"]];
+      key="The graph shows the net horizontal force on the block while it compresses the spring. The shaded area from 0 to d is the total work, −K₁: the block stops when the area reaches its initial kinetic energy.";
+    } else {
+      F=x=>M.F(x,p); xr=M.xr; const o=M.x12?0:1; x1=p[o]; x2=p[o+1];
+      const W=integ(F,x1,x2);
+      rows=[["x₁ → x₂",x1.toFixed(3)+" m → "+x2.toFixed(3)+" m"],["F(x₁)",F(x1).toFixed(2)+" N"],["F(x₂)",F(x2).toFixed(2)+" N"],["work W = area",W.toFixed(mode==="spring"?3:2)+" J"]];
+      if(mode==="spring") rows.push(["½k(x₂² − x₁²)",(0.5*p[0]*(x2*x2-x1*x1)).toFixed(3)+" J"]);
+      if(mode==="bow") rows.push(["Hooke's-law bow, same F_max",(0.5*195*0.5*(x2*x2-x1*x1)/0.25).toFixed(2)+" J"]);
+      key= mode==="const" ? "For a constant force the area is a rectangle, W = F₀(x₂ − x₁). It is negative if F₀ < 0, or if x₂ < x₁ (the body moves backwards)."
+        : mode==="spring" ? "For a spring the area is a triangle or trapezoid. Stretching from 5 to 10 cm costs three times as much work as from 0 to 5 cm."
+        : mode==="bow" ? "Measured force-draw curve of a bow. Its force rises quickly at first, so it stores more energy than a Hooke's-law bow with the same maximum force."
+        : "The force of Exercise E16: the area is a trapezoid of 50 J from 0 to 7 m.";
+    }
+    let lo=0,hi=0; for(let i=0;i<=200;i++){ const x=xr[0]+(xr[1]-xr[0])*i/200, v=F(x); lo=Math.min(lo,v); hi=Math.max(hi,v); }
+    const pad=(hi-lo)*0.15||1; lo=lo<0?lo-pad:-0.04*pad; hi=hi>0?hi+pad:0.4*pad;
+    const Fr=frame(ctx,{x:60,y:24,w:540,h:330},xr,[lo,hi],"x (m)","F (N)");
+    ctx.save(); const a=Math.min(x1,x2), b=Math.max(x1,x2);
+    ctx.beginPath(); ctx.moveTo(Fr.X(a),Fr.Y(0)); for(let i=0;i<=200;i++){ const x=a+(b-a)*i/200; ctx.lineTo(Fr.X(x),Fr.Y(F(x))); } ctx.lineTo(Fr.X(b),Fr.Y(0)); ctx.closePath();
+    ctx.fillStyle=(x2>=x1)===(F((a+b)/2)>=0)?"rgba(217,72,15,.28)":"rgba(25,113,194,.28)"; ctx.fill(); ctx.restore();
+    curve(ctx,Fr,F,xr[0],xr[1],css("--vB"),2.5);
+    if(mode==="bow") bowX.forEach((x,i)=>dot(ctx,Fr.X(x),Fr.Y(bowF[i]),css("--ink"),4));
+    [x1,x2].forEach((x,i)=>{ ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.beginPath(); ctx.moveTo(Fr.X(x),Fr.Y(lo)); ctx.lineTo(Fr.X(x),Fr.Y(hi)); ctx.stroke(); ctx.restore();
+      cvText(ctx,Fr.X(x),34+i*14,mode==="bump"?(i?"d":"0"):(i?"x₂":"x₁"),css("--ink"),"center"); });
+    readout($("#s6-out"),rows); $("#s6-key").textContent=key;
+  };
+  seg("#s6-mode",ds=>{ mode=ds.m; setMode(); draw(); });
+  SL.forEach(i=>i.addEventListener("input",draw));
+  setMode(); draw(); return draw;
+}
+
+/* ---------- 6.4 power, force, and speed ---------- */
+function ch6power(){
+  const cv=$("#p6-cv"), ctx=cv.getContext("2d"), P=$("#p6-p"), Mm=$("#p6-m"), K=$("#p6-k"), G=$("#p6-g"), TT=$("#p6-t"), g=9.8;
+  let mode="boat";
+  const par=()=>{ const Pw=+P.value*1000, m=+Mm.value, u=+K.value, gr=mode==="car"?(+G.value)/100:0, sa=Math.sin(Math.atan(gr));
+    const c=mode==="boat"?50+350*u:0.2+1.8*u, f=v=>mode==="boat"?c*v:0.012*m*g+c*v*v;
+    let a=0.01,b=200; for(let i=0;i<80;i++){ const mid=(a+b)/2; (Pw/mid-f(mid)-m*g*sa>0)?a=mid:b=mid; } return {Pw,m,c,gr,sa,f,vmax:(a+b)/2}; };
+  const sim=S=>{ const out=[{t:0,v:0}], dt=0.02, cap=0.8*S.m*g; let v=0,t=0;
+    const acc=v=>(Math.min(cap,S.Pw/Math.max(v,1e-3))-S.f(v)-S.m*g*S.sa)/S.m;
+    while(t<400){ const k1=acc(v),k2=acc(v+dt/2*k1),k3=acc(v+dt/2*k2),k4=acc(v+dt*k3); v=Math.max(0,v+dt/6*(k1+2*k2+2*k3+k4)); t+=dt; out.push({t,v}); if(v>0.99*S.vmax) break; }
+    return out; };
+  const draw=()=>{
+    const S=par(), out=sim(S), T=out[out.length-1].t*1.25, t=+TT.value/1000*T;
+    let q=out[out.length-1]; if(t<q.t) q=out[Math.min(out.length-1,Math.round(t/0.02))]; const v=t<out[out.length-1].t?q.v:S.vmax*(1-0.01*Math.exp(-(t-out[out.length-1].t)/5));
+    $("#p6-p-o").textContent=(S.Pw/1000).toFixed(0)+" kW"; $("#p6-m-o").textContent=S.m+" kg"; $("#p6-g-o").textContent=(+G.value).toFixed(1)+" %"; $("#p6-t-o").textContent=t.toFixed(1)+" s";
+    $("#p6-k-l").textContent=mode==="boat"?"Resistance constant k":"Air-drag constant D"; $("#p6-k-o").textContent=mode==="boat"?S.c.toFixed(0)+" N·s/m":S.c.toFixed(2)+" kg/m";
+    $("#p6-gw").style.display=mode==="car"?"":"none";
+    clearCv(ctx,cv);
+    const Fr=frame(ctx,{x:56,y:24,w:380,h:330},[0,T],[0,S.vmax*1.2],"t (s)","v (m/s)");
+    ctx.save(); ctx.setLineDash([5,4]); ctx.strokeStyle=css("--vC"); ctx.lineWidth=1.3; ctx.beginPath(); ctx.moveTo(Fr.X(0),Fr.Y(S.vmax)); ctx.lineTo(Fr.X(T),Fr.Y(S.vmax)); ctx.stroke(); ctx.restore();
+    cvText(ctx,Fr.X(T)-4,Fr.Y(S.vmax)-10,"v_max = "+S.vmax.toFixed(1)+" m/s",css("--vC"),"right","600 11px ");
+    ctx.save(); ctx.strokeStyle=css("--vB"); ctx.lineWidth=2.5; ctx.beginPath(); out.forEach((p,j)=>{ if(j%3) return; j?ctx.lineTo(Fr.X(p.t),Fr.Y(p.v)):ctx.moveTo(Fr.X(p.t),Fr.Y(p.v)); }); ctx.lineTo(Fr.X(T),Fr.Y(S.vmax*0.995)); ctx.stroke(); ctx.restore();
+    dot(ctx,Fr.X(t),Fr.Y(v),css("--ink"),5);
+    const Fd=Math.min(0.8*S.m*g,S.Pw/Math.max(v,1e-3)), fr=S.f(v), fg=S.m*g*S.sa, a=(Fd-fr-fg)/S.m;
+    bars(ctx,{x:455,y:40,w:180,h:310},[["P/v",Fd,css("--vA")],["−f",-fr,css("--warn")],["−mg sin α",-fg,css("--muted")],["net",Fd-fr-fg,css("--vC")]],"force (N)");
+    readout($("#p6-out"),[["t",t.toFixed(1)+" s"],["speed",v.toFixed(2)+" m/s ("+(v*3.6).toFixed(0)+" km/h)"],["driving force P/v",Fd.toFixed(0)+" N"+(Fd<S.Pw/Math.max(v,1e-3)-1?" (traction limit)":"")],["resistance f",fr.toFixed(0)+" N"],
+      ["slope component mg sin α",fg.toFixed(0)+" N"],["acceleration",fmt(a,2)+" m/s²"],["power against resistance f·v",(fr*v/1000).toFixed(1)+" kW"],["power to climb mg v sin α",(fg*v/1000).toFixed(1)+" kW"],["top speed",S.vmax.toFixed(2)+" m/s ("+(S.vmax*3.6).toFixed(0)+" km/h)"]]);
+    $("#p6-key").textContent = v>0.98*S.vmax ? "At top speed the driving force P/v equals the resistance"+(mode==="car"?" plus mg sin α":"")+": the whole power of the engine is used against them, and the acceleration is zero."
+      : "At low speed the same power gives a large driving force P/v, larger than the resistance; the difference accelerates the vehicle. As v grows, P/v falls and the resistance rises.";
+  };
+  seg("#p6-mode",ds=>{ mode=ds.m; if(mode==="boat"){ P.value=40; Mm.value=1000; K.value=(150-50)/350; } else { P.value=40; Mm.value=1500; K.value=(1.06-0.2)/1.8; G.value=5; } TT.value=1000; draw(); });
+  [P,Mm,K,G,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#p6-play"),TT,()=>6,draw);
+  K.value=(150-50)/350; draw(); return draw;
+}
+
 /* ---------- chapter cards ---------- */
 const CHAPTERS=[
  [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],7],
@@ -2300,7 +2580,7 @@ const CHAPTERS=[
  [3,"Motion in Two or Three Dimensions",["Tangential and normal acceleration","Projectile launcher","Circular motion","River crossing"],4],
  [4,"Newton's Laws of Motion",["Inertial and non-inertial frames","Forces on a puck","Action–reaction pairs, heavy rope","Scale in a lift","Free-body diagram trainer"],5],
  [5,"Applying Newton's Laws",["Connected bodies, Atwood machine","Incline with friction","Falling with air resistance","Circular motion","Rotating frame and inertial forces"],5],
- [6,"Work and Kinetic Energy",["Work as area under F(x)","Power"]],
+ [6,"Work and Kinetic Energy",["Work of a constant force","Work–energy theorem bars","Work as area under F(x)","Power, force, and speed"],4],
  [7,"Potential Energy and Energy Conservation",["Energy bars on a track","Potential-curve explorer"]],
  [8,"Momentum, Impulse, and Collisions",["Collision lab","Centre of mass","Rocket with variable mass"]],
  [9,"Rotation of Rigid Bodies",["Angular kinematics","Moments of inertia, Steiner theorem"]],
@@ -2318,12 +2598,12 @@ $("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
   </article>`).join("");
 
 /* ---------- routing ---------- */
-const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),about:$("#view-about")};
+const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),about:$("#view-about")};
 const redraws=[];
 function route(){
   const h=(location.hash||"#home").slice(1);
   let v="home", target=null;
-  const m=h.match(/^(ch[1-5])(-.*)?$/);
+  const m=h.match(/^(ch[1-6])(-.*)?$/);
   if(m){ v=m[1]; if(m[2]) target=h; }
   else if(h==="about") v="about";
   else if(h==="chapters"){ v="home"; target="chapters"; }
@@ -2333,7 +2613,7 @@ function route(){
   const t=target && document.getElementById(target);
   if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
 }
-redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating());
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power());
 addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
 new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
