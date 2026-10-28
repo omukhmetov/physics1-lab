@@ -149,6 +149,7 @@ footer .muted{opacity:.75}
       <a href="#ch5" data-nav="ch5">Chapter 5</a>
       <a href="#ch6" data-nav="ch6">Chapter 6</a>
       <a href="#ch7" data-nav="ch7">Chapter 7</a>
+      <a href="#ch8" data-nav="ch8">Chapter 8</a>
       <a href="#about" data-nav="about">About</a>
     </nav>
   </div>
@@ -967,6 +968,133 @@ footer .muted{opacity:.75}
             <div class="row"><button class="small-btn" id="c7-play">Go</button></div>
             <dl class="readout" id="c7-out"></dl>
             <div class="key" id="c7-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="view-ch8" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 8</div>
+    <h1 style="margin-bottom:.2em">Momentum, Impulse, and Collisions</h1>
+    <p class="lede">Five instruments for impulse, collisions in one and two dimensions, the centre of mass, and rockets. Each loads a worked example from the book; then change the masses and speeds and watch what momentum and energy do.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 8 instruments">
+      <ol>
+        <li><a href="#ch8-impulse"><span class="sn">8.1</span>Impulse and the force–time graph</a></li>
+        <li><a href="#ch8-collide"><span class="sn">8.3</span>Collisions on an air track</a></li>
+        <li><a href="#ch8-billiards"><span class="sn">8.4</span>Glancing collisions</a></li>
+        <li><a href="#ch8-cm"><span class="sn">8.5</span>The centre of mass</a></li>
+        <li><a href="#ch8-rocket"><span class="sn">8.6</span>Rocket launch</a></li>
+      </ol>
+      <div class="note">Opening question: a 1000 kg car and a 10 000 kg lorry collide head-on and stick together. Open <a href="#ch8-collide">Collisions on an air track</a>, choose “Car and lorry”, and compare the two momentum changes: they are equal and opposite, whatever the speeds. The velocity changes are not.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch8-impulse">
+        <div class="sim-h"><h3>Impulse and the force–time graph</h3><span class="ref">Section 8.1 · Examples 8.1, 8.3 · Eqs. (8.4)–(8.6)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="i8-cv" width="640" height="400" aria-label="A force-time graph with the impulse shaded, and bar charts of momentum"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="i8-preset" role="group" aria-label="Blow">
+              <button data-p="wall" aria-pressed="true">Ball on a wall (Ex. 8.1)</button><button data-p="kick" aria-pressed="false">Short, hard kick</button><button data-p="push" aria-pressed="false">Long, soft push</button>
+            </div>
+            <div class="ctrl"><label for="i8-f"><span>Peak force F<sub>max</sub></span> <output id="i8-f-o"></output></label><input type="range" id="i8-f" min="10" max="8000" step="10" value="4000"></div>
+            <div class="ctrl"><label for="i8-d">Duration Δt <output id="i8-d-o"></output></label><input type="range" id="i8-d" min="1" max="500" step="1" value="10"></div>
+            <div class="ctrl"><label for="i8-m">Mass m <output id="i8-m-o"></output></label><input type="range" id="i8-m" min="0.05" max="5" step="0.05" value="0.4"></div>
+            <div class="ctrl"><label for="i8-v"><span>Initial velocity v<sub>1x</sub></span> <output id="i8-v-o"></output></label><input type="range" id="i8-v" min="-40" max="40" step="0.5" value="-30"></div>
+            <div class="ctrl"><label for="i8-t">Time t <output id="i8-t-o"></output></label><input type="range" id="i8-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="i8-play">Play</button></div>
+            <dl class="readout" id="i8-out"></dl>
+            <div class="key" id="i8-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch8-collide">
+        <div class="sim-h"><h3>Collisions on an air track</h3><span class="ref">Sections 8.3, 8.4 · Examples 8.7, 8.10 · Eqs. (8.12)–(8.21)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="c8-cv" width="640" height="400" aria-label="Two gliders colliding on a track, with momentum and kinetic energy bars before and after"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="c8-preset" role="group" aria-label="Collision">
+              <button data-p="wagons" aria-pressed="false">Wagons (Ex. 8.7)</button><button data-p="gliders" aria-pressed="true">Gliders (Ex. 8.10)</button><button data-p="equal" aria-pressed="false">Equal masses</button><button data-p="lorry" aria-pressed="false">Car and lorry</button>
+            </div>
+            <div class="ctrl"><label for="c8-m1"><span>Mass m<sub>A</sub></span> <output id="c8-m1-o"></output></label><input type="range" id="c8-m1" min="0.1" max="40" step="0.1" value="0.6"></div>
+            <div class="ctrl"><label for="c8-m2"><span>Mass m<sub>B</sub></span> <output id="c8-m2-o"></output></label><input type="range" id="c8-m2" min="0.1" max="40" step="0.1" value="0.2"></div>
+            <div class="ctrl"><label for="c8-v1"><span>Velocity v<sub>Ax</sub></span> <output id="c8-v1-o"></output></label><input type="range" id="c8-v1" min="-10" max="10" step="0.1" value="3"></div>
+            <div class="ctrl"><label for="c8-v2"><span>Velocity v<sub>Bx</sub></span> <output id="c8-v2-o"></output></label><input type="range" id="c8-v2" min="-10" max="10" step="0.1" value="-1"></div>
+            <div class="ctrl"><label for="c8-e">Coefficient of restitution e <output id="c8-e-o"></output></label><input type="range" id="c8-e" min="0" max="1" step="0.01" value="1"></div>
+            <div class="ctrl"><label for="c8-t">Time <output id="c8-t-o"></output></label><input type="range" id="c8-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="c8-play">Run</button></div>
+            <dl class="readout" id="c8-out"></dl>
+            <div class="key" id="c8-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch8-billiards">
+        <div class="sim-h"><h3>Glancing collisions</h3><span class="ref">Section 8.4 · Example 8.13</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="b8-cv" width="640" height="400" aria-label="Two balls in a glancing collision seen from above, with the velocity triangle"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="b8-preset" role="group" aria-label="Collision">
+              <button data-p="ex" aria-pressed="true">Billiards (Ex. 8.13)</button><button data-p="head" aria-pressed="false">Head-on</button><button data-p="heavy" aria-pressed="false">Heavy into light</button><button data-p="light" aria-pressed="false">Light into heavy</button>
+            </div>
+            <div class="ctrl"><label for="b8-b"><span>Impact parameter b/(r<sub>1</sub> + r<sub>2</sub>)</span> <output id="b8-b-o"></output></label><input type="range" id="b8-b" min="0" max="0.98" step="0.01" value="0.5"></div>
+            <div class="ctrl"><label for="b8-r"><span>Mass ratio m<sub>2</sub>/m<sub>1</sub></span> <output id="b8-r-o"></output></label><input type="range" id="b8-r" min="0.1" max="10" step="0.05" value="1"></div>
+            <div class="ctrl"><label for="b8-e">Coefficient of restitution e <output id="b8-e-o"></output></label><input type="range" id="b8-e" min="0" max="1" step="0.01" value="1"></div>
+            <div class="ctrl"><label for="b8-t">Time <output id="b8-t-o"></output></label><input type="range" id="b8-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="b8-play">Shoot</button></div>
+            <dl class="readout" id="b8-out"></dl>
+            <div class="key" id="b8-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch8-cm">
+        <div class="sim-h"><h3>The centre of mass</h3><span class="ref">Section 8.5 · Examples 8.16, 8.17 · Eqs. (8.22)–(8.26)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="m8-cv" width="640" height="400" aria-label="An exploding projectile and the path of its centre of mass, or a fisherman walking in a boat"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="m8-mode" role="group" aria-label="Situation">
+              <button data-m="shell" aria-pressed="true">Exploding shell (Ex. 8.17)</button><button data-m="free" aria-pressed="false">Explosion: your choice</button><button data-m="boat" aria-pressed="false">Fisherman in a boat (Ex. 8.16)</button>
+            </div>
+            <div class="ctrl"><label for="m8-a"><span id="m8-a-l">Mass of piece 1 (fraction)</span> <output id="m8-a-o"></output></label><input type="range" id="m8-a" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl"><label for="m8-b"><span id="m8-b-l">Kick, horizontal</span> <output id="m8-b-o"></output></label><input type="range" id="m8-b" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl" id="m8-cw"><label for="m8-c">Kick, vertical <output id="m8-c-o"></output></label><input type="range" id="m8-c" min="0" max="1" step="0.001" value="0.5"></div>
+            <div class="ctrl"><label for="m8-t"><span id="m8-t-l">Time</span> <output id="m8-t-o"></output></label><input type="range" id="m8-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="m8-play">Play</button></div>
+            <dl class="readout" id="m8-out"></dl>
+            <div class="key" id="m8-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch8-rocket">
+        <div class="sim-h"><h3>Rocket launch</h3><span class="ref">Section 8.6 · Examples 8.19, 8.20 · Eqs. (8.28)–(8.30)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="r8-cv" width="640" height="400" aria-label="A rocket with its stages, and graphs of its speed and mass against time"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="r8-preset" role="group" aria-label="Example">
+              <button data-p="space" aria-pressed="true">Deep space (Ex. 8.19)</button><button data-p="launch" aria-pressed="false">Lift-off (Ex. 8.20)</button><button data-p="orbit" aria-pressed="false">Three stages to orbit</button>
+            </div>
+            <div class="seg" id="r8-where" role="group" aria-label="Where">
+              <button data-w="space" aria-pressed="true">Empty space</button><button data-w="earth" aria-pressed="false">From the Earth (vertical, no air)</button>
+            </div>
+            <div class="ctrl"><label for="r8-n">Number of stages <output id="r8-n-o"></output></label><input type="range" id="r8-n" min="1" max="3" step="1" value="1"></div>
+            <div class="ctrl"><label for="r8-m"><span>Lift-off mass m<sub>0</sub></span> <output id="r8-m-o"></output></label><input type="range" id="r8-m" min="10" max="500" step="5" value="40"></div>
+            <div class="ctrl"><label for="r8-p">Payload <output id="r8-p-o"></output></label><input type="range" id="r8-p" min="0" max="0.2" step="0.005" value="0"></div>
+            <div class="ctrl"><label for="r8-s">Structure / (structure + fuel) of each stage <output id="r8-s-o"></output></label><input type="range" id="r8-s" min="0.05" max="0.5" step="0.01" value="0.25"></div>
+            <div class="ctrl"><label for="r8-u"><span>Exhaust speed v<sub>ex</sub></span> <output id="r8-u-o"></output></label><input type="range" id="r8-u" min="1" max="4.5" step="0.1" value="3"></div>
+            <div class="ctrl"><label for="r8-q">Fuel burnt per second μ <output id="r8-q-o"></output></label><input type="range" id="r8-q" min="50" max="3000" step="10" value="200"></div>
+            <div class="ctrl"><label for="r8-t">Time t <output id="r8-t-o"></output></label><input type="range" id="r8-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="r8-play">Launch</button></div>
+            <dl class="readout" id="r8-out"></dl>
+            <div class="key" id="r8-key"></div>
           </div>
         </div>
       </article>
@@ -2925,6 +3053,286 @@ function ch7curve(){
   load(); return draw;
 }
 
+/* =====================  CHAPTER 8  ===================== */
+
+/* ---------- 8.1 impulse and the force-time graph ---------- */
+function ch8impulse(){
+  const cv=$("#i8-cv"), ctx=cv.getContext("2d"), F=$("#i8-f"), D=$("#i8-d"), Mm=$("#i8-m"), V=$("#i8-v"), TT=$("#i8-t");
+  let preset="wall";
+  const draw=()=>{
+    const Fm=+F.value, dt=+D.value/1000, m=+Mm.value, v1=+V.value, t0=-0.15*dt, t1=1.15*dt, t=t0+(+TT.value/1000)*(t1-t0);
+    const f=s=>(s<0||s>dt)?0:Fm*Math.sin(Math.PI*s/dt)**2;
+    const Jof=s=>{ const u=Math.max(0,Math.min(dt,s)); return Fm*(u/2-dt/(4*Math.PI)*Math.sin(2*Math.PI*u/dt)); };
+    const J=Jof(t), Jtot=Fm*dt/2, p1=m*v1, p=p1+J, Fav=Jtot/dt;
+    $("#i8-f-o").textContent=Fm+" N"; $("#i8-d-o").textContent=(dt*1000).toFixed(0)+" ms"; $("#i8-m-o").textContent=m.toFixed(2)+" kg";
+    $("#i8-v-o").textContent=fmt(v1,1)+" m/s"; $("#i8-t-o").textContent=(t*1000).toFixed(1)+" ms";
+    clearCv(ctx,cv);
+    const Fr=frame(ctx,{x:58,y:24,w:360,h:330},[t0*1000,t1*1000],[0,Fm*1.15],"t (ms)","F (N)");
+    const tc=Math.max(0,Math.min(t,dt));
+    if(tc>0){ ctx.save(); ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.22; ctx.beginPath(); ctx.moveTo(Fr.X(0),Fr.Y(0));
+      for(let i=0;i<=200;i++){ const s=tc*i/200; ctx.lineTo(Fr.X(s*1000),Fr.Y(f(s))); } ctx.lineTo(Fr.X(tc*1000),Fr.Y(0)); ctx.closePath(); ctx.fill(); ctx.restore(); }
+    ctx.save(); ctx.setLineDash([6,4]); ctx.strokeStyle=css("--vA"); ctx.lineWidth=1.6; ctx.strokeRect(Fr.X(0),Fr.Y(Fav),Fr.X(dt*1000)-Fr.X(0),Fr.Y(0)-Fr.Y(Fav)); ctx.restore();
+    cvText(ctx,Fr.X(dt*1000)+6,Fr.Y(Fav),"F_av",css("--vA"),"left","600 12px ");
+    curve(ctx,Fr,x=>f(x/1000),t0*1000,t1*1000,css("--vB"),2.5);
+    ctx.save(); ctx.strokeStyle=css("--ink"); ctx.globalAlpha=0.5; ctx.beginPath(); ctx.moveTo(Fr.X(t*1000),Fr.Y(0)); ctx.lineTo(Fr.X(t*1000),Fr.Y(Fm*1.15)); ctx.stroke(); ctx.restore();
+    dot(ctx,Fr.X(t*1000),Fr.Y(f(t)),css("--ink"),4.5);
+    bars(ctx,{x:450,y:40,w:180,h:330},[["p₁",p1,css("--muted")],["J so far",J,css("--vB")],["p = p₁ + J",p,css("--vC")]],"momentum (kg·m/s)");
+    readout($("#i8-out"),[["force now F(t)",f(t).toFixed(0)+" N"],["impulse so far J",J.toFixed(3)+" N·s"],["total impulse = area",Jtot.toFixed(3)+" N·s"],
+      ["average force J/Δt",Fav.toFixed(0)+" N"],["peak force",Fm+" N"],["momentum p",p.toFixed(3)+" kg·m/s"],["velocity v = p/m",fmt(p/m,2)+" m/s"],["final velocity",fmt((p1+Jtot)/m,2)+" m/s"],
+      ["peak force / weight",(Fm/(m*9.8)).toFixed(0)]]);
+    $("#i8-key").textContent = preset==="wall" ? "Example 8.1: the wall gives an impulse of 20 N·s and turns −30 m/s into +20 m/s. The momenta add: forgetting the signs would give 4 N·s. The shaded area is the impulse; the dashed rectangle of the same area has the height of the average force."
+      : preset==="kick" ? "A kick: a large force for a few milliseconds. Compare with “Long, soft push”, which gives the ball the same impulse (the same area, 11.25 N·s) with a force fifty times smaller."
+      : "The same impulse as the kick, 11.25 N·s, spread over 375 ms: the area is the same, so the ball leaves with the same speed, but the peak force is only 60 N. This is how air bags and crumple zones work.";
+  };
+  const load=()=>{ const d={wall:[4000,10,0.4,-30],kick:[2810,8,0.45,0],push:[60,375,0.45,0]}[preset]; F.value=d[0]; D.value=d[1]; Mm.value=d[2]; V.value=d[3]; TT.value=1000; draw(); };
+  seg("#i8-preset",ds=>{ preset=ds.p; load(); });
+  [F,D,Mm,V,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#i8-play"),TT,()=>3,draw);
+  load(); return draw;
+}
+
+/* ---------- 8.3/8.4 collisions on an air track ---------- */
+function ch8collide(){
+  const cv=$("#c8-cv"), ctx=cv.getContext("2d"), M1=$("#c8-m1"), M2=$("#c8-m2"), V1=$("#c8-v1"), V2=$("#c8-v2"), E=$("#c8-e"), TT=$("#c8-t");
+  let preset="gliders", unit="kg";
+  const draw=()=>{
+    const uf=unit==="t"?1000:1, m1=+M1.value*uf, m2=+M2.value*uf, v1=+V1.value, v2=+V2.value, e=+E.value;
+    const Vc=(m1*v1+m2*v2)/(m1+m2), meet=v1>v2+1e-9;
+    const a1=meet?Vc-e*(v1-Vc):v1, a2=meet?Vc-e*(v2-Vc):v2;
+    const T=3, tc=1.35, t=+TT.value/1000*T;
+    const mu=m1*m2/(m1+m2), K1=0.5*m1*v1*v1+0.5*m2*v2*v2, K2=0.5*m1*a1*a1+0.5*m2*a2*a2;
+    $("#c8-m1-o").textContent=(+M1.value).toFixed(1)+" "+unit; $("#c8-m2-o").textContent=(+M2.value).toFixed(1)+" "+unit;
+    $("#c8-v1-o").textContent=fmt(v1,1)+" m/s"; $("#c8-v2-o").textContent=fmt(v2,1)+" m/s"; $("#c8-e-o").textContent=e.toFixed(2); $("#c8-t-o").textContent=(t-tc>=0?"+":"")+(t-tc).toFixed(2)+" s from impact";
+    // positions (world: metres), contact at x = 0 at time tc
+    const vmax=Math.max(1,Math.abs(v1),Math.abs(v2));
+    const span=Math.max(...[0,T].flatMap(s=>{ const d=s-tc; return meet?(d<0?[v1*d,v2*d]:[a1*d,a2*d]):[v1*d,v2*d]; }))-Math.min(...[0,T].flatMap(s=>{ const d=s-tc; return meet?(d<0?[v1*d,v2*d]:[a1*d,a2*d]):[v1*d,v2*d]; }))+1e-6, w=0.11*span;
+    const wA=w*(0.7+0.3*Math.cbrt(m1/Math.max(m1,m2))), wB=w*(0.7+0.3*Math.cbrt(m2/Math.max(m1,m2)));
+    const pos=(s)=>{ if(meet){ const d=s-tc; return d<0?[-wA/2+v1*d, wB/2+v2*d]:[-wA/2+a1*d, wB/2+a2*d]; }
+      return [-wA/2-0.4*w+v1*(s-tc), wB/2+0.4*w+v2*(s-tc)]; };
+    const xsA=[0,T].map(s=>pos(s)[0]), xsB=[0,T].map(s=>pos(s)[1]);
+    const lo=Math.min(...xsA)-wA, hi=Math.max(...xsB)+wB, M=fitWorld({x:20,y:30,w:600,h:110},[lo,hi],[-0.5*(hi-lo)*110/600,0.5*(hi-lo)*110/600]);
+    const [xA,xB]=pos(t), y0=110;
+    clearCv(ctx,cv);
+    hatchFloor(ctx,20,620,y0+3);
+    const hA=26+16*Math.cbrt(m1/Math.max(m1,m2)), hB=26+16*Math.cbrt(m2/Math.max(m1,m2));
+    const box=(x,ww,h,col,lab)=>{ const X1=M.X(x-ww/2), X2=M.X(x+ww/2); ctx.save(); ctx.fillStyle=col; ctx.globalAlpha=0.3; ctx.fillRect(X1,y0-h,X2-X1,h); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.strokeRect(X1,y0-h,X2-X1,h); ctx.restore(); cvText(ctx,(X1+X2)/2,y0-h/2,lab,css("--ink"),"center","700 13px "); };
+    box(xA,wA,hA,css("--vB"),"A"); box(xB,wB,hB,css("--vA"),"B");
+    const after=meet&&t>=tc, uA=after?a1:v1, uB=after?a2:v2, sc=40/vmax;
+    if(Math.abs(uA)>0.01) arrow2(ctx,M.X(xA),y0-hA-14,M.X(xA)+uA*sc,y0-hA-14,css("--vB"),2.5);
+    if(Math.abs(uB)>0.01) arrow2(ctx,M.X(xB),y0-hB-14,M.X(xB)+uB*sc,y0-hB-14,css("--vA"),2.5);
+    const xc=(m1*xA+m2*xB)/(m1+m2);
+    ctx.save(); ctx.fillStyle=css("--vC"); ctx.beginPath(); ctx.moveTo(M.X(xc),y0+6); ctx.lineTo(M.X(xc)-7,y0+18); ctx.lineTo(M.X(xc)+7,y0+18); ctx.closePath(); ctx.fill(); ctx.restore();
+    cvText(ctx,M.X(xc),y0+28,"centre of mass",css("--vC"),"center","600 11px ");
+    // bars: momentum before and after; energy before and after
+    bars(ctx,{x:30,y:190,w:330,h:200},[["p_A",m1*v1,css("--vB")],["p_B",m2*v2,css("--vA")],["P",m1*v1+m2*v2,css("--vC")],["p_A′",m1*a1,css("--vB")],["p_B′",m2*a2,css("--vA")],["P′",m1*a1+m2*a2,css("--vC")]],"momentum (kg·m/s): before | after");
+    bars(ctx,{x:390,y:190,w:230,h:200},[["K",K1,css("--vB")],["K′",K2,css("--vC")],["lost",K1-K2,css("--warn")]],"kinetic energy (J)");
+    const fE=x=>Math.abs(x)>=1e4?(x/1000).toFixed(1)+" kJ":x.toFixed(2)+" J", fP=x=>Math.abs(x)>=1e4?(x/1000).toFixed(1)+"×10³ kg·m/s":fmt(x,2)+" kg·m/s";
+    const rows=[["V_cm",fmt(Vc,3)+" m/s"]];
+    if(meet) rows.push(["v_A′",fmt(a1,3)+" m/s"],["v_B′",fmt(a2,3)+" m/s"],["Δp_A",fP(m1*(a1-v1))],["Δp_B",fP(m2*(a2-v2))],["Δv_A",fmt(a1-v1,2)+" m/s"],["Δv_B",fmt(a2-v2,2)+" m/s"],
+      ["K before",fE(K1)],["K after",fE(K2)],["lost",fE(K1-K2)+" ("+(100*(K1-K2)/K1).toFixed(0)+"%)"],["½μv_rel²",fE(0.5*mu*(v1-v2)**2)]);
+    else rows.push(["","they never meet: v_A ≤ v_B"]);
+    readout($("#c8-out"),rows);
+    let key;
+    if(!meet) key="Glider A is not catching up with glider B, so there is no collision. Make v_A larger than v_B.";
+    else if(preset==="lorry") key="The car and the lorry receive equal and opposite momentum changes (third law), so the total momentum does not change. But the car's velocity changes ten times as much as the lorry's: Δv = Δp/m.";
+    else if(e>0.995) key="Elastic: the gliders separate with the same relative speed with which they approached, and no kinetic energy is lost. Each velocity is reflected about the velocity of the centre of mass: v′ = 2V − v.";
+    else if(e<0.005) key="Completely inelastic: the gliders stick and move on with the velocity of the centre of mass. All the energy of relative motion, ½μv_rel², is lost (Eq. 8.13); the energy of the centre of mass cannot be lost.";
+    else key=`Partly inelastic: the relative speed after the collision is e = ${e.toFixed(2)} times the relative speed before, and a fraction 1 − e² = ${(1-e*e).toFixed(2)} of the energy of relative motion is lost. The green bars show that momentum is conserved in every case.`;
+    $("#c8-key").textContent=key;
+  };
+  const load=()=>{ const d={wagons:["t",30,20,2,0,0],gliders:["kg",0.6,0.2,3,-1,1],equal:["kg",1,1,2,0,1],lorry:["t",1,10,10,-5,0]}[preset];
+    unit=d[0]; M1.value=d[1]; M2.value=d[2]; V1.value=d[3]; V2.value=d[4]; E.value=d[5]; TT.value=0; draw(); };
+  seg("#c8-preset",ds=>{ preset=ds.p; load(); });
+  [M1,M2,V1,V2,E,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#c8-play"),TT,()=>4,draw);
+  load(); return draw;
+}
+
+/* ---------- 8.4 glancing collisions ---------- */
+function ch8billiards(){
+  const cv=$("#b8-cv"), ctx=cv.getContext("2d"), B=$("#b8-b"), R=$("#b8-r"), E=$("#b8-e"), TT=$("#b8-t");
+  let preset="ex";
+  const draw=()=>{
+    const b=+B.value, m1=1, m2=+R.value, e=+E.value, v=2.0, r=0.5, Rs=2*r;
+    const T=3, tc=1.2, t=+TT.value/1000*T;
+    const cx=-Math.sqrt(Rs*Rs-(b*Rs)**2), cy=b*Rs, n=[-cx/Rs,-cy/Rs];
+    const u1n=v*n[0], ut=[v-u1n*n[0],-u1n*n[1]];
+    const u1n2=(m1-e*m2)/(m1+m2)*u1n, u2n2=(1+e)*m1/(m1+m2)*u1n;
+    const w1=[ut[0]+u1n2*n[0],ut[1]+u1n2*n[1]], w2=[u2n2*n[0],u2n2*n[1]];
+    $("#b8-b-o").textContent=b.toFixed(2); $("#b8-r-o").textContent=m2.toFixed(2); $("#b8-e-o").textContent=e.toFixed(2); $("#b8-t-o").textContent=(t-tc).toFixed(2)+" s";
+    const d=t-tc, p1=d<0?[cx+v*d,cy]:[cx+w1[0]*d,cy+w1[1]*d], p2=d<0?[0,0]:[w2[0]*d,w2[1]*d];
+    clearCv(ctx,cv);
+    const M=fitWorld({x:16,y:16,w:420,h:368},[-3.9,3.9],[-3.4,3.4]);
+    ctx.save(); ctx.fillStyle=css("--vC"); ctx.globalAlpha=0.07; ctx.fillRect(M.X(-3.9),M.Y(3.4),M.X(3.9)-M.X(-3.9),M.Y(-3.4)-M.Y(3.4)); ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.rect(M.X(-3.9),M.Y(3.4),M.X(3.9)-M.X(-3.9),M.Y(-3.4)-M.Y(3.4)); ctx.clip();
+    const dash=(x1,y1,x2,y2,col)=>{ ctx.save(); ctx.setLineDash([5,5]); ctx.strokeStyle=col; ctx.lineWidth=1.3; ctx.beginPath(); ctx.moveTo(M.X(x1),M.Y(y1)); ctx.lineTo(M.X(x2),M.Y(y2)); ctx.stroke(); ctx.restore(); };
+    dash(cx-v*tc,cy,cx,cy,css("--vB"));
+    if(d>0){ dash(cx,cy,p1[0],p1[1],css("--vB")); dash(0,0,p2[0],p2[1],css("--vA")); }
+    const ball=(p,col,rr)=>{ ctx.save(); ctx.fillStyle=col; ctx.globalAlpha=0.35; ctx.beginPath(); ctx.arc(M.X(p[0]),M.Y(p[1]),rr*M.s,0,2*Math.PI); ctx.fill(); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.stroke(); ctx.restore(); };
+    ball(p2,css("--vA"),r); ball(p1,css("--vB"),r);
+    const sc=0.55*M.s, cur1=d<0?[v,0]:w1, cur2=d<0?[0,0]:w2;
+    if(Math.hypot(...cur1)>0.01) arrow2(ctx,M.X(p1[0]),M.Y(p1[1]),M.X(p1[0])+cur1[0]*sc,M.Y(p1[1])-cur1[1]*sc,css("--vB"),2.5);
+    if(Math.hypot(...cur2)>0.01) arrow2(ctx,M.X(p2[0]),M.Y(p2[1]),M.X(p2[0])+cur2[0]*sc,M.Y(p2[1])-cur2[1]*sc,css("--vA"),2.5);
+    ctx.restore();
+    // momentum triangle
+    const ox=452, oy=215, s2=78;
+    cvText(ctx,450,40,"momentum triangle",css("--muted"),"left","600 11px ");
+    arrow2(ctx,ox,oy,ox+m1*v*s2,oy,css("--ink"),2.2);
+    arrow2(ctx,ox,oy,ox+m1*w1[0]*s2,oy-m1*w1[1]*s2,css("--vB"),2.5);
+    arrow2(ctx,ox+m1*w1[0]*s2,oy-m1*w1[1]*s2,ox+m1*w1[0]*s2+m2*w2[0]*s2,oy-m1*w1[1]*s2-m2*w2[1]*s2,css("--vA"),2.5);
+    cvText(ctx,ox+m1*v*s2/2,oy+14,"m₁v",css("--ink"),"center","600 11px ");
+    cvText(ctx,ox+m1*w1[0]*s2/2-8,oy-m1*w1[1]*s2/2-10,"m₁v₁′",css("--vB"),"right","600 11px ");
+    cvText(ctx,ox+m1*w1[0]*s2+m2*w2[0]*s2/2+8,oy-m1*w1[1]*s2-m2*w2[1]*s2/2+10,"m₂v₂′",css("--vA"),"left","600 11px ");
+    const sp1=Math.hypot(...w1), sp2=Math.hypot(...w2), ang=v=>deg(Math.atan2(v[1],v[0]));
+    let between=sp1>1e-6&&sp2>1e-6?Math.abs(ang(w1)-ang(w2)):NaN; if(between>180) between=360-between;
+    const K0=0.5*m1*v*v, K=0.5*m1*sp1*sp1+0.5*m2*sp2*sp2;
+    readout($("#b8-out"),[["ball 1 after",sp1.toFixed(2)+" m/s, "+(sp1>1e-6?fmt(ang(w1),1)+"°":"at rest")],["ball 2 after",sp2.toFixed(2)+" m/s, "+(sp2>1e-6?fmt(ang(w2),1)+"°":"—")],
+      ["angle between them",isNaN(between)?"—":between.toFixed(1)+"°"],["kinetic energy kept",(100*K/K0).toFixed(1)+"%"],["P_x before",(m1*v).toFixed(2)],["P_x after",(m1*w1[0]+m2*w2[0]).toFixed(2)],["P_y after",fmt(m1*w1[1]+m2*w2[1],3)]]);
+    let key;
+    if(b<0.005) key="Head-on: the motion stays on one line. With equal masses and e = 1 the moving ball stops and the struck ball takes its whole velocity.";
+    else if(Math.abs(m2-1)<0.03 && e>0.995) key="Equal masses, elastic, one at rest: the balls always fly apart at 90°, whatever the impact parameter, because v² = v₁′² + v₂′² makes the momentum triangle a right triangle (Example 8.13).";
+    else if(e<0.995) key="With e < 1 kinetic energy is lost and, for equal masses, the angle between the paths is less than 90°.";
+    else if(m2<1) key="A heavy ball hitting a lighter one is only slightly deflected, and the angle between the paths is less than 90°.";
+    else key="A light ball hitting a heavier one can bounce back, and the angle between the paths is more than 90°.";
+    $("#b8-key").textContent=key;
+  };
+  const load=()=>{ const d={ex:[0.5,1,1],head:[0,1,1],heavy:[0.5,0.25,1],light:[0.5,4,1]}[preset]; B.value=d[0]; R.value=d[1]; E.value=d[2]; TT.value=1000; draw(); };
+  seg("#b8-preset",ds=>{ preset=ds.p; load(); });
+  [B,R,E,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#b8-play"),TT,()=>3,draw);
+  load(); return draw;
+}
+
+/* ---------- 8.5 the centre of mass ---------- */
+function ch8cm(){
+  const cv=$("#m8-cv"), ctx=cv.getContext("2d"), A=$("#m8-a"), Bk=$("#m8-b"), C=$("#m8-c"), TT=$("#m8-t"), g=9.8;
+  let mode="shell";
+  const v0=Math.sqrt(400*g), th=Math.PI/4, vx=v0*Math.cos(th), vy=v0*Math.sin(th), tE=vy/g, xE=vx*tE, yE=vy*tE/2;
+  const shell=()=>{
+    const f=mode==="shell"?0.5:0.1+0.8*(+A.value);
+    let dx,dy;
+    if(mode==="shell"){ dx=-vx/(1-f); dy=0; } else { dx=-80+160*(+Bk.value); dy=-60+120*(+C.value); }
+    const u1=[vx+(1-f)*dx,(1-f)*dy], u2=[vx-f*dx,-f*dy];
+    const land=u=>{ const tt=(u[1]+Math.sqrt(u[1]*u[1]+2*g*yE))/g; return {tt,x:xE+u[0]*tt}; };
+    const L1=land(u1), L2=land(u2), Tend=tE+Math.max(L1.tt,L2.tt)*1.05;
+    const piece=(u,L,s)=>{ const d=Math.min(Math.max(0,s-tE),L.tt); return [xE+u[0]*d, Math.max(0,yE+u[1]*d-0.5*g*d*d)]; };
+    return {f,u1,u2,L1,L2,Tend,piece};
+  };
+  const draw=()=>{
+    clearCv(ctx,cv);
+    if(mode==="boat"){
+      const m=30+90*(+A.value), Mb=30+570*(+Bk.value), L=3.0, s=+TT.value/1000*L, xb=-m*s/(m+Mb), xm=xb-L/2+s, xcm=(m*xm+Mb*xb)/(m+Mb);
+      $("#m8-a-l").textContent="Mass of the fisherman"; $("#m8-a-o").textContent=m.toFixed(0)+" kg";
+      $("#m8-b-l").textContent="Mass of the boat"; $("#m8-b-o").textContent=Mb.toFixed(0)+" kg"; $("#m8-cw").style.display="none";
+      $("#m8-t-l").textContent="He has walked"; $("#m8-t-o").textContent=s.toFixed(2)+" m";
+      const M=fitWorld({x:20,y:60,w:600,h:240},[-3.2,2.6],[-0.8,2.2]), wy=M.Y(0);
+      ctx.save(); ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.12; ctx.fillRect(20,wy,600,90); ctx.restore();
+      for(let x=-3;x<=2.5;x+=0.5){ ctx.save(); ctx.strokeStyle=css("--vB"); ctx.globalAlpha=0.5; ctx.beginPath(); ctx.moveTo(M.X(x),wy+4); ctx.lineTo(M.X(x),wy+14); ctx.stroke(); ctx.restore(); cvText(ctx,M.X(x),wy+24,x.toFixed(1),css("--muted"),"center","500 10px "); }
+      cvText(ctx,620,wy+44,"marks fixed in the water (m)",css("--muted"),"right","600 11px ");
+      const bl=M.X(xb-L/2), br=M.X(xb+L/2);
+      ctx.save(); ctx.fillStyle=css("--vA"); ctx.globalAlpha=0.25; ctx.beginPath(); ctx.moveTo(bl-12,M.Y(0.45)); ctx.lineTo(br+18,M.Y(0.45)); ctx.lineTo(br,M.Y(-0.25)); ctx.lineTo(bl,M.Y(-0.25)); ctx.closePath(); ctx.fill(); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.6; ctx.stroke(); ctx.restore();
+      cvText(ctx,bl,M.Y(0.65),"stern",css("--muted"),"center","600 11px "); cvText(ctx,br,M.Y(0.65),"bow",css("--muted"),"center","600 11px ");
+      const X=M.X(xm), yb=M.Y(0.45);
+      ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(X,yb); ctx.lineTo(X,yb-0.9*M.s); ctx.stroke(); ctx.beginPath(); ctx.arc(X,yb-1.05*M.s,0.15*M.s,0,2*Math.PI); ctx.stroke(); ctx.restore();
+      ctx.save(); ctx.setLineDash([5,4]); ctx.strokeStyle=css("--vC"); ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(M.X(xcm),M.Y(2.0)); ctx.lineTo(M.X(xcm),wy+60); ctx.stroke(); ctx.restore();
+      dot(ctx,M.X(xcm),M.Y(0.35),css("--vC"),5); cvText(ctx,M.X(xcm)+6,M.Y(2.0),"centre of mass (does not move)",css("--vC"),"left","600 11px ");
+      readout($("#m8-out"),[["boat has moved",fmt(xb,3)+" m"],["fisherman has moved",fmt(xm+L/2,3)+" m"],["boat, after the whole walk",fmt(-m*L/(m+Mb),3)+" m"],["centre of mass",fmt(xcm,3)+" m (constant)"]]);
+      $("#m8-key").textContent="No horizontal external force acts on fisherman plus boat, so their centre of mass stays put. When he moves forward, the boat moves back; the distances are in the inverse ratio of the masses (Example 8.16: 60 kg, 120 kg, 3.0 m → the boat moves 1.0 m).";
+      return;
+    }
+    const S=shell(), T=S.Tend, t=+TT.value/1000*T;
+    $("#m8-cw").style.display=mode==="free"?"":"none";
+    $("#m8-a-l").textContent="Mass of piece 1 (fraction)"; $("#m8-a-o").textContent=S.f.toFixed(2)+(mode==="shell"?" (fixed)":"");
+    $("#m8-b-l").textContent="Kick, horizontal (relative velocity of 1 from 2)"; $("#m8-b-o").textContent=mode==="shell"?"piece 1 stops":(-80+160*(+Bk.value)).toFixed(0)+" m/s";
+    $("#m8-c-o").textContent=(-60+120*(+C.value)).toFixed(0)+" m/s"; $("#m8-t-l").textContent="Time"; $("#m8-t-o").textContent=t.toFixed(2)+" s";
+    A.disabled=mode==="shell"; Bk.disabled=mode==="shell";
+    const xmax=Math.max(450,S.L1.x,S.L2.x)*1.05, xmin=Math.min(-20,S.L1.x,S.L2.x)-10;
+    const M=fitWorld({x:40,y:30,w:580,h:300},[xmin,xmax],[-10,Math.max(130,yE*1.6)]);
+    worldGrid(ctx,M,{x:40,y:30,w:580,h:300},"x (m)","y (m)");
+    const pathCol=css("--muted");
+    ctx.save(); ctx.setLineDash([6,5]); ctx.strokeStyle=css("--vC"); ctx.lineWidth=1.5; ctx.beginPath();
+    for(let i=0;i<=200;i++){ const s=2*tE*i/200; const X=M.X(vx*s), Y=M.Y(vy*s-0.5*g*s*s); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); } ctx.stroke(); ctx.restore();
+    const posAt=s=>{ if(s<tE) return {one:[vx*s,vy*s-0.5*g*s*s]}; return {p1:S.piece(S.u1,S.L1,s),p2:S.piece(S.u2,S.L2,s)}; };
+    const trail=(fn,col)=>{ ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=2; ctx.beginPath(); for(let i=0;i<=300;i++){ const s=Math.min(t,T)*i/300; const p=fn(s); i?ctx.lineTo(M.X(p[0]),M.Y(p[1])):ctx.moveTo(M.X(p[0]),M.Y(p[1])); } ctx.stroke(); ctx.restore(); };
+    trail(s=>{ const q=posAt(s); return q.one||q.p1; },css("--vB"));
+    if(t>tE) trail(s=>{ const q=posAt(s); return q.one||q.p2; },css("--vA"));
+    const cm=s=>{ const q=posAt(s); if(q.one) return q.one; return [S.f*q.p1[0]+(1-S.f)*q.p2[0], S.f*q.p1[1]+(1-S.f)*q.p2[1]]; };
+    const q=posAt(t);
+    if(q.one) dot(ctx,M.X(q.one[0]),M.Y(q.one[1]),css("--ink"),6);
+    else { dot(ctx,M.X(q.p1[0]),M.Y(q.p1[1]),css("--vB"),4+4*Math.sqrt(S.f)); dot(ctx,M.X(q.p2[0]),M.Y(q.p2[1]),css("--vA"),4+4*Math.sqrt(1-S.f)); const c=cm(t); ctx.save(); ctx.strokeStyle=css("--vC"); ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(M.X(c[0]),M.Y(c[1]),7,0,2*Math.PI); ctx.stroke(); ctx.restore(); }
+    cvText(ctx,M.X(400),M.Y(-4)+14,"400 m",css("--vC"),"center","600 11px ");
+    const both=t>=tE+Math.min(S.L1.tt,S.L2.tt);
+    readout($("#m8-out"),[["explosion (top)",xE.toFixed(0)+" m, t = "+tE.toFixed(2)+" s"],["piece 1 lands at",S.L1.x.toFixed(0)+" m"],["piece 2 lands at",S.L2.x.toFixed(0)+" m"],
+      ["cm of landed pieces",(S.f*S.L1.x+(1-S.f)*S.L2.x).toFixed(0)+" m"],["P_x/M before, after",vx.toFixed(1)+", "+(S.f*S.u1[0]+(1-S.f)*S.u2[0]).toFixed(1)+" m/s"],["P_y/M after",fmt(S.f*S.u1[1]+(1-S.f)*S.u2[1],1)+" m/s"]]);
+    $("#m8-key").textContent = mode==="shell" ? "Example 8.17: piece 1 stops and falls straight down at 200 m; piece 2 leaves at twice the speed of the shell and lands at 600 m. The centre of mass (green circle) follows the dashed parabola and lands at 400 m."
+      : (Math.abs(S.L1.tt-S.L2.tt)<0.05 ? "The pieces land together, so their centre of mass lands exactly where the unexploded shell would have landed." : "The centre of mass follows the parabola only until the first piece lands: after that the ground pushes on that piece, an external force, and the centre of mass leaves the parabola.");
+  };
+  seg("#m8-mode",ds=>{ mode=ds.m; if(mode==="boat"){ A.value=(60-30)/90; Bk.value=(120-30)/570; TT.value=0; A.disabled=false; Bk.disabled=false; } else if(mode==="free"){ A.value=0.375; Bk.value=0.25; C.value=0.75; TT.value=1000; A.disabled=false; Bk.disabled=false; } else { TT.value=1000; } draw(); });
+  [A,Bk,C,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#m8-play"),TT,()=>mode==="boat"?4:5,draw);
+  draw(); return draw;
+}
+
+/* ---------- 8.6 rocket launch ---------- */
+function ch8rocket(){
+  const cv=$("#r8-cv"), ctx=cv.getContext("2d"), N=$("#r8-n"), Mm=$("#r8-m"), Pp=$("#r8-p"), Ss=$("#r8-s"), U=$("#r8-u"), Q=$("#r8-q"), TT=$("#r8-t"), g=9.8;
+  let where="space", preset="space";
+  const run=()=>{
+    const n=+N.value, m0=+Mm.value*1000, mp=+Pp.value*m0, eps=+Ss.value, u=+U.value*1000, mu=+Q.value;
+    const ms=(m0-mp)/n, fuel=(1-eps)*ms, struct=eps*ms, tb=fuel/mu;
+    const out=[]; let m=m0, v=0, t=0, ideal=0, gl=0; const dt=Math.max(0.05,tb/600);
+    for(let k=0;k<n;k++){ const mstart=m; let burnt=0;
+      while(burnt<fuel-1e-9){ const step=Math.min(dt,(fuel-burnt)/mu); let a=u*mu/m-(where==="earth"?g:0); if(where==="earth"&&v<=0&&a<0) a=0;
+        out.push({t,m,v,a,stage:k}); v+=a*step; if(where==="earth"&&v<0) v=0; m-=mu*step; burnt+=mu*step; t+=step; }
+      ideal+=u*Math.log(mstart/m); out.push({t,m,v,a:0,stage:k,end:true}); if(k<n-1) m-=struct; }
+    return {n,m0,mp,eps,u,mu,ms,fuel,struct,tb,out,T:t,ideal,vend:v};
+  };
+  const draw=()=>{
+    const R=run(), t=+TT.value/1000*R.T; let o=R.out[0]; for(const p of R.out){ if(p.t<=t+1e-9) o=p; else break; }
+    $("#r8-n-o").textContent=R.n; $("#r8-m-o").textContent=(R.m0/1000).toFixed(0)+" t"; $("#r8-p-o").textContent=(R.mp/1000).toFixed(1)+" t"; $("#r8-s-o").textContent=R.eps.toFixed(2);
+    $("#r8-u-o").textContent=(R.u/1000).toFixed(1)+" km/s"; $("#r8-q-o").textContent=R.mu+" kg/s"; $("#r8-t-o").textContent=t.toFixed(1)+" s";
+    clearCv(ctx,cv);
+    // rocket picture: stages stacked, bottom stage first
+    const X=70, base=360, hst=230/R.n;
+    for(let k=0;k<R.n;k++){ const y2=base-k*hst, y1=y2-hst+6, gone=k<o.stage, burning=k===o.stage&&!o.end&&t<R.T-1e-6;
+      const fillFrac=k<o.stage?0:k>o.stage?1:Math.max(0,(o.m-R.mp-(R.n-1-k)*R.ms-R.struct)/R.fuel);
+      ctx.save(); ctx.globalAlpha=gone?0.15:1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.strokeRect(X-22,y1,44,y2-y1);
+      ctx.fillStyle=css("--vA"); ctx.globalAlpha=gone?0.08:0.35; ctx.fillRect(X-21,y2-(y2-y1)*fillFrac,42,(y2-y1)*fillFrac); ctx.restore();
+      if(burning){ ctx.save(); ctx.fillStyle=css("--vA"); ctx.globalAlpha=0.7; ctx.beginPath(); ctx.moveTo(X-14,y2+2); ctx.lineTo(X+14,y2+2); ctx.lineTo(X,y2+30); ctx.closePath(); ctx.fill(); ctx.restore(); }
+      cvText(ctx,X+30,(y1+y2)/2,"stage "+(k+1),css("--muted"),"left","600 11px "); }
+    const ty=base-R.n*hst; ctx.save(); ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.35; ctx.beginPath(); ctx.moveTo(X-22,ty+6); ctx.lineTo(X+22,ty+6); ctx.lineTo(X,ty-30); ctx.closePath(); ctx.fill(); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.stroke(); ctx.restore();
+    cvText(ctx,X,ty-40,"payload",css("--muted"),"center","600 11px ");
+    // speed graph
+    const vtop=Math.max(R.ideal,where==="earth"?7900:0,R.vend)*1.12/1000+0.1;
+    const F1=frame(ctx,{x:200,y:24,w:420,h:170},[0,R.T*1.02],[0,vtop],"t (s)","v (km/s)");
+    if(where==="earth"){ ctx.save(); ctx.setLineDash([5,4]); ctx.strokeStyle=css("--vC"); ctx.lineWidth=1.3; ctx.beginPath(); ctx.moveTo(F1.X(0),F1.Y(7.9)); ctx.lineTo(F1.X(R.T*1.02),F1.Y(7.9)); ctx.stroke(); ctx.restore(); cvText(ctx,F1.X(R.T*1.02)-4,F1.Y(7.9)-9,"orbital speed 7.9 km/s",css("--vC"),"right","600 11px "); }
+    ctx.save(); ctx.setLineDash([2,4]); ctx.strokeStyle=css("--vA"); ctx.lineWidth=1.3; ctx.beginPath(); ctx.moveTo(F1.X(0),F1.Y(R.ideal/1000)); ctx.lineTo(F1.X(R.T*1.02),F1.Y(R.ideal/1000)); ctx.stroke(); ctx.restore();
+    cvText(ctx,F1.X(0)+70,F1.Y(R.ideal/1000)+10,"Tsiolkovsky: Σ v_ex ln(m₀/m) = "+(R.ideal/1000).toFixed(2)+" km/s",css("--vA"),"left","600 11px ");
+    ctx.save(); ctx.strokeStyle=css("--vB"); ctx.lineWidth=2.5; ctx.beginPath(); R.out.forEach((p,j)=>{ j?ctx.lineTo(F1.X(p.t),F1.Y(p.v/1000)):ctx.moveTo(F1.X(p.t),F1.Y(p.v/1000)); }); ctx.stroke(); ctx.restore();
+    dot(ctx,F1.X(o.t),F1.Y(o.v/1000),css("--ink"),4.5);
+    const F2=frame(ctx,{x:200,y:228,w:420,h:150},[0,R.T*1.02],[0,R.m0/1000*1.08],"t (s)","m (t)");
+    ctx.save(); ctx.strokeStyle=css("--vA"); ctx.lineWidth=2.2; ctx.beginPath(); R.out.forEach((p,j)=>{ j?ctx.lineTo(F2.X(p.t),F2.Y(p.m/1000)):ctx.moveTo(F2.X(p.t),F2.Y(p.m/1000)); }); ctx.stroke(); ctx.restore();
+    dot(ctx,F2.X(o.t),F2.Y(o.m/1000),css("--ink"),4.5);
+    const thrust=R.u*R.mu, done=t>=R.T-1e-6;
+    readout($("#r8-out"),[["mass m",(o.m/1000).toFixed(1)+" t"],["speed v",(o.v/1000).toFixed(3)+" km/s"],["thrust v_ex·μ",(thrust/1000).toFixed(0)+" kN"],["acceleration",((done?0:o.a)/g).toFixed(2)+" g"],
+      ["thrust/weight at t = 0",(thrust/(R.m0*g)).toFixed(2)],["burn time",R.T.toFixed(0)+" s"],["Tsiolkovsky Δv",(R.ideal/1000).toFixed(2)+" km/s"],["final speed",(R.vend/1000).toFixed(2)+" km/s"],["gravity loss",where==="earth"?((R.ideal-R.vend)/1000).toFixed(2)+" km/s":"none in empty space"]]);
+    let key;
+    if(where==="earth"&&thrust<R.m0*g) key="The thrust is smaller than the weight: the rocket cannot leave the pad until it has burnt enough fuel to become lighter than its thrust. Increase μ (or v_ex).";
+    else if(preset==="space"&&where==="space"&&R.n===1) key="Example 8.19: the thrust, 600 kN, stays constant while the mass falls from 40 t to 10 t, so the acceleration rises from 15 to 60 m/s². The final gain in speed is v_ex ln 4 = 4.2 km/s, however fast the fuel is burnt.";
+    else if(preset==="launch"&&R.n===1) key="Example 8.20: burning 1470 kg/s, the rocket lifts off at 0.5 g. At t = 120 s it moves at about 1.5 km/s; gravity has taken away g·t of the Tsiolkovsky speed. Move the time slider to 120 s.";
+    else key=R.n>1?"Dropping the empty tanks and engines of each stage gives the next stage a fresh, favourable mass ratio. Compare the final speed with one stage of the same total masses (set the number of stages to 1).":"Change the exhaust speed and the structure fraction: the final speed grows with v_ex and with the logarithm of the mass ratio.";
+    $("#r8-key").textContent=key;
+  };
+  const setW=w=>{ where=w; setPressed("#r8-where","w",w); };
+  const load=()=>{ const d={space:[1,40,0,0.25,3,200,"space"],launch:[1,300,0,0.2,3,1470,"earth"],orbit:[3,300,0.02,0.1,3.5,1500,"earth"]}[preset];
+    N.value=d[0]; Mm.value=d[1]; Pp.value=d[2]; Ss.value=d[3]; U.value=d[4]; Q.value=d[5]; setW(d[6]); TT.value=preset==="launch"?Math.round(1000*120/run().T):1000; draw(); };
+  seg("#r8-preset",ds=>{ preset=ds.p; load(); });
+  seg("#r8-where",ds=>{ where=ds.w; draw(); });
+  [N,Mm,Pp,Ss,U,Q,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#r8-play"),TT,()=>8,draw);
+  load(); return draw;
+}
+
 /* ---------- chapter cards ---------- */
 const CHAPTERS=[
  [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],7],
@@ -2934,7 +3342,7 @@ const CHAPTERS=[
  [5,"Applying Newton's Laws",["Connected bodies, Atwood machine","Incline with friction","Falling with air resistance","Circular motion","Rotating frame and inertial forces"],5],
  [6,"Work and Kinetic Energy",["Work of a constant force","Work–energy theorem bars","Work as area under F(x)","Power, force, and speed"],4],
  [7,"Potential Energy and Energy Conservation",["Energy bars on a track","Body on a spring","Conservative or not? Work along paths","Energy diagrams and equilibrium"],4],
- [8,"Momentum, Impulse, and Collisions",["Collision lab","Centre of mass","Rocket with variable mass"]],
+ [8,"Momentum, Impulse, and Collisions",["Impulse and force–time graphs","Collisions on an air track","Glancing collisions","Centre of mass, exploding shell","Rocket with stages"],5],
  [9,"Rotation of Rigid Bodies",["Angular kinematics","Moments of inertia, Steiner theorem"]],
  [10,"Dynamics of Rotational Motion",["Torque","Rolling down an incline","Gyroscope precession"]],
  [11,"Equilibrium and Elasticity",["Beam and ladder balance","Stress–strain curve"]],
@@ -2950,12 +3358,12 @@ $("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
   </article>`).join("");
 
 /* ---------- routing ---------- */
-const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),ch7:$("#view-ch7"),about:$("#view-about")};
+const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),ch7:$("#view-ch7"),ch8:$("#view-ch8"),about:$("#view-about")};
 const redraws=[];
 function route(){
   const h=(location.hash||"#home").slice(1);
   let v="home", target=null;
-  const m=h.match(/^(ch[1-7])(-.*)?$/);
+  const m=h.match(/^(ch[1-8])(-.*)?$/);
   if(m){ v=m[1]; if(m[2]) target=h; }
   else if(h==="about") v="about";
   else if(h==="chapters"){ v="home"; target="chapters"; }
@@ -2965,7 +3373,7 @@ function route(){
   const t=target && document.getElementById(target);
   if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
 }
-redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power(),ch7track(),ch7spring(),ch7paths(),ch7curve());
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power(),ch7track(),ch7spring(),ch7paths(),ch7curve(),ch8impulse(),ch8collide(),ch8billiards(),ch8cm(),ch8rocket());
 addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
 new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
