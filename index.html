@@ -150,6 +150,8 @@ footer .muted{opacity:.75}
       <a href="#ch6" data-nav="ch6">Chapter 6</a>
       <a href="#ch7" data-nav="ch7">Chapter 7</a>
       <a href="#ch8" data-nav="ch8">Chapter 8</a>
+      <a href="#ch9" data-nav="ch9">Chapter 9</a>
+      <a href="#ch10" data-nav="ch10">Chapter 10</a>
       <a href="#about" data-nav="about">About</a>
     </nav>
   </div>
@@ -1095,6 +1097,237 @@ footer .muted{opacity:.75}
             <div class="row"><button class="small-btn" id="r8-play">Launch</button></div>
             <dl class="readout" id="r8-out"></dl>
             <div class="key" id="r8-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="view-ch9" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 9</div>
+    <h1 style="margin-bottom:.2em">Rotation of Rigid Bodies</h1>
+    <p class="lede">Five instruments for the angular velocity vector, rotation with constant angular acceleration, the rolling wheel, rotational kinetic energy and the moment of inertia. Each loads a worked example from the book; then change the numbers and watch every point of the body move together.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 9 instruments">
+      <ol>
+        <li><a href="#ch9-vector"><span class="sn">9.1</span>The angular velocity vector</a></li>
+        <li><a href="#ch9-kinematics"><span class="sn">9.2</span>Constant angular acceleration</a></li>
+        <li><a href="#ch9-rolling"><span class="sn">9.3</span>The rolling wheel</a></li>
+        <li><a href="#ch9-windlass"><span class="sn">9.4</span>A falling weight and a turning drum</a></li>
+        <li><a href="#ch9-inertia"><span class="sn">9.5</span>Building a moment of inertia</a></li>
+      </ol>
+      <div class="note">Opening question: on a merry-go-round that speeds up, Aliya sits twice as far from the axis as Timur. Open <a href="#ch9-kinematics">Constant angular acceleration</a>, choose “Merry-go-round”, and compare the two acceleration arrows: both components, and so the whole acceleration, are twice as large for Aliya at every instant.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch9-vector">
+        <div class="sim-h"><h3>The angular velocity vector</h3><span class="ref">Section 9.1 · Examples 9.2, 9.3 · Eqs. (9.5), (9.6)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="w9-cv" width="640" height="400" aria-label="A wheel spinning on a turntable, with its angular velocity vectors and the velocities of points of the rim"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="w9-preset" role="group" aria-label="Situation">
+              <button data-p="ex" aria-pressed="true">Wheel on a turntable (Ex. 9.3)</button><button data-p="spin" aria-pressed="false">Spin only</button><button data-p="table" aria-pressed="false">Turntable only</button>
+            </div>
+            <div class="ctrl"><label for="w9-a"><span>Spin about the axle ω<sub>1</sub></span> <output id="w9-a-o"></output></label><input type="range" id="w9-a" min="-6" max="6" step="0.1" value="4"></div>
+            <div class="ctrl"><label for="w9-b"><span>Turntable ω<sub>2</sub></span> <output id="w9-b-o"></output></label><input type="range" id="w9-b" min="-6" max="6" step="0.1" value="3"></div>
+            <div class="ctrl"><label for="w9-t">Time <output id="w9-t-o"></output></label><input type="range" id="w9-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="w9-play">Play</button><label class="hint"><input type="checkbox" id="w9-v" checked> Show velocities v = ω × r</label></div>
+            <dl class="readout" id="w9-out"></dl>
+            <div class="key" id="w9-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch9-kinematics">
+        <div class="sim-h"><h3>Rotation with constant angular acceleration</h3><span class="ref">Sections 9.2, 9.3 · Examples 9.4, 9.5 · Eqs. (9.7)–(9.13)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="k9-cv" width="640" height="400" aria-label="A turning wheel with a marked spoke, and graphs of angle, angular velocity and angular acceleration against time"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="k9-preset" role="group" aria-label="Example">
+              <button data-p="cent" aria-pressed="true">Centrifuge (Ex. 9.4)</button><button data-p="grind" aria-pressed="false">Grinding wheel (Ex. 9.5)</button><button data-p="merry" aria-pressed="false">Merry-go-round</button><button data-p="rev" aria-pressed="false">Slows and reverses</button>
+            </div>
+            <div class="ctrl"><label for="k9-w"><span>Initial angular velocity ω<sub>0z</sub></span> <output id="k9-w-o"></output></label><input type="range" id="k9-w" min="-200" max="200" step="0.5" value="0"></div>
+            <div class="ctrl"><label for="k9-a"><span>Angular acceleration α<sub>z</sub></span> <output id="k9-a-o"></output></label><input type="range" id="k9-a" min="-40" max="40" step="0.01" value="31.42"></div>
+            <div class="ctrl"><label for="k9-T">Duration <output id="k9-T-o"></output></label><input type="range" id="k9-T" min="1" max="60" step="0.5" value="20"></div>
+            <div class="ctrl"><label for="k9-t">Time t <output id="k9-t-o"></output></label><input type="range" id="k9-t" min="0" max="1000" step="1" value="500"></div>
+            <div class="row"><button class="small-btn" id="k9-play">Play</button><label class="hint"><input type="checkbox" id="k9-stop"> Brake holds the wheel once ω = 0</label></div>
+            <dl class="readout" id="k9-out"></dl>
+            <div class="key" id="k9-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch9-rolling">
+        <div class="sim-h"><h3>The rolling wheel</h3><span class="ref">Section 9.3 · Example 9.8 · Eq. (9.15)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="r9-cv" width="640" height="400" aria-label="A wheel rolling along a road, with velocity arrows of points of the rim and the path of one point"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="r9-show" role="group" aria-label="Velocities shown">
+              <button data-s="sum" aria-pressed="true">Rolling (sum)</button><button data-s="tr" aria-pressed="false">Translation part</button><button data-s="rot" aria-pressed="false">Rotation part</button>
+            </div>
+            <div class="ctrl"><label for="r9-v"><span>Speed of the centre v<sub>cm</sub></span> <output id="r9-v-o"></output></label><input type="range" id="r9-v" min="0" max="3" step="0.05" value="1.5"></div>
+            <div class="ctrl"><label for="r9-s"><span>Rim speed of the rotation ωR</span> <output id="r9-s-o"></output></label><input type="range" id="r9-s" min="0" max="4" step="0.05" value="1.5"></div>
+            <div class="ctrl"><label for="r9-t">Time <output id="r9-t-o"></output></label><input type="range" id="r9-t" min="0" max="1000" step="1" value="120"></div>
+            <div class="row"><button class="small-btn" id="r9-play">Roll</button><button class="small-btn" id="r9-ns">No slipping</button><label class="hint"><input type="checkbox" id="r9-trace" checked> Trace a point of the rim</label></div>
+            <dl class="readout" id="r9-out"></dl>
+            <div class="key" id="r9-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch9-windlass">
+        <div class="sim-h"><h3>A falling weight and a turning drum</h3><span class="ref">Section 9.4 · Example 9.11 · Eqs. (9.16), (9.17)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="d9-cv" width="640" height="400" aria-label="A bucket falling on a rope wound round a drum, with energy bars"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="d9-shape" role="group" aria-label="Drum">
+              <button data-c="0.5" aria-pressed="true">Solid drum</button><button data-c="1" aria-pressed="false">Hollow drum</button><button data-c="0" aria-pressed="false">Massless drum</button>
+            </div>
+            <div class="ctrl"><label for="d9-m"><span>Mass of the bucket m</span> <output id="d9-m-o"></output></label><input type="range" id="d9-m" min="1" max="40" step="0.5" value="10"></div>
+            <div class="ctrl"><label for="d9-M"><span>Mass of the drum M</span> <output id="d9-M-o"></output></label><input type="range" id="d9-M" min="1" max="80" step="0.5" value="20"></div>
+            <div class="ctrl"><label for="d9-R"><span>Radius of the drum R</span> <output id="d9-R-o"></output></label><input type="range" id="d9-R" min="0.05" max="0.4" step="0.01" value="0.15"></div>
+            <div class="ctrl"><label for="d9-h">Height of fall h <output id="d9-h-o"></output></label><input type="range" id="d9-h" min="1" max="10" step="0.1" value="5"></div>
+            <div class="ctrl"><label for="d9-t">Time <output id="d9-t-o"></output></label><input type="range" id="d9-t" min="0" max="1000" step="1" value="1000"></div>
+            <div class="row"><button class="small-btn" id="d9-play">Release</button><button class="small-btn" id="d9-ex">Example 9.11</button></div>
+            <dl class="readout" id="d9-out"></dl>
+            <div class="key" id="d9-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch9-inertia">
+        <div class="sim-h"><h3>Building a moment of inertia</h3><span class="ref">Sections 9.4–9.6 · Examples 9.9, 9.13 · Eqs. (9.16), (9.20) · Table 9.2</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="n9-cv" width="640" height="400" aria-label="A body seen along the axis of rotation, and a graph of its moment of inertia against the distance of the axis from the centre of mass"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="n9-body" role="group" aria-label="Body">
+              <button data-b="frame" aria-pressed="true">Frame (Ex. 9.9)</button><button data-b="rod" aria-pressed="false">Thin rod</button><button data-b="disc" aria-pressed="false">Disc</button><button data-b="ring" aria-pressed="false">Ring</button><button data-b="beads" aria-pressed="false">Two beads</button>
+            </div>
+            <div class="ctrl"><label for="n9-M">Mass M <output id="n9-M-o"></output></label><input type="range" id="n9-M" min="0.2" max="5" step="0.1" value="1.2"></div>
+            <div class="ctrl"><label for="n9-L"><span id="n9-L-l">Size</span> <output id="n9-L-o"></output></label><input type="range" id="n9-L" min="0.2" max="1.5" step="0.01" value="0.6"></div>
+            <div class="ctrl"><label for="n9-d"><span>Axis: distance d from the centre of mass</span> <output id="n9-d-o"></output></label><input type="range" id="n9-d" min="-1.5" max="1.5" step="0.005" value="0"></div>
+            <div class="ctrl"><label for="n9-w">Angular speed ω <output id="n9-w-o"></output></label><input type="range" id="n9-w" min="0" max="10" step="0.1" value="4"></div>
+            <dl class="readout" id="n9-out"></dl>
+            <div class="key" id="n9-key"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="view-ch10" hidden>
+  <div class="ch-head wrap">
+    <div class="crumb"><a href="#home">Chapters</a> / Chapter 10</div>
+    <h1 style="margin-bottom:.2em">Dynamics of Rotational Motion</h1>
+    <p class="lede">Five instruments for torque, the rotational second law, rolling bodies, the conservation of angular momentum and the precessing gyroscope. Each loads a worked example from the book; then change the numbers and see which quantities are conserved and which are not.</p>
+  </div>
+  <div class="lab wrap">
+    <aside class="rail" aria-label="Chapter 10 instruments">
+      <ol>
+        <li><a href="#ch10-torque"><span class="sn">10.1</span>Torque on a wrench</a></li>
+        <li><a href="#ch10-winch"><span class="sn">10.2</span>Weights, ropes and heavy pulleys</a></li>
+        <li><a href="#ch10-rolling"><span class="sn">10.3</span>Rolling down a slope</a></li>
+        <li><a href="#ch10-skater"><span class="sn">10.6</span>Pulling in the dumbbells</a></li>
+        <li><a href="#ch10-gyro"><span class="sn">10.7</span>The precessing wheel</a></li>
+      </ol>
+      <div class="note">Opening question: a skater who pulls in her arms keeps her angular momentum but gains kinetic energy. Open <a href="#ch10-skater">Pulling in the dumbbells</a>, press Spin, and drag the dumbbells inward: the L bar stays put while the K bar grows by the work your arms do.</div>
+    </aside>
+    <div class="sims">
+
+      <article class="sim" id="ch10-torque">
+        <div class="sim-h"><h3>Torque on a wrench</h3><span class="ref">Section 10.1 · Example 10.1 · Eqs. (10.1)–(10.3)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="t10-cv" width="640" height="400" aria-label="A wrench on a nut with a force applied to its handle, the line of action, the lever arm and the components of the force"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="t10-preset" role="group" aria-label="Situation">
+              <button data-p="ex" aria-pressed="true">Example 10.1</button><button data-p="perp" aria-pressed="false">Push at 90°</button><button data-p="pipe" aria-pressed="false">With a pipe</button>
+            </div>
+            <div class="ctrl"><label for="t10-r"><span>Distance from the nut r</span> <output id="t10-r-o"></output></label><input type="range" id="t10-r" min="0.05" max="0.60" step="0.01" value="0.40"></div>
+            <div class="ctrl"><label for="t10-f"><span>Force F</span> <output id="t10-f-o"></output></label><input type="range" id="t10-f" min="0" max="400" step="5" value="250"></div>
+            <div class="ctrl"><label for="t10-a"><span>Angle φ between r and F</span> <output id="t10-a-o"></output></label><input type="range" id="t10-a" min="0" max="180" step="1" value="60"></div>
+            <div class="row"><label class="hint"><input type="checkbox" id="t10-c" checked> Show components F<sub>tan</sub>, F<sub>rad</sub></label></div>
+            <dl class="readout" id="t10-out"></dl>
+            <div class="key" id="t10-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch10-winch">
+        <div class="sim-h"><h3>Weights, ropes and heavy pulleys</h3><span class="ref">Section 10.2 · Examples 10.3, 10.4 · Eq. (10.5)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="w10-cv" width="640" height="400" aria-label="A bucket on a rope wound round a drum, or two blocks over a pulley with mass, with the tensions drawn as arrows"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="w10-mode" role="group" aria-label="Device">
+              <button data-m="drum" aria-pressed="true">Bucket and drum (Ex. 10.3)</button><button data-m="atwood" aria-pressed="false">Atwood machine (Ex. 10.4)</button>
+            </div>
+            <div class="seg" id="w10-shape" role="group" aria-label="Pulley shape">
+              <button data-c="0.5" aria-pressed="true">Solid disc</button><button data-c="1" aria-pressed="false">Hoop</button><button data-c="0" aria-pressed="false">Massless</button>
+            </div>
+            <div class="ctrl"><label for="w10-m1"><span id="w10-m1-l">Mass of the bucket m</span> <output id="w10-m1-o"></output></label><input type="range" id="w10-m1" min="0.5" max="30" step="0.5" value="10"></div>
+            <div class="ctrl" id="w10-m2-row"><label for="w10-m2"><span>Mass m<sub>2</sub></span> <output id="w10-m2-o"></output></label><input type="range" id="w10-m2" min="0.5" max="30" step="0.5" value="3"></div>
+            <div class="ctrl"><label for="w10-M"><span>Mass of the drum/pulley M</span> <output id="w10-M-o"></output></label><input type="range" id="w10-M" min="0" max="40" step="0.5" value="20"></div>
+            <div class="ctrl"><label for="w10-t">Time <output id="w10-t-o"></output></label><input type="range" id="w10-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="w10-play">Release</button></div>
+            <dl class="readout" id="w10-out"></dl>
+            <div class="key" id="w10-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch10-rolling">
+        <div class="sim-h"><h3>Rolling down a slope</h3><span class="ref">Section 10.3 · Examples 10.6, 9.12 · Eqs. (10.9), (10.10)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="r10-cv" width="640" height="400" aria-label="A round body rolling down a slope beside a frictionless block, with the forces on it and energy bars"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="r10-body" role="group" aria-label="Body">
+              <button data-c="0.4" aria-pressed="true">Solid ball</button><button data-c="0.5" aria-pressed="false">Cylinder</button><button data-c="0.6667" aria-pressed="false">Hollow ball</button><button data-c="1" aria-pressed="false">Hoop</button><button data-c="race" aria-pressed="false">Race all</button>
+            </div>
+            <div class="ctrl"><label for="r10-th"><span>Slope angle θ</span> <output id="r10-th-o"></output></label><input type="range" id="r10-th" min="2" max="70" step="1" value="30"></div>
+            <div class="ctrl"><label for="r10-mu"><span>Coefficient of friction μ (static = kinetic)</span> <output id="r10-mu-o"></output></label><input type="range" id="r10-mu" min="0" max="1" step="0.01" value="0.30"></div>
+            <div class="ctrl"><label for="r10-t">Time <output id="r10-t-o"></output></label><input type="range" id="r10-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="r10-play">Release</button></div>
+            <dl class="readout" id="r10-out"></dl>
+            <div class="key" id="r10-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch10-skater">
+        <div class="sim-h"><h3>Pulling in the dumbbells</h3><span class="ref">Section 10.6 · Example 10.14 · Eqs. (10.22), (10.23)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="s10-cv" width="640" height="400" aria-label="A student on a rotating bench seen from above, holding two dumbbells, with bars for angular momentum and kinetic energy"></canvas></div>
+          <div class="panel">
+            <div class="seg" id="s10-preset" role="group" aria-label="Preset">
+              <button data-p="ex" aria-pressed="true">Example 10.14</button><button data-p="heavy" aria-pressed="false">Heavy dumbbells</button><button data-p="none" aria-pressed="false">No dumbbells</button>
+            </div>
+            <div class="ctrl"><label for="s10-d"><span>Distance of the dumbbells from the axis d</span> <output id="s10-d-o"></output></label><input type="range" id="s10-d" min="0.10" max="0.90" step="0.005" value="0.75"></div>
+            <div class="ctrl"><label for="s10-m"><span>Mass of each dumbbell m</span> <output id="s10-m-o"></output></label><input type="range" id="s10-m" min="0" max="8" step="0.5" value="3"></div>
+            <div class="ctrl"><label for="s10-i"><span>Student and bench I<sub>0</sub></span> <output id="s10-i-o"></output></label><input type="range" id="s10-i" min="0.5" max="5" step="0.1" value="2"></div>
+            <div class="row"><button class="small-btn" id="s10-play">Spin</button><button class="small-btn" id="s10-reset">Reset to 0.50 rev/s</button><label class="hint"><input type="checkbox" id="s10-side" checked> Show sideways forces while d changes</label></div>
+            <dl class="readout" id="s10-out"></dl>
+            <div class="key" id="s10-key"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sim" id="ch10-gyro">
+        <div class="sim-h"><h3>The precessing wheel</h3><span class="ref">Section 10.7 · Example 10.18 · Eq. (10.24)</span></div>
+        <div class="sim-b">
+          <div class="stage"><canvas id="g10-cv" width="640" height="400" aria-label="A spinning wheel supported at one end of its axle on a pivot, precessing about the vertical, with the vectors L, torque and dL"></canvas></div>
+          <div class="panel">
+            <div class="ctrl"><label for="g10-f"><span>Spin rate f</span> <output id="g10-f-o"></output></label><input type="range" id="g10-f" min="1" max="25" step="0.5" value="10"></div>
+            <div class="ctrl"><label for="g10-m"><span>Mass of the wheel m</span> <output id="g10-m-o"></output></label><input type="range" id="g10-m" min="0.5" max="4" step="0.1" value="2"></div>
+            <div class="ctrl"><label for="g10-r"><span>Distance from the pivot r</span> <output id="g10-r-o"></output></label><input type="range" id="g10-r" min="0.05" max="0.40" step="0.01" value="0.20"></div>
+            <div class="ctrl"><label for="g10-t">Time <output id="g10-t-o"></output></label><input type="range" id="g10-t" min="0" max="1000" step="1" value="0"></div>
+            <div class="row"><button class="small-btn" id="g10-play">Let go</button><label class="hint"><input type="checkbox" id="g10-nut"> Released without a push (nutation, ×10)</label></div>
+            <dl class="readout" id="g10-out"></dl>
+            <div class="key" id="g10-key"></div>
           </div>
         </div>
       </article>
@@ -3333,6 +3566,511 @@ function ch8rocket(){
   load(); return draw;
 }
 
+/* ---------- 9.1 the angular velocity vector ---------- */
+function ch9vector(){
+  const cv=$("#w9-cv"), ctx=cv.getContext("2d"), A=$("#w9-a"), B=$("#w9-b"), TT=$("#w9-t"), VV=$("#w9-v");
+  const R=0.20, D=8, cx=320, cy=200, s=430, kw=24, kv=60, cb=Math.cos(rad(40)), sb=Math.sin(rad(40)), cg=Math.cos(rad(18)), sg=Math.sin(rad(18));
+  const P=([x,y,z])=>{ const X=y*cb-x*sb, dep=x*cb+y*sb; return [cx+s*X, cy-s*(z*cg-dep*sg)]; };
+  const line=(pts,col,w=2,dash)=>{ ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; if(dash) ctx.setLineDash(dash); ctx.beginPath(); pts.forEach((p,i)=>{ const [X,Y]=P(p); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }); ctx.stroke(); ctx.restore(); };
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+  const add=(a,b,k=1)=>[a[0]+k*b[0],a[1]+k*b[1],a[2]+k*b[2]], mul=(a,k)=>[a[0]*k,a[1]*k,a[2]*k], len=a=>Math.hypot(...a);
+  const vec=(from,v,col,lab,w=3)=>{ const [X1,Y1]=P(from), [X2,Y2]=P(add(from,v)); arrow2(ctx,X1,Y1,X2,Y2,col,w); if(lab) cvText(ctx,X2+6,Y2-8,lab,col,"left","600 13px "); };
+  const keys={ex:"Example 9.3: spin 4.0 rad/s about the axle plus 3.0 rad/s about the vertical add to ω = 5.0 rad/s, tilted 36.9° above the axle. The top of the rim moves at 0.80 m/s, the side point at 1.0 m/s. The dashed line along ω is the instantaneous axis.",
+    spin:"Spin only: ω lies along the axle (right-hand rule). Every point of the rim moves at ωR, perpendicular to both ω and its radius.",
+    table:"Turntable only: ω is vertical. The wheel is carried round without spinning on its axle; the top point, on the axis, does not move."};
+  let key=keys.ex;
+  const draw=()=>{
+    const w1=+A.value, w2=+B.value, t=+TT.value/1000*D;
+    $("#w9-a-o").textContent=w1.toFixed(1)+" rad/s"; $("#w9-b-o").textContent=w2.toFixed(1)+" rad/s"; $("#w9-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const f2=w2*t, f1=w1*t;
+    const a=[Math.cos(f2),Math.sin(f2),0], e1=[-Math.sin(f2),Math.cos(f2),0], e2=[0,0,1];
+    const u=add(mul(e1,Math.cos(f1)),e2,Math.sin(f1)), w=add(mul(e1,-Math.sin(f1)),e2,Math.cos(f1));
+    const W=add(mul(a,w1),[0,0,w2]);
+    // turntable and post
+    const tp=[]; for(let i=0;i<=72;i++){ const q=2*Math.PI*i/72; tp.push([0.34*Math.cos(q),0.34*Math.sin(q),-0.30]); }
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.beginPath(); tp.forEach((p,i)=>{ const [X,Y]=P(p); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }); ctx.fill(); ctx.restore();
+    line(tp,css("--muted"),1.5);
+    line([[0,0,-0.30],[0.34*Math.cos(f2+2),0.34*Math.sin(f2+2),-0.30]],css("--muted"),2);
+    line([[0,0,-0.45],[0,0,0.42]],css("--axis"),1.2,[6,5]);
+    line([[0,0,-0.30],[0,0,-0.03]],css("--ink"),4);
+    line([mul(a,-0.10),mul(a,0.10)],css("--ink"),4);
+    // instantaneous axis
+    const Wl=len(W);
+    if(Wl>1e-6){ const n=mul(W,1/Wl); line([mul(n,-0.42),mul(n,0.42)],css("--vA"),1.5,[3,4]); }
+    // wheel
+    const rim=[]; for(let i=0;i<=96;i++){ const q=2*Math.PI*i/96; rim.push(mul(add(mul(u,Math.cos(q)),w,Math.sin(q)),R)); }
+    ctx.save(); ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.08; ctx.beginPath(); rim.forEach((p,i)=>{ const [X,Y]=P(p); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }); ctx.fill(); ctx.restore();
+    line(rim,css("--ink"),3);
+    for(let k=0;k<6;k++){ const q=Math.PI*k/3, r=mul(add(mul(u,Math.cos(q)),w,Math.sin(q)),R); line([[0,0,0],r],k===0?css("--vA"):css("--muted"),k===0?3:1.4); }
+    // velocities
+    if(VV.checked){ for(let k=0;k<8;k++){ const q=Math.PI*k/4, r=mul(add(mul(u,Math.cos(q)),w,Math.sin(q)),R), v=cross(W,r); dot(ctx,...P(r),css("--ink"),3); vec(r,mul(v,kv/s),css("--vC"),null,2); } }
+    // omega vectors from the centre
+    const O=[0,0,0], w1v=mul(a,w1*kw/s), w2v=[0,0,w2*kw/s], Wv=mul(W,kw/s);
+    line([w1v,Wv,w2v],css("--muted"),1,[4,4]);
+    vec(O,w1v,css("--vB"),"ω₁"); vec(O,w2v,css("--vB"),"ω₂"); vec(O,Wv,css("--vA"),"ω",3.5);
+    const top=cross(W,[0,0,R]), side=cross(W,mul(e1,R));
+    readout($("#w9-out"),[["ω = ω₁ + ω₂",`(${fmt(W[0],2)}, ${fmt(W[1],2)}, ${fmt(W[2],2)}) rad/s`],["|ω|",Wl.toFixed(2)+" rad/s"],
+      ["ω above the horizontal",(Wl>1e-6?deg(Math.atan2(w2,Math.abs(w1))).toFixed(1):"–")+"°"],["speed of the top of the rim",len(top).toFixed(2)+" m/s"],["speed of the side point (axle ⟂, horizontal)",len(side).toFixed(2)+" m/s"],["wheel radius","0.20 m"]]);
+    $("#w9-key").textContent=key;
+  };
+  seg("#w9-preset",ds=>{ if(ds.p==="ex"){ A.value=4; B.value=3; } else if(ds.p==="spin"){ A.value=4; B.value=0; } else { A.value=0; B.value=3; } key=keys[ds.p]; TT.value=0; draw(); });
+  [A,B,VV].forEach(i=>i.addEventListener("input",()=>{ key="Change ω₁ and ω₂: the resultant ω is always the diagonal of the parallelogram, and points on its line (dashed) are momentarily at rest. Green arrows: v = ω × r for points of the rim."; draw(); }));
+  TT.addEventListener("input",draw);
+  player($("#w9-play"),TT,()=>D,draw);
+  draw(); return draw;
+}
+
+/* ---------- 9.2 constant angular acceleration ---------- */
+function ch9kinematics(){
+  const cv=$("#k9-cv"), ctx=cv.getContext("2d"), W0=$("#k9-w"), AL=$("#k9-a"), TD=$("#k9-T"), TT=$("#k9-t"), ST=$("#k9-stop");
+  const PR={cent:{w:0,a:31.42,T:20,r:0.10,stop:false,names:["r/2","r"],key:"Example 9.4: from rest to 6000 rev/min (628 rad/s) in 20 s, α = 31.4 rad/s². After 10 s, ω = 314 rad/s and 250 revolutions; after 20 s, 1000 revolutions. θ grows as t²."},
+    grind:{w:188.5,a:-4.71,T:45,r:0.10,stop:true,names:["r/2","r"],key:"Example 9.5: from 1800 rev/min to rest with α = −4.71 rad/s² takes 40 s and 600 revolutions. The brake holds the wheel after that."},
+    merry:{w:0,a:0.20,T:10,r:2.0,stop:false,names:["Timur","Aliya"],key:"Chapter opener: both children have the same ω and α. Aliya, at twice the distance, has twice the tangential and twice the centripetal acceleration, so her total acceleration is twice Timur's at every instant, in the same direction relative to her radius."},
+    rev:{w:20,a:-4,T:8,r:0.10,stop:false,names:["r/2","r"],key:"TYU 9.2(b): ω = 20 − 4t stops at t = 5 s and then reverses; with constant α the equations hold right through, and the net angle at 8 s is 32 rad (50 rad forward, 18 rad back)."}};
+  let pr=PR.cent;
+  const model=t=>{ const w0=+W0.value, a=+AL.value, ts=(a!==0&&w0*a<0)?-w0/a:Infinity;
+    if(ST.checked && t>ts) return {th:w0*ts+0.5*a*ts*ts, w:0, a:0, ts};
+    return {th:w0*t+0.5*a*t*t, w:w0+a*t, a, ts}; };
+  const draw=()=>{
+    const T=+TD.value, t=+TT.value/1000*T, m=model(t), r=pr.r;
+    $("#k9-w-o").textContent=(+W0.value).toFixed(1)+" rad/s"; $("#k9-a-o").textContent=(+AL.value).toFixed(2)+" rad/s²"; $("#k9-T-o").textContent=T.toFixed(1)+" s"; $("#k9-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    // wheel
+    const C=[150,200], Rp=115;
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.beginPath(); ctx.arc(C[0],C[1],Rp,0,2*Math.PI); ctx.fill(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2.5; ctx.stroke(); ctx.restore();
+    for(let k=0;k<6;k++){ const q=m.th+k*Math.PI/3; ctx.save(); ctx.strokeStyle=k?css("--muted"):css("--vA"); ctx.lineWidth=k?1.2:3; ctx.beginPath(); ctx.moveTo(C[0],C[1]); ctx.lineTo(C[0]+Rp*Math.cos(q),C[1]-Rp*Math.sin(q)); ctx.stroke(); ctx.restore(); }
+    dot(ctx,C[0],C[1],css("--ink"),4);
+    // accelerations of two points on the marked spoke
+    const ka=80/Math.max(1e-9,r*Math.hypot(m.a,m.w*m.w));
+    [[0.5,pr.names[0]],[1,pr.names[1]]].forEach(([f,nm])=>{ const q=m.th, X=C[0]+f*Rp*Math.cos(q), Y=C[1]-f*Rp*Math.sin(q);
+      const at=f*r*m.a, ar=f*r*m.w*m.w, ux=Math.cos(q), uy=Math.sin(q), tx=-uy, ty=ux;
+      const ax=at*tx-ar*ux, ay=at*ty-ar*uy;
+      arrow2(ctx,X,Y,X+ax*ka,Y-ay*ka,css("--vC"),2.5); dot(ctx,X,Y,css("--vA"),5); cvText(ctx,X+8,Y+12,nm,css("--ink"),"left","600 11px "); });
+    cvText(ctx,C[0],C[1]+Rp+22,"green: accelerations (same scale)",css("--muted"),"center","500 11px ");
+    // graphs
+    const box=(y)=>({x:340,y,w:280,h:92});
+    const th=tt=>model(tt).th, w=tt=>model(tt).w, al=tt=>model(tt).a;
+    [[box(14),th,"θ (rad)",css("--vB")],[box(144),w,"ω_z (rad/s)",css("--vA")],[box(274),al,"α_z (rad/s²)",css("--vC")]].forEach(([b,f,lab,col])=>{
+      const F=frame(ctx,b,[0,T],rangeOf(f,0,T),"t (s)",lab); curve(ctx,F,f,0,T,col);
+      ctx.save(); ctx.strokeStyle=css("--muted"); ctx.setLineDash([4,4]); ctx.beginPath(); ctx.moveTo(F.X(t),b.y); ctx.lineTo(F.X(t),b.y+b.h); ctx.stroke(); ctx.restore();
+      dot(ctx,F.X(t),F.Y(f(t)),col,5); });
+    readout($("#k9-out"),[["θ − θ₀",m.th.toFixed(1)+" rad = "+(m.th/2/Math.PI).toFixed(1)+" rev"],["ω_z",m.w.toFixed(2)+" rad/s = "+(m.w*30/Math.PI).toFixed(0)+" rev/min"],["α_z",m.a.toFixed(2)+" rad/s²"],
+      ["rim point, r",r.toFixed(2)+" m"],["a_tan = rα",fmt(r*m.a,2)+" m/s²"],["a_rad = ω²r",(r*m.w*m.w).toFixed(2)+" m/s²"],["ω = 0 at",isFinite(m.ts)?m.ts.toFixed(2)+" s":"never"]]);
+    $("#k9-key").textContent=pr.key;
+  };
+  seg("#k9-preset",ds=>{ pr=PR[ds.p]; W0.value=pr.w; AL.value=pr.a; TD.value=pr.T; ST.checked=pr.stop; TT.value=ds.p==="cent"?500:1000; draw(); });
+  [W0,AL,TD,TT,ST].forEach(i=>i.addEventListener("input",draw));
+  player($("#k9-play"),TT,()=>Math.min(10,Math.max(4,+TD.value/2)),draw);
+  draw(); return draw;
+}
+
+/* ---------- 9.3 the rolling wheel ---------- */
+function ch9rolling(){
+  const cv=$("#r9-cv"), ctx=cv.getContext("2d"), V=$("#r9-v"), S=$("#r9-s"), TT=$("#r9-t"), TR=$("#r9-trace");
+  const R=1.0, kv=26; let show="sum";
+  const draw=()=>{
+    const v=+V.value, wR=+S.value, w=wR/R, D=v>0.05?Math.min(6,4.4/v):6, t=+TT.value/1000*D;
+    $("#r9-v-o").textContent=v.toFixed(2)+" m/s"; $("#r9-s-o").textContent=wR.toFixed(2)+" m/s"; $("#r9-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const M=fitWorld({x:20,y:10,w:600,h:370},[-3,3],[-0.6,3.1]), yRoad=M.Y(0);
+    ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(20,yRoad); ctx.lineTo(620,yRoad); ctx.stroke(); ctx.restore();
+    for(let x=-3;x<=3;x+=0.5) cvText(ctx,M.X(x),yRoad+12,"|",css("--muted"),"center","400 10px ");
+    const xc=-2.2+v*t, c=[xc,R], phi=w*t;
+    const P=q=>[c[0]+R*Math.cos(q-phi), c[1]+R*Math.sin(q-phi)];
+    if(TR.checked){ ctx.save(); ctx.strokeStyle=css("--vA"); ctx.globalAlpha=0.6; ctx.lineWidth=1.8; ctx.beginPath();
+      for(let i=0;i<=300;i++){ const s=t*i/300, xs=-2.2+v*s, q=-Math.PI/2-w*s; const X=M.X(xs+R*Math.cos(q)), Y=M.Y(R+R*Math.sin(q)); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); } ctx.stroke(); ctx.restore(); }
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.beginPath(); ctx.arc(M.X(c[0]),M.Y(c[1]),R*M.s,0,2*Math.PI); ctx.fill(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2.5; ctx.stroke(); ctx.restore();
+    for(let k=0;k<8;k++){ const [x,y]=P(k*Math.PI/4); ctx.save(); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(M.X(c[0]),M.Y(c[1])); ctx.lineTo(M.X(x),M.Y(y)); ctx.stroke(); ctx.restore(); }
+    const [mx,my]=P(-Math.PI/2); dot(ctx,M.X(mx),M.Y(my),css("--vA"),6);
+    // instantaneous centre
+    let ic=null; if(w>1e-6) ic=[c[0],c[1]-v/w];
+    const pts=[[c[0],c[1]]]; for(let k=0;k<8;k++) pts.push(P(k*Math.PI/4+Math.PI/8));
+    pts.forEach(([x,y])=>{ const rx=x-c[0], ry=y-c[1]; let vx=0,vy=0;
+      if(show!=="rot"){ vx+=v; } if(show!=="tr"){ vx+=w*ry; vy+=-w*rx; }
+      if(show==="sum" && ic && Math.abs(ic[1]-c[1])<3){ ctx.save(); ctx.strokeStyle=css("--muted"); ctx.setLineDash([3,4]); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(M.X(ic[0]),M.Y(ic[1])); ctx.lineTo(M.X(x),M.Y(y)); ctx.stroke(); ctx.restore(); }
+      arrow2(ctx,M.X(x),M.Y(y),M.X(x)+vx*kv,M.Y(y)-vy*kv,show==="tr"?css("--vB"):show==="rot"?css("--vC"):css("--vA"),2.5); dot(ctx,M.X(x),M.Y(y),css("--ink"),3); });
+    if(ic && ic[1]>-0.6 && ic[1]<3.1){ dot(ctx,M.X(ic[0]),M.Y(ic[1]),css("--warn"),6); cvText(ctx,M.X(ic[0])+9,M.Y(ic[1])+(ic[1]<0.1?14:0),"instantaneous axis (v = 0)",css("--warn"),"left","600 11px "); }
+    const slip=v-wR;
+    readout($("#r9-out"),[["v_cm",v.toFixed(2)+" m/s"],["ω (R = 1.0 m)",w.toFixed(2)+" rad/s"],["top of the wheel",(v+wR).toFixed(2)+" m/s"],["contact point slides at",fmt(slip,2)+" m/s"],
+      ["instantaneous axis above the road",ic?fmt(R-v/w,2)+" m":"none (no rotation)"]]);
+    $("#r9-key").textContent= Math.abs(slip)<0.01 ? (show==="sum"?"Rolling without slipping: v_cm = ωR. The contact point is at rest, the top moves at 2v_cm, and every velocity is perpendicular to the dashed line to the contact point, as for a rotation about it. The traced point draws a cycloid with cusps on the road.":"The rolling motion is the sum of a translation (all points at v_cm) and a rotation about the centre (rim at ωR). Switch to “Rolling (sum)” to add them.")
+      : slip>0 ? "Skidding: ωR < v_cm, so the bottom of the wheel slides forward along the road, like a braked tyre. The point at rest lies below the road." : "Spinning: ωR > v_cm, so the bottom of the wheel slides backward, like a tyre spinning on ice. The point at rest lies inside the wheel, above the road.";
+  };
+  seg("#r9-show",ds=>{ show=ds.s; draw(); });
+  $("#r9-ns").addEventListener("click",()=>{ S.value=V.value; draw(); });
+  [V,S,TT,TR].forEach(i=>i.addEventListener("input",draw));
+  player($("#r9-play"),TT,()=>6,draw);
+  draw(); return draw;
+}
+
+/* ---------- 9.4 a falling weight and a turning drum ---------- */
+function ch9windlass(){
+  const cv=$("#d9-cv"), ctx=cv.getContext("2d"), Mm=$("#d9-m"), MD=$("#d9-M"), RR=$("#d9-R"), HH=$("#d9-h"), TT=$("#d9-t"), g=9.8;
+  let c=0.5;
+  const draw=()=>{
+    const m=+Mm.value, M=+MD.value, R=+RR.value, h=+HH.value;
+    const a=g/(1+c*M/m), T=Math.sqrt(2*h/a), t=+TT.value/1000*T, s=0.5*a*t*t, v=a*t, w=v/R;
+    $("#d9-m-o").textContent=m.toFixed(1)+" kg"; $("#d9-M-o").textContent=M.toFixed(1)+" kg"; $("#d9-R-o").textContent=R.toFixed(2)+" m"; $("#d9-h-o").textContent=h.toFixed(1)+" m"; $("#d9-t-o").textContent=t.toFixed(2)+" s";
+    MD.disabled=c===0;
+    clearCv(ctx,cv);
+    const C=[130,30+(30+R*190)], Rp=30+R*190, bh=40, top=C[1]+Rp+8, kpx=(380-top-bh)/h;
+    // support and ground
+    ctx.save(); ctx.strokeStyle=css("--muted"); ctx.lineWidth=6; ctx.beginPath(); ctx.moveTo(C[0]-Rp-14,C[1]); ctx.lineTo(C[0]+Rp+40,C[1]); ctx.stroke(); ctx.restore();
+    const yG=top+h*kpx+bh+2; ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(20,yG); ctx.lineTo(350,yG); ctx.stroke(); ctx.restore();
+    // drum
+    ctx.save(); ctx.fillStyle=c===0?css("--surface"):css("--surface-2"); ctx.strokeStyle=css("--ink"); ctx.lineWidth=c===1?6:2.5; ctx.beginPath(); ctx.arc(C[0],C[1],Rp,0,2*Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
+    const phi=-s/R; for(let k=0;k<4;k++){ const q=phi+k*Math.PI/2; ctx.save(); ctx.strokeStyle=k?css("--muted"):css("--vA"); ctx.lineWidth=k?1.2:3; ctx.beginPath(); ctx.moveTo(C[0],C[1]); ctx.lineTo(C[0]+Rp*Math.cos(q),C[1]+Rp*Math.sin(q)); ctx.stroke(); ctx.restore(); }
+    dot(ctx,C[0],C[1],css("--ink"),4);
+    // rope and bucket
+    const xr=C[0]+Rp, yb=top+s*kpx;
+    ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(xr,C[1]); ctx.lineTo(xr,yb); ctx.stroke(); ctx.restore();
+    const bw=36;
+    ctx.save(); ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.35; ctx.fillRect(xr-bw/2,yb,bw,bh); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.strokeRect(xr-bw/2,yb,bw,bh); ctx.restore();
+    cvText(ctx,xr,yb+bh/2,"m",css("--ink"),"center","600 12px ");
+    // free-fall ghost
+    const sf=Math.min(h,0.5*g*t*t), xf=xr+90;
+    ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.strokeRect(xf-bw/2,top+sf*kpx,bw,bh); ctx.restore();
+    cvText(ctx,xf,top-12,"free fall",css("--muted"),"center","500 11px ");
+    if(v>0.05) vArrow(ctx,xr-bw/2-14,yb+6,yb+6+Math.min(60,v*6),css("--vA"),2.5);
+    // energy bars
+    const U=Math.max(0,m*g*(h-s)), Kb=0.5*m*v*v, Kd=0.5*c*M*v*v;
+    bars(ctx,{x:380,y:40,w:240,h:330},[["U",U,css("--vC")],["K bucket",Kb,css("--vB")],["K drum",Kd,css("--vA")],["total",U+Kb+Kd,css("--muted")]],"energy (J)");
+    const vf=Math.sqrt(2*g*h/(1+c*M/m));
+    readout($("#d9-out"),[["moment of inertia I = cMR²",(c*M*R*R).toFixed(3)+" kg·m²"],["acceleration of the bucket",a.toFixed(2)+" m/s²"],["speed v",v.toFixed(2)+" m/s"],["drum ω = v/R",w.toFixed(1)+" rad/s"],
+      ["final speed √(2gh/(1 + cM/m))",vf.toFixed(2)+" m/s"],["free-fall speed √(2gh)",Math.sqrt(2*g*h).toFixed(2)+" m/s"],["share of energy in the drum",(100*c*M/(m+c*M)).toFixed(0)+" %"],["time to fall",T.toFixed(2)+" s"]]);
+    $("#d9-key").textContent = c===0 ? "A massless drum takes no energy: the bucket falls freely, keeping pace with the dashed free-fall bucket." :
+      `The drum acts as an extra “effective mass” ${c===0.5?"½M":"M"} = ${(c*M).toFixed(1)} kg that must be accelerated along with the bucket. The radius cancels: try changing R. Example 9.11 (10 kg bucket, 20 kg solid drum, 5.0 m) gives 7.0 m/s, with half of mgh = 490 J in the drum.`;
+  };
+  seg("#d9-shape",ds=>{ c=+ds.c; draw(); });
+  $("#d9-ex").addEventListener("click",()=>{ Mm.value=10; MD.value=20; RR.value=0.15; HH.value=5; c=0.5; setPressed("#d9-shape","c","0.5"); TT.value=1000; draw(); });
+  [Mm,MD,RR,HH,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#d9-play"),TT,()=>3,draw);
+  draw(); return draw;
+}
+
+/* ---------- 9.5 building a moment of inertia ---------- */
+function ch9inertia(){
+  const cv=$("#n9-cv"), ctx=cv.getContext("2d"), MM=$("#n9-M"), LL=$("#n9-L"), DD=$("#n9-d"), WW=$("#n9-w");
+  let body="frame";
+  const frameM=[[0.40,-0.30,-0.20],[0.20,0.30,-0.20],[0.40,0.30,0.20],[0.20,-0.30,0.20]];
+  const Icm=(M,L)=>body==="rod"?M*L*L/12:body==="disc"?0.5*M*L*L:body==="ring"?M*L*L:body==="beads"?M*L*L/4:frameM.reduce((s,[m,x,y])=>s+m*(x*x+y*y),0);
+  const draw=()=>{
+    const fr=body==="frame", M=fr?1.2:+MM.value, L=fr?0.6:+LL.value, d=+DD.value, w=+WW.value;
+    MM.disabled=fr; LL.disabled=fr;
+    $("#n9-M-o").textContent=M.toFixed(1)+" kg"; $("#n9-L-l").textContent=body==="disc"||body==="ring"?"Radius R":body==="frame"?"Size (0.60 m × 0.40 m)":"Length L";
+    $("#n9-L-o").textContent=L.toFixed(2)+" m"; $("#n9-d-o").textContent=d.toFixed(3)+" m"; $("#n9-w-o").textContent=w.toFixed(1)+" rad/s";
+    clearCv(ctx,cv);
+    const bext=(body==="disc"||body==="ring")?L:body==="frame"?0.36:L/2, ext=Math.max(bext+0.15,Math.abs(d)+0.25);
+    const Mw=fitWorld({x:20,y:40,w:300,h:320},[-ext,ext],[-ext,ext]);
+    const X=x=>Mw.X(x), Y=y=>Mw.Y(y);
+    // body (seen along the axis)
+    ctx.save(); ctx.fillStyle=css("--vB"); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2;
+    if(body==="rod"){ ctx.globalAlpha=0.5; ctx.fillRect(X(-L/2),Y(0.025),L*Mw.s,0.05*Mw.s); ctx.globalAlpha=1; ctx.strokeRect(X(-L/2),Y(0.025),L*Mw.s,0.05*Mw.s); }
+    else if(body==="disc"){ ctx.globalAlpha=0.35; ctx.beginPath(); ctx.arc(X(0),Y(0),L*Mw.s,0,2*Math.PI); ctx.fill(); ctx.globalAlpha=1; ctx.stroke(); }
+    else if(body==="ring"){ ctx.lineWidth=7; ctx.strokeStyle=css("--vB"); ctx.beginPath(); ctx.arc(X(0),Y(0),L*Mw.s,0,2*Math.PI); ctx.stroke(); }
+    else if(body==="beads"){ ctx.strokeStyle=css("--muted"); ctx.beginPath(); ctx.moveTo(X(-L/2),Y(0)); ctx.lineTo(X(L/2),Y(0)); ctx.stroke(); [-1,1].forEach(k=>dot(ctx,X(k*L/2),Y(0),css("--vB"),11)); }
+    else { ctx.strokeStyle=css("--muted"); ctx.strokeRect(X(-0.3),Y(0.2),0.6*Mw.s,0.4*Mw.s); frameM.forEach(([m,x,y],i)=>{ dot(ctx,X(x),Y(y),css("--vB"),6+14*m); cvText(ctx,X(x)+(x<0?-14:14),Y(y)+(y<0?16:-16),"ABCD"[i]+" "+m.toFixed(2)+" kg",css("--muted"),x<0?"right":"left","600 11px "); }); }
+    ctx.restore();
+    // cm and axis
+    ctx.save(); ctx.strokeStyle=css("--vC"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(X(0)-6,Y(0)-6); ctx.lineTo(X(0)+6,Y(0)+6); ctx.moveTo(X(0)-6,Y(0)+6); ctx.lineTo(X(0)+6,Y(0)-6); ctx.stroke(); ctx.restore();
+    cvText(ctx,X(0),Y(0)+18,"cm",css("--vC"),"center","600 11px ");
+    const ax=X(d), ay=Y(0);
+    ctx.save(); ctx.strokeStyle=css("--vA"); ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(ax,ay,9,0,2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.moveTo(ax-6,ay-6); ctx.lineTo(ax+6,ay+6); ctx.moveTo(ax-6,ay+6); ctx.lineTo(ax+6,ay-6); ctx.stroke(); ctx.restore();
+    ctx.save(); ctx.strokeStyle=css("--vA"); ctx.lineWidth=2; ctx.beginPath(); ctx.arc(ax,ay,24,-2.6,0.9); ctx.stroke(); ctx.restore();
+    cvText(ctx,170,385,"⊗ axis, perpendicular to the screen",css("--vA"),"center","600 11px ");
+    if(Math.abs(d)>0.02){ ctx.save(); ctx.strokeStyle=css("--ink"); ctx.setLineDash([4,3]); ctx.beginPath(); ctx.moveTo(X(0),Y(0)+34); ctx.lineTo(X(d),Y(0)+34); ctx.stroke(); ctx.restore(); cvText(ctx,(X(0)+X(d))/2,Y(0)+46,"d",css("--ink"),"center","600 12px "); }
+    // graph I(d)
+    const I0=Icm(M,L), f=x=>I0+M*x*x, b={x:370,y:30,w:255,h:310};
+    const F=frame(ctx,b,[-1.5,1.5],[0,f(1.5)*1.08],"d (m)","I (kg·m²)");
+    curve(ctx,F,f,-1.5,1.5,css("--vA"));
+    ctx.save(); ctx.strokeStyle=css("--vC"); ctx.setLineDash([5,4]); ctx.beginPath(); ctx.moveTo(F.X(-1.5),F.Y(I0)); ctx.lineTo(F.X(1.5),F.Y(I0)); ctx.stroke(); ctx.restore();
+    cvText(ctx,F.X(-1.45),F.Y(I0)-9,"I_cm",css("--vC"),"left","600 11px ");
+    dot(ctx,F.X(d),F.Y(f(d)),css("--vA"),6);
+    const I=f(d);
+    const rows=[["I_cm",I0.toFixed(4)+" kg·m²"],["Md²",(M*d*d).toFixed(4)+" kg·m²"],["I = I_cm + Md²",I.toFixed(4)+" kg·m²"],["K = ½Iω²",(0.5*I*w*w).toFixed(3)+" J"]];
+    if(fr) rows.splice(3,0,["direct sum Σ m r²",frameM.reduce((s,[m,x,y])=>s+m*((x-d)**2+y*y),0).toFixed(4)+" kg·m²"]);
+    readout($("#n9-out"),rows);
+    const tab={rod:"Thin rod: I_cm = ML²/12; at the end (d = L/2), I = ML²/3 (Table 9.2a, b).",disc:"Disc: I_cm = ½MR²; at the rim (d = R), I = 3/2 MR² (Example 9.14).",ring:"Ring: I_cm = MR²; hanging on a nail at its rim, I = 2MR².",
+      beads:"Two beads of M/2 at the ends of a light rod: I_cm = M(L/2)²; all the mass is far from the centre, so I_cm is three times that of a uniform rod.",
+      frame:"Example 9.9: about the axis through O, I = 0.156 kg·m². Move the axis: the direct sum Σ m r² always equals I_cm + Md², the parallel-axis theorem."};
+    $("#n9-key").textContent=tab[body]+" The smallest moment of inertia is always about the axis through the centre of mass.";
+  };
+  seg("#n9-body",ds=>{ body=ds.b; if(body==="frame"){ DD.value=0; } else { MM.value=1.2; LL.value=body==="disc"||body==="ring"?0.4:0.8; DD.value=0; } draw(); });
+  [MM,LL,DD,WW].forEach(i=>i.addEventListener("input",draw));
+  draw(); return draw;
+}
+
+/* ---------- 10.1 torque on a wrench ---------- */
+function ch10torque(){
+  const cv=$("#t10-cv"), ctx=cv.getContext("2d"), R=$("#t10-r"), F=$("#t10-f"), A=$("#t10-a"), C=$("#t10-c");
+  const keys={ex:"Example 10.1: 250 N at 60° to the handle, 0.40 m from the nut. Lever arm 0.346 m, F_tan = 216.5 N, τ = 86.6 N·m, the same by all three methods. The radial component (125 N) only pushes along the handle.",
+    perp:"Pushing at 90° to the handle makes the lever arm as long as possible, l = r: 300 N at 0.40 m gives the 120 N·m the nut needs.",
+    pipe:"A pipe slipped over the handle lets the mechanic push 0.60 m from the nut: 200 N at 90° gives 120 N·m."};
+  let key=keys.ex;
+  const s=560, O=[110,240];
+  const X=x=>O[0]+x*s, Y=y=>O[1]-y*s;
+  const draw=()=>{
+    const r=+R.value, f=+F.value, phd=+A.value, ph=rad(phd);
+    $("#t10-r-o").textContent=r.toFixed(2)+" m"; $("#t10-f-o").textContent=f.toFixed(0)+" N"; $("#t10-a-o").textContent=phd+"°";
+    clearCv(ctx,cv);
+    // wrench: head round the nut, handle to 0.40 m, pipe beyond
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(O[0],O[1],30,0,2*Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillRect(X(0.03),O[1]-9,0.40*s-0.03*s,18); ctx.strokeRect(X(0.03),O[1]-9,0.40*s-0.03*s,18);
+    if(r>0.40){ ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.25; ctx.fillRect(X(0.30),O[1]-12,(r+0.03-0.30)*s,24); ctx.globalAlpha=1; ctx.strokeStyle=css("--vB"); ctx.strokeRect(X(0.30),O[1]-12,(r+0.03-0.30)*s,24); }
+    ctx.restore();
+    // hexagonal nut
+    ctx.save(); ctx.fillStyle=css("--muted"); ctx.beginPath(); for(let k=0;k<6;k++){ const q=k*Math.PI/3+Math.PI/6; const x=O[0]+16*Math.cos(q), y=O[1]+16*Math.sin(q); k?ctx.lineTo(x,y):ctx.moveTo(x,y); } ctx.closePath(); ctx.fill(); ctx.restore();
+    dot(ctx,O[0],O[1],css("--ink"),3.5); cvText(ctx,O[0]-15,O[1]+48,"O (axis of the bolt)",css("--muted"),"center","600 11px ");
+    const P=[X(r),O[1]], u=[Math.cos(ph),-Math.sin(ph)], kf=150/400, L=f*kf;
+    // line of action
+    ctx.save(); ctx.strokeStyle=css("--vA"); ctx.globalAlpha=0.55; ctx.setLineDash([6,5]); ctx.lineWidth=1.3; ctx.beginPath(); ctx.moveTo(P[0]-u[0]*700,P[1]-u[1]*700); ctx.lineTo(P[0]+u[0]*700,P[1]+u[1]*700); ctx.stroke(); ctx.restore();
+    // lever arm
+    const t=(O[0]-P[0])*u[0]+(O[1]-P[1])*u[1], Q=[P[0]+t*u[0],P[1]+t*u[1]], lev=r*Math.abs(Math.sin(ph));
+    if(lev>0.005){ ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(O[0],O[1]); ctx.lineTo(Q[0],Q[1]); ctx.stroke(); ctx.restore();
+      cvText(ctx,(O[0]+Q[0])/2+10,(O[1]+Q[1])/2+6,"l = "+lev.toFixed(3)+" m",css("--ink"),"left","600 12px "); dot(ctx,Q[0],Q[1],css("--ink"),3); }
+    // vector r
+    arrow2(ctx,O[0],O[1]+0,P[0],P[1],css("--vB"),2); cvText(ctx,(O[0]+P[0])/2,O[1]+24,"r",css("--vB"),"center","600 13px ");
+    // force and components
+    if(f>0){ arrow2(ctx,P[0],P[1],P[0]+u[0]*L,P[1]+u[1]*L,css("--vA"),3.5); cvText(ctx,P[0]+u[0]*L+8,P[1]+u[1]*L-6,"F",css("--vA"),"left","700 14px ");
+      if(C.checked){ const ft=f*Math.sin(ph), fr=f*Math.cos(ph);
+        arrow2(ctx,P[0],P[1],P[0],P[1]-ft*kf,css("--vC"),2.5); cvText(ctx,P[0]+8,P[1]-ft*kf/2,"F_tan",css("--vC"),"left","600 12px ");
+        arrow2(ctx,P[0],P[1],P[0]+fr*kf,P[1],css("--vC"),2.5); cvText(ctx,P[0]+fr*kf/2,P[1]+16,"F_rad",css("--vC"),"center","600 12px ");
+        ctx.save(); ctx.strokeStyle=css("--muted"); ctx.setLineDash([3,3]); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(P[0]+fr*kf,P[1]); ctx.lineTo(P[0]+u[0]*L,P[1]+u[1]*L); ctx.lineTo(P[0],P[1]-ft*kf); ctx.stroke(); ctx.restore(); }
+      // angle arc
+      ctx.save(); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(P[0],P[1],26,0,-ph,true); ctx.stroke(); ctx.restore();
+      cvText(ctx,P[0]+34*Math.cos(ph/2),P[1]-34*Math.sin(ph/2),"φ",css("--muted"),"center","600 12px "); }
+    const tau=r*f*Math.sin(ph);
+    // torque arc
+    if(Math.abs(tau)>0.5){ const sg=Math.sign(tau), rr=52, a0=sg>0?-0.6:0.6, a1=a0+sg*Math.min(2.6,0.6+Math.abs(tau)/60);
+      ctx.save(); ctx.strokeStyle=css("--warn"); ctx.lineWidth=3; ctx.beginPath(); ctx.arc(O[0],O[1],rr,-a0,-a1,sg>0); ctx.stroke(); ctx.restore();
+      const ex=O[0]+rr*Math.cos(a1), ey=O[1]-rr*Math.sin(a1), bx=O[0]+rr*Math.cos(a1-sg*0.18), by=O[1]-rr*Math.sin(a1-sg*0.18);
+      arrow2(ctx,bx,by,ex,ey,css("--warn"),3); cvText(ctx,O[0]-58,O[1]-62,"τ",css("--warn"),"center","700 15px "); }
+    // torque gauge
+    const gx=470, gy=40, gw=140, gh=14, need=120;
+    ctx.save(); ctx.strokeStyle=css("--line"); ctx.strokeRect(gx,gy,gw,gh); ctx.fillStyle=Math.abs(tau)>=need?css("--vC"):css("--vA"); ctx.fillRect(gx,gy,Math.min(1,Math.abs(tau)/need)*gw,gh); ctx.restore();
+    cvText(ctx,gx,gy-10,"torque / 120 N·m needed",css("--muted"),"left","600 11px ");
+    readout($("#t10-out"),[["lever arm l = r sin φ",lev.toFixed(3)+" m"],["F_tan = F sin φ",fmt(f*Math.sin(ph),1)+" N"],["F_rad = F cos φ",fmt(f*Math.cos(ph),1)+" N"],
+      ["τ_z = rF sin φ",fmt(tau,1)+" N·m"],["sense",Math.abs(tau)<0.05?"no turning":tau>0?"counterclockwise (τ out of the screen)":"clockwise (τ into the screen)"],["force needed at 90° for 120 N·m",(need/r).toFixed(0)+" N"]]);
+    $("#t10-key").textContent=key;
+  };
+  seg("#t10-preset",ds=>{ const d={ex:[0.40,250,60],perp:[0.40,300,90],pipe:[0.60,200,90]}[ds.p]; R.value=d[0]; F.value=d[1]; A.value=d[2]; key=keys[ds.p]; draw(); });
+  [R,F,A,C].forEach(i=>i.addEventListener("input",()=>{ key="Move the point of application and change the angle: the torque is the same whether you multiply F by the lever arm, use rF sin φ, or multiply F_tan by r. At φ = 0° or 180° the line of action passes through the nut and the torque is zero."; draw(); }));
+  draw(); return draw;
+}
+
+/* ---------- 10.2 weights, ropes and heavy pulleys ---------- */
+function ch10winch(){
+  const cv=$("#w10-cv"), ctx=cv.getContext("2d"), M1=$("#w10-m1"), M2=$("#w10-m2"), MM=$("#w10-M"), TT=$("#w10-t"), g=9.8;
+  let mode="drum", c=0.5;
+  const model=()=>{ const m1=+M1.value, m2=+M2.value, M=+MM.value;
+    if(mode==="drum"){ const a=m1*g/(m1+c*M), T=c*M*a, H=5, Tend=Math.sqrt(2*H/a); return {a,T,T1:T,T2:T,H,Tend,m1,m2,M,R:0.15}; }
+    const a=(m2-m1)*g/(m1+m2+c*M), H=1.5, Tend=Math.abs(a)>1e-6?Math.sqrt(2*H/Math.abs(a)):3; return {a,T1:m1*(g+a),T2:m2*(g-a),H,Tend,m1,m2,M,R:0.10}; };
+  const draw=()=>{
+    const d=model(), t=+TT.value/1000*d.Tend, s=0.5*d.a*t*t, v=d.a*t;
+    $("#w10-m1-o").textContent=(+M1.value).toFixed(1)+" kg"; $("#w10-m2-o").textContent=(+M2.value).toFixed(1)+" kg"; $("#w10-M-o").textContent=(+MM.value).toFixed(1)+" kg"; $("#w10-t-o").textContent=t.toFixed(2)+" s";
+    $("#w10-m1-l").textContent=mode==="drum"?"Mass of the bucket m":"Mass m₁ (left)"; $("#w10-m2-row").style.display=mode==="drum"?"none":"";
+    clearCv(ctx,cv);
+    const cx=mode==="drum"?170:200, cy=80, Rp=48, kT=110/Math.max(60,d.T1,d.T2,d.m1*g,d.m2*g), phi=-s/d.R;
+    // support
+    ctx.save(); ctx.fillStyle=css("--muted"); ctx.fillRect(cx-8,10,16,cy-10); ctx.restore();
+    // pulley
+    ctx.save(); ctx.fillStyle=c===0?css("--surface"):css("--surface-2"); ctx.strokeStyle=css("--ink"); ctx.lineWidth=c===1?7:2.5; ctx.beginPath(); ctx.arc(cx,cy,Rp,0,2*Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
+    for(let k=0;k<4;k++){ const q=(mode==="drum"?-phi:phi)+k*Math.PI/2; ctx.save(); ctx.strokeStyle=k?css("--muted"):css("--vA"); ctx.lineWidth=k?1.2:3; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Rp*Math.cos(q),cy+Rp*Math.sin(q)); ctx.stroke(); ctx.restore(); }
+    dot(ctx,cx,cy,css("--ink"),4);
+    const bw=44, bh=34, top=cy+40, kpx=(330-top)/d.H;
+    const block=(x,y,lab)=>{ ctx.save(); ctx.fillStyle=css("--vB"); ctx.globalAlpha=0.3; ctx.fillRect(x-bw/2,y,bw,bh); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.strokeRect(x-bw/2,y,bw,bh); ctx.restore(); cvText(ctx,x,y+bh/2,lab,css("--ink"),"center","600 12px "); };
+    const rope=(x,y)=>{ ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(x,cy); ctx.lineTo(x,y); ctx.stroke(); ctx.restore(); };
+    if(mode==="drum"){ const x=cx+Rp, y=top+s*kpx; rope(x,y); block(x,y,"m");
+      vArrow(ctx,x+30,y,y-d.T1*kT,css("--vC"),2.5); cvText(ctx,x+36,y-d.T1*kT/2,"T",css("--vC"),"left","600 12px ");
+      vArrow(ctx,x+30,y+bh,y+bh+d.m1*g*kT*0.5,css("--warn"),2.5); cvText(ctx,x+36,y+bh+d.m1*g*kT*0.25,"mg (½ scale)",css("--warn"),"left","600 11px ");
+      if(d.T1>0.5){ vArrow(ctx,x-14,cy,cy+d.T1*kT,css("--vC"),2.5); cvText(ctx,x-20,cy+d.T1*kT,"T",css("--vC"),"right","600 12px "); }
+      // free-fall ghost
+      const sf=Math.min(d.H,0.5*g*t*t), xg=x+120; ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.strokeRect(xg-bw/2,top+sf*kpx,bw,bh); ctx.restore(); cvText(ctx,xg,top-12,"free fall",css("--muted"),"center","500 11px ");
+    } else {
+      const xl=cx-Rp, xr=cx+Rp, y0=top+0.75*d.H*kpx-bh, yl=y0-s*kpx, yr=y0+s*kpx;
+      rope(xl,yl); rope(xr,yr); block(xl,yl,"m₁"); block(xr,yr,"m₂");
+      vArrow(ctx,xl-34,yl,yl-d.T1*kT,css("--vC"),2.5); cvText(ctx,xl-40,yl-d.T1*kT/2,"T₁",css("--vC"),"right","600 12px ");
+      vArrow(ctx,xr+34,yr,yr-d.T2*kT,css("--vC"),2.5); cvText(ctx,xr+40,yr-d.T2*kT/2,"T₂",css("--vC"),"left","600 12px ");
+      // pulley free-body diagram
+      const fx=470, fy=110; ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.arc(fx,fy,32,0,2*Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
+      vArrow(ctx,fx-32,fy,fy+d.T1*kT,css("--vC"),2.5); vArrow(ctx,fx+32,fy,fy+d.T2*kT,css("--vC"),2.5);
+      cvText(ctx,fx-38,fy+d.T1*kT,"T₁",css("--vC"),"right","600 12px "); cvText(ctx,fx+38,fy+d.T2*kT,"T₂",css("--vC"),"left","600 12px ");
+      cvText(ctx,fx,fy-48,"pulley: (T₂ − T₁)R = Iα",css("--muted"),"center","600 11px ");
+    }
+    const I=c*d.M*d.R*d.R;
+    const rows=mode==="drum"?[["acceleration a = mg/(m + cM)",d.a.toFixed(2)+" m/s²"],["tension T",d.T1.toFixed(1)+" N  (mg = "+(d.m1*g).toFixed(1)+" N)"],["α = a/R (R = 0.15 m)",(d.a/d.R).toFixed(1)+" rad/s²"],
+        ["speed now",v.toFixed(2)+" m/s"],["speed after 5.0 m",Math.sqrt(2*d.a*5).toFixed(2)+" m/s"],["force of the axle on the drum",(d.M*g+d.T1).toFixed(0)+" N"]]
+      :[["acceleration (m₂ down positive)",d.a.toFixed(2)+" m/s²"],["T₁",d.T1.toFixed(2)+" N"],["T₂",d.T2.toFixed(2)+" N"],["T₂ − T₁ = cMa",(d.T2-d.T1).toFixed(2)+" N"],["moment of inertia (R = 0.10 m)",I.toFixed(4)+" kg·m²"],["speed now",Math.abs(v).toFixed(2)+" m/s"]];
+    readout($("#w10-out"),rows);
+    $("#w10-key").textContent= mode==="drum" ? (c===0?"A massless drum: the rope is slack (T = 0) and the bucket falls freely with the dashed one.":"Example 10.3: 10 kg bucket, 20 kg solid drum: a = 4.9 m/s², T = 49 N, half the bucket's weight, and 7.0 m/s after 5.0 m, as found from energy in Example 9.11. The drum adds cM to the inertia but nothing to the driving force.")
+      : (c===0?"Massless pulley: the tensions are equal, as in Chapter 5.":"Example 10.4: 2.0 kg and 3.0 kg over a 2.0 kg disc: a = 1.63 m/s², T₁ = 22.9 N, T₂ = 24.5 N. The difference of the tensions turns the pulley; set M = 0 to make them equal.");
+  };
+  seg("#w10-mode",ds=>{ mode=ds.m; if(mode==="drum"){ M1.value=10; MM.value=20; } else { M1.value=2; M2.value=3; MM.value=2; } c=0.5; setPressed("#w10-shape","c","0.5"); TT.value=0; draw(); });
+  seg("#w10-shape",ds=>{ c=+ds.c; draw(); });
+  [M1,M2,MM,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#w10-play"),TT,()=>Math.min(4,Math.max(1.5,model().Tend)),draw);
+  draw(); return draw;
+}
+
+/* ---------- 10.3 rolling down a slope ---------- */
+function ch10rolling(){
+  const cv=$("#r10-cv"), ctx=cv.getContext("2d"), TH=$("#r10-th"), MU=$("#r10-mu"), TT=$("#r10-t"), g=9.8, Ls=2.0, Rb=0.12;
+  let sel="0.4";
+  const NAMES={"0":"block (no friction)","0.4":"solid ball","0.5":"cylinder","0.6667":"hollow ball","1":"hoop"};
+  const COLS=["--muted","--vA","--vB","--vC","--warn"];
+  const body=(c,th,mu)=>{ if(c===0) return {a:g*Math.sin(th),alpha:0,roll:false,slide:true,f:0};
+    const roll=Math.tan(th)<=mu*(1+c)/c+1e-12;
+    if(roll){ const a=g*Math.sin(th)/(1+c); return {a,alpha:a/Rb,roll:true,f:c/(1+c)*g*Math.sin(th)}; }
+    return {a:g*(Math.sin(th)-mu*Math.cos(th)),alpha:mu*g*Math.cos(th)/(c*Rb),roll:false,f:mu*g*Math.cos(th)}; };
+  const draw=()=>{
+    const thd=+TH.value, th=rad(thd), mu=+MU.value;
+    $("#r10-th-o").textContent=thd+"°"; $("#r10-mu-o").textContent=mu.toFixed(2);
+    const list=sel==="race"?["0","0.4","0.5","0.6667","1"]:["0",sel];
+    const bs=list.map(k=>({k,c:+k,...body(+k,th,mu)}));
+    const Dt=Math.max(...bs.map(b=>Math.sqrt(2*Ls/b.a))), t=+TT.value/1000*Dt;
+    $("#r10-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    const H=Ls*Math.sin(th), W=Ls*Math.cos(th);
+    const M=fitWorld({x:20,y:20,w:sel==="race"?600:380,h:340},[-0.15,W+0.3],[-0.1,Math.max(H,0.6)+0.35]);
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.strokeStyle=css("--ink"); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(M.X(0),M.Y(H)); ctx.lineTo(M.X(W),M.Y(0)); ctx.lineTo(M.X(0),M.Y(0)); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+    const ux=Math.cos(th), uy=-Math.sin(th), nx=Math.sin(th), ny=Math.cos(th);
+    bs.forEach((b,i)=>{ const s=Math.min(Ls,0.5*b.a*t*t), tt=Math.min(t,Math.sqrt(2*Ls/b.a)), cxw=s*ux, cyw=H+s*uy;
+      const col=css(COLS[i%COLS.length]);
+      if(b.c===0){ // block
+        if(sel==="race"){ dot(ctx,470,40+18*i,css("--muted"),6); cvText(ctx,482,40+18*i,NAMES[b.k],css("--muted"),"left","600 12px "); }
+        const bw=0.16, bh=0.10, p=(x,y)=>[M.X(cxw+x*ux+y*nx),M.Y(cyw+x*uy+y*ny)];
+        ctx.save(); ctx.globalAlpha=sel==="race"?0.9:0.45; ctx.fillStyle=css("--muted"); ctx.beginPath(); [[ -bw/2,0],[bw/2,0],[bw/2,bh],[-bw/2,bh]].forEach((q,j)=>{ const [X,Y]=p(...q); j?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }); ctx.closePath(); ctx.fill(); ctx.restore();
+        return; }
+      const Cx=cxw+nx*Rb, Cy=cyw+ny*Rb, phi=b.roll?s/Rb:0.5*b.alpha*tt*tt;
+      ctx.save(); ctx.fillStyle=col; ctx.globalAlpha=0.25; ctx.beginPath(); ctx.arc(M.X(Cx),M.Y(Cy),Rb*M.s,0,2*Math.PI); ctx.fill(); ctx.globalAlpha=1; ctx.strokeStyle=col; ctx.lineWidth=b.c>=1?5:b.c>0.6?3.5:2; ctx.stroke(); ctx.restore();
+      ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.beginPath(); ctx.moveTo(M.X(Cx),M.Y(Cy)); ctx.lineTo(M.X(Cx)+Rb*M.s*Math.cos(phi+th),M.Y(Cy)+Rb*M.s*Math.sin(phi+th)); ctx.stroke(); ctx.restore();
+      if(sel!=="race"){ // forces at full scale: per unit mass, 1 g = 70 px
+        const kf=70/g, Ax=M.X(cxw), Ay=M.Y(cyw);
+        arrow2(ctx,M.X(Cx),M.Y(Cy),M.X(Cx),M.Y(Cy)+g*kf,css("--warn"),2.5); cvText(ctx,M.X(Cx)+6,M.Y(Cy)+g*kf+10,"Mg",css("--warn"),"left","600 11px ");
+        const nn=g*Math.cos(th)*kf; arrow2(ctx,Ax,Ay,Ax+nx*nn,Ay-ny*nn,css("--vB"),2.5); cvText(ctx,Ax+nx*nn+6,Ay-ny*nn,"n",css("--vB"),"left","600 12px ");
+        if(b.f>1e-6){ const ff=b.f*kf; arrow2(ctx,Ax,Ay,Ax-ux*ff,Ay-uy*ff,css("--vC"),2.5); cvText(ctx,Ax-ux*ff-6,Ay-uy*ff-8,b.roll?"f (static)":"f (kinetic)",css("--vC"),"right","600 11px "); }
+      }
+      if(sel==="race"){ dot(ctx,470,40+18*i,col,6); cvText(ctx,482,40+18*i,NAMES[b.k],col,"left","600 12px "); }
+    });
+    const sb=bs[bs.length-1];
+    if(sel!=="race"){ // energy bars per kg
+      const s=Math.min(Ls,0.5*sb.a*t*t), tt=Math.min(t,Math.sqrt(2*Ls/sb.a)), v=sb.a*tt, w=sb.roll?v/Rb:sb.alpha*tt;
+      const U=g*(H-s*Math.sin(th)), Kt=0.5*v*v, Kr=0.5*sb.c*Rb*Rb*w*w, Q=Math.max(0,g*H-U-Kt-Kr);
+      bars(ctx,{x:420,y:40,w:200,h:300},[["U",U,css("--vC")],["K trans",Kt,css("--vB")],["K rot",Kr,css("--vA")],["thermal",Q,css("--warn")]],"energy per kg (J/kg)");
+      const muMin=sb.c/(1+sb.c)*Math.tan(th);
+      readout($("#r10-out"),[["body",NAMES[sb.k]+", c = "+sb.c.toFixed(2)],["motion",sb.roll?"rolls without slipping":"rolls and slips"],["a_cm",sb.a.toFixed(2)+" m/s² (block: "+(g*Math.sin(th)).toFixed(2)+")"],
+        ["friction / weight",(sb.f/g).toFixed(3)],["least μ for rolling",muMin.toFixed(3)],["speed at the bottom (2.0 m)",Math.sqrt(2*sb.a*Ls).toFixed(2)+" m/s"],["time to the bottom",Math.sqrt(2*Ls/sb.a).toFixed(2)+" s"]]);
+      $("#r10-key").textContent= sb.roll ? `Rolling without slipping: a = g sin θ/(1 + c) and static friction f = c/(1 + c)·Mg sin θ. Friction does no work: the "thermal" bar stays at zero. Steepen the slope beyond tan θ = μ(1 + c)/c (here ${deg(Math.atan(mu*(1+sb.c)/sb.c)).toFixed(0)}°) to make it slip.`
+        : "Slipping: kinetic friction μMg cos θ acts, the body spins up more slowly than it would rolling, and friction turns some of the energy into internal energy (red bar).";
+    } else {
+      readout($("#r10-out"),bs.map(b=>[NAMES[b.k],(b.roll||b.c===0?"":"slips · ")+"a = "+b.a.toFixed(2)+" m/s², t = "+Math.sqrt(2*Ls/b.a).toFixed(2)+" s"]));
+      $("#r10-key").textContent="Example 9.12 and 10.6: bodies with a smaller ratio c = I/MR² reach the bottom first; mass and radius do not matter. At 30° and 1.0 m height: block 4.43 m/s, solid ball 3.74, cylinder 3.61, hollow ball 3.43, hoop 3.13 m/s.";
+    }
+  };
+  seg("#r10-body",ds=>{ sel=ds.c==="race"?"race":ds.c; TT.value=0; draw(); });
+  [TH,MU,TT].forEach(i=>i.addEventListener("input",draw));
+  player($("#r10-play"),TT,()=>3,draw);
+  draw(); return draw;
+}
+
+/* ---------- 10.6 pulling in the dumbbells ---------- */
+function ch10skater(){
+  const cv=$("#s10-cv"), ctx=cv.getContext("2d"), D=$("#s10-d"), MM=$("#s10-m"), I0=$("#s10-i"), SIDE=$("#s10-side"), btn=$("#s10-play");
+  let L=0, K0=0, ang=0, raf=null, last=null, lastD=+D.value, lastT=0, vr=0;
+  const I=d=>+I0.value+2*(+MM.value)*d*d;
+  const reset=()=>{ L=I(+D.value)*2*Math.PI*0.5; K0=L*L/(2*I(+D.value)); };
+  const draw=()=>{
+    const d=+D.value, m=+MM.value, Ii=I(d), w=L/Ii, K=L*L/(2*Ii);
+    $("#s10-d-o").textContent=d.toFixed(2)+" m"; $("#s10-m-o").textContent=m.toFixed(1)+" kg"; $("#s10-i-o").textContent=(+I0.value).toFixed(1)+" kg·m²";
+    clearCv(ctx,cv);
+    const cx=190, cy=200, s=190;
+    ctx.save(); ctx.fillStyle=css("--surface-2"); ctx.strokeStyle=css("--muted"); ctx.lineWidth=2; ctx.beginPath(); ctx.arc(cx,cy,0.30*s,0,2*Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
+    const ca=Math.cos(ang), sa=Math.sin(ang), P=(x,y)=>[cx+(x*ca-y*sa)*s, cy-(x*sa+y*ca)*s];
+    // body: shoulders ellipse and head
+    ctx.save(); ctx.fillStyle=css("--vA"); ctx.globalAlpha=0.3; ctx.beginPath(); ctx.ellipse(cx,cy,0.22*s,0.11*s,-ang,0,2*Math.PI); ctx.fill(); ctx.globalAlpha=1; ctx.strokeStyle=css("--ink"); ctx.lineWidth=1.5; ctx.stroke(); ctx.restore();
+    const [hx,hy]=P(0,0.02); dot(ctx,hx,hy,css("--ink"),0.07*s);
+    // arms and dumbbells
+    [-1,1].forEach(k=>{ const [x1,y1]=P(k*0.18,0), [x2,y2]=P(k*d,0); ctx.save(); ctx.strokeStyle=css("--ink"); ctx.lineWidth=5; ctx.lineCap="round"; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.restore();
+      if(m>0){ dot(ctx,x2,y2,css("--muted"),7+1.6*m); }
+      const now=performance.now()/1000;
+      if(SIDE.checked && m>0 && now-lastT<0.35 && Math.abs(vr)>1e-3){ // hand pushes dumbbell sideways: F = 2 m w v_r, forward when pulling in
+        const sgn=vr<0?1:-1, tx=-sa*k, ty=ca*k; // tangential (direction of rotation) for dumbbell at k*d
+        const len=Math.min(70,Math.abs(2*m*w*vr)*6+18);
+        arrow2(ctx,x2,y2,x2+sgn*tx*len*(w>=0?1:-1),y2-sgn*ty*len*(w>=0?1:-1),css("--vC"),3);
+      }
+    });
+    // rotation arrow
+    ctx.save(); ctx.strokeStyle=css("--vB"); ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(cx,cy,0.98*s,-0.4,-1.3,true); ctx.stroke(); ctx.restore();
+    arrow2(ctx,cx+0.98*s*Math.cos(1.15),cy-0.98*s*Math.sin(1.15),cx+0.98*s*Math.cos(1.3),cy-0.98*s*Math.sin(1.3),css("--vB"),2.5);
+    cvText(ctx,cx+0.98*s*Math.cos(0.75)+8,cy-0.98*s*Math.sin(0.75),"ω",css("--vB"),"left","700 14px ");
+    // graphs: omega(d) and K(d)
+    const f=dd=>L/I(dd)/(2*Math.PI), Kd=dd=>L*L/(2*I(dd));
+    const b1={x:440,y:24,w:180,h:130}, b2={x:440,y:214,w:180,h:130};
+    const F1=frame(ctx,b1,[0,1],[0,Math.max(0.6,f(0.1))*1.1],"d (m)","f (rev/s)"); curve(ctx,F1,f,0.1,0.9,css("--vB")); dot(ctx,F1.X(d),F1.Y(f(d)),css("--vB"),5);
+    const F2=frame(ctx,b2,[0,1],[0,Kd(0.1)*1.1],"d (m)","K (J)"); curve(ctx,F2,Kd,0.1,0.9,css("--vA")); dot(ctx,F2.X(d),F2.Y(Kd(d)),css("--vA"),5);
+    readout($("#s10-out"),[["I = I₀ + 2md²",Ii.toFixed(3)+" kg·m²"],["ω",w.toFixed(2)+" rad/s = "+(w/2/Math.PI).toFixed(2)+" rev/s"],["L = Iω (constant)",L.toFixed(2)+" kg·m²/s"],["K = L²/2I",K.toFixed(1)+" J"],["work done by the arms since reset",(K-K0).toFixed(1)+" J"]]);
+    $("#s10-key").textContent=m===0?"Without dumbbells, moving the empty hands changes I very little (we ignore the arms' own mass here), so ω hardly changes.":"Example 10.14: at d = 0.75 m the student turns at 0.50 rev/s (26.5 J); pulled in to 0.15 m she turns at 1.26 rev/s (66.8 J). L stays the same; the extra 40 J is the work of her arms. While the dumbbells move inward, her hands must push them forward (green): these sideways forces share the angular momentum out.";
+  };
+  const loop=ts=>{ if(last===null) last=ts; const dt=Math.min(0.05,(ts-last)/1000); last=ts; ang+=L/I(+D.value)*dt; draw(); raf=requestAnimationFrame(loop); };
+  btn.addEventListener("click",()=>{ if(raf){ cancelAnimationFrame(raf); raf=null; btn.textContent="Spin"; } else { last=null; btn.textContent="Pause"; raf=requestAnimationFrame(loop); } });
+  D.addEventListener("input",()=>{ const now=performance.now()/1000, dd=+D.value-lastD; if(now-lastT>1e-3) vr=dd/Math.max(0.016,now-lastT); lastD=+D.value; lastT=now; draw(); });
+  [MM,I0].forEach(i=>i.addEventListener("input",()=>{ reset(); draw(); }));
+  $("#s10-reset").addEventListener("click",()=>{ reset(); draw(); });
+  seg("#s10-preset",ds=>{ const p={ex:[0.75,3,2],heavy:[0.80,6,2],none:[0.75,0,2]}[ds.p]; D.value=p[0]; MM.value=p[1]; I0.value=p[2]; lastD=p[0]; reset(); draw(); });
+  reset(); draw(); return draw;
+}
+
+/* ---------- 10.7 the precessing wheel ---------- */
+function ch10gyro(){
+  const cv=$("#g10-cv"), ctx=cv.getContext("2d"), FF=$("#g10-f"), MM=$("#g10-m"), RR=$("#g10-r"), TT=$("#g10-t"), NUT=$("#g10-nut"), g=9.8, Rw=0.33;
+  const cx=230, cy=165, s=290, cA=Math.cos(rad(-25)), sA=Math.sin(rad(-25)), cg=Math.cos(rad(18)), sg=Math.sin(rad(18)), PH0=-0.5;
+  const P=([x,y,z])=>{ const X=x*cA+y*sA, dep=-x*sA+y*cA; return [cx+s*X, cy-s*(z*cg+dep*sg)]; };
+  const add=(a,b,k=1)=>[a[0]+k*b[0],a[1]+k*b[1],a[2]+k*b[2]], mul=(a,k)=>[a[0]*k,a[1]*k,a[2]*k];
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+  const line=(pts,col,w=2,dash)=>{ ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; if(dash) ctx.setLineDash(dash); ctx.beginPath(); pts.forEach((p,i)=>{ const [X,Y]=P(p); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }); ctx.stroke(); ctx.restore(); };
+  const vec=(from,v,col,lab,w=3)=>{ const [X1,Y1]=P(from), [X2,Y2]=P(add(from,v)); arrow2(ctx,X1,Y1,X2,Y2,col,w); if(lab) cvText(ctx,X2+6,Y2-8,lab,col,"left","700 13px "); };
+  const model=()=>{ const f=+FF.value, m=+MM.value, r=+RR.value, I=m*Rw*Rw, w=2*Math.PI*f, L=I*w, tau=m*g*r, Om=tau/L, Ip=0.5*m*Rw*Rw+m*r*r, wn=L/Ip;
+    return {f,m,r,I,w,L,tau,Om,Ip,wn,Tp:2*Math.PI/Om}; };
+  const angles=(d,t)=>{ if(!NUT.checked) return [PH0+d.Om*t,0]; return [PH0+d.Om*(t-Math.sin(d.wn*t)/d.wn), 10*(d.Om/d.wn)*(1-Math.cos(d.wn*t))]; };
+  const draw=()=>{
+    const d=model(), Dt=Math.min(Math.max(d.Tp,4),60), t=+TT.value/1000*Dt;
+    $("#g10-f-o").textContent=d.f.toFixed(1)+" rev/s"; $("#g10-m-o").textContent=d.m.toFixed(1)+" kg"; $("#g10-r-o").textContent=d.r.toFixed(2)+" m"; $("#g10-t-o").textContent=t.toFixed(2)+" s";
+    clearCv(ctx,cv);
+    // post
+    line([[0,0,-0.62],[0,0,0]],css("--ink"),5); line([[0,0,0],[0,0,0.25]],css("--axis"),1.2,[5,4]);
+    ctx.save(); ctx.fillStyle=css("--surface-2"); const base=[]; for(let i=0;i<=40;i++){ const q=2*Math.PI*i/40; base.push(P([0.14*Math.cos(q),0.14*Math.sin(q),-0.62])); } ctx.beginPath(); base.forEach(([X,Y],i)=>i?ctx.lineTo(X,Y):ctx.moveTo(X,Y)); ctx.fill(); ctx.restore();
+    // trail of the axle end
+    const nS=NUT.checked?Math.min(6000,Math.max(160,Math.ceil(t*d.wn/(2*Math.PI)*16))):160, trail=[]; for(let i=0;i<=nS;i++){ const tt=t*i/nS, [ph,dl]=angles(d,tt); trail.push(mul([Math.cos(ph)*Math.cos(dl),Math.sin(ph)*Math.cos(dl),-Math.sin(dl)],d.r+0.06)); }
+    line(trail,css("--vC"),1.6);
+    const [ph,dl]=angles(d,t), a=[Math.cos(ph)*Math.cos(dl),Math.sin(ph)*Math.cos(dl),-Math.sin(dl)], e1=[-Math.sin(ph),Math.cos(ph),0], e2=cross(a,e1);
+    const C=mul(a,d.r);
+    line([[0,0,0],mul(a,d.r+0.06)],css("--ink"),4);
+    // wheel
+    const psi=t*Math.min(d.w,7), rim=[]; for(let i=0;i<=96;i++){ const q=2*Math.PI*i/96; rim.push(add(C,add(mul(e1,Rw*Math.cos(q)),e2,Rw*Math.sin(q)))); }
+    ctx.save(); ctx.fillStyle=css("--vA"); ctx.globalAlpha=0.10; ctx.beginPath(); rim.forEach((p,i)=>{ const [X,Y]=P(p); i?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }); ctx.fill(); ctx.restore();
+    line(rim,css("--ink"),3);
+    for(let k=0;k<6;k++){ const q=psi+k*Math.PI/3; line([C,add(C,add(mul(e1,Rw*Math.cos(q)),e2,Rw*Math.sin(q)))],k?css("--muted"):css("--vA"),k?1.2:2.5); }
+    dot(ctx,...P([0,0,0]),css("--ink"),4); cvText(ctx,P([0,0,0])[0]-12,P([0,0,0])[1]-4,"O",css("--ink"),"right","600 12px ");
+    // vectors: L along the axle, tau horizontal (e1), dL at the tip, weight
+    const Lv=Math.min(0.55,0.08+d.L*0.012);
+    vec(add(C,a,0.03),mul(a,Lv),css("--vB"),"L");
+    vec([0,0,0],mul(e1,Math.min(0.35,0.06+d.tau*0.025)),css("--vC"),"τ");
+    vec(add(C,a,0.03+Lv),mul(e1,Math.min(0.2,0.04+d.Om*0.25)),css("--vC"),"dL");
+    vec(C,[0,0,-0.18],css("--warn"),"mg",2.5);
+    const ratio=d.Om/d.w;
+    readout($("#g10-out"),[["I = mR² (R = 0.33 m)",d.I.toFixed(3)+" kg·m²"],["L = Iω",d.L.toFixed(2)+" kg·m²/s"],["τ = mgr",d.tau.toFixed(2)+" N·m"],["Ω = τ/L",d.Om.toFixed(3)+" rad/s"],
+      ["period of precession",d.Tp.toFixed(1)+" s"],["Ω/ω",ratio<0.001?ratio.toExponential(1):ratio.toFixed(3)],["vertical force of the pivot",(d.m*g).toFixed(1)+" N"],["nutation period 2π/ω_n",(2*Math.PI/d.wn).toFixed(3)+" s"]]);
+    $("#g10-key").textContent= ratio>0.08 ? "The spin is too slow: Ω is no longer small compared with ω, the approximation Ω = τ/L fails, and a real wheel would wobble and fall."
+      : NUT.checked ? "Released without a sideways push, the end of the axle first drops a little and then traces small scallops (nutation, shown 10 times enlarged) round the steady precession. Friction soon damps them."
+      : "Example 10.18: 2.0 kg, 0.33 m wheel at 10 rev/s, 0.20 m from the pivot: L = 13.7 kg·m²/s, τ = 3.92 N·m, Ω = 0.286 rad/s, one turn in 22 s. The tip of L moves in the direction of τ; spin faster and the precession slows.";
+  };
+  [FF,MM,RR,TT,NUT].forEach(i=>i.addEventListener("input",draw));
+  player($("#g10-play"),TT,()=>{ const d=model(); return Math.min(20,Math.max(4,Math.min(Math.max(d.Tp,4),60))); },draw);
+  draw(); return draw;
+}
+
 /* ---------- chapter cards ---------- */
 const CHAPTERS=[
  [1,"Units, Physical Quantities, and Vectors",["Triangulation","Pendulum and dimensions","Vector addition, components","Scalar and vector products"],7],
@@ -3343,8 +4081,8 @@ const CHAPTERS=[
  [6,"Work and Kinetic Energy",["Work of a constant force","Work–energy theorem bars","Work as area under F(x)","Power, force, and speed"],4],
  [7,"Potential Energy and Energy Conservation",["Energy bars on a track","Body on a spring","Conservative or not? Work along paths","Energy diagrams and equilibrium"],4],
  [8,"Momentum, Impulse, and Collisions",["Impulse and force–time graphs","Collisions on an air track","Glancing collisions","Centre of mass, exploding shell","Rocket with stages"],5],
- [9,"Rotation of Rigid Bodies",["Angular kinematics","Moments of inertia, Steiner theorem"]],
- [10,"Dynamics of Rotational Motion",["Torque","Rolling down an incline","Gyroscope precession"]],
+ [9,"Rotation of Rigid Bodies",["Angular velocity vector, adding rotations","Constant angular acceleration","The rolling wheel","Falling weight and turning drum","Moment of inertia, parallel axes"],5],
+ [10,"Dynamics of Rotational Motion",["Torque on a wrench","Heavy pulleys and tensions","Rolling down a slope, slipping","Zhukovsky bench","Precessing gyroscope"],5],
  [11,"Equilibrium and Elasticity",["Beam and ladder balance","Stress–strain curve"]],
  [12,"Gravitation",["Orbit simulator","Cosmic velocities"]],
  [13,"Periodic Motion",["Rotating-vector SHM","Damped and forced oscillations"]],
@@ -3358,12 +4096,12 @@ $("#chapter-cards").innerHTML=CHAPTERS.map(([n,t,items,live])=>`
   </article>`).join("");
 
 /* ---------- routing ---------- */
-const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),ch7:$("#view-ch7"),ch8:$("#view-ch8"),about:$("#view-about")};
+const views={home:$("#view-home"),ch1:$("#view-ch1"),ch2:$("#view-ch2"),ch3:$("#view-ch3"),ch4:$("#view-ch4"),ch5:$("#view-ch5"),ch6:$("#view-ch6"),ch7:$("#view-ch7"),ch8:$("#view-ch8"),ch9:$("#view-ch9"),ch10:$("#view-ch10"),about:$("#view-about")};
 const redraws=[];
 function route(){
   const h=(location.hash||"#home").slice(1);
   let v="home", target=null;
-  const m=h.match(/^(ch[1-8])(-.*)?$/);
+  const m=h.match(/^(ch(?:1[0-3]|[1-9]))(-.*)?$/);
   if(m){ v=m[1]; if(m[2]) target=h; }
   else if(h==="about") v="about";
   else if(h==="chapters"){ v="home"; target="chapters"; }
@@ -3373,7 +4111,7 @@ function route(){
   const t=target && document.getElementById(target);
   if(t) t.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
 }
-redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power(),ch7track(),ch7spring(),ch7paths(),ch7curve(),ch8impulse(),ch8collide(),ch8billiards(),ch8cm(),ch8rocket());
+redraws.push(hero(),triangulation(),pendulum(),uncertainty(),addition(),components(),axes(),products(),ch2graphs(),ch2constant(),ch2freefall(),ch2ruler(),ch2integration(),ch3vectors(),ch3projectile(),ch3circle(),ch3relative(),ch4inertia(),ch4forces(),ch4third(),ch4elevator(),ch4fbd(),ch5pulleys(),ch5incline(),ch5drag(),ch5curve(),ch5rotating(),ch6work(),ch6energy(),ch6spring(),ch6power(),ch7track(),ch7spring(),ch7paths(),ch7curve(),ch8impulse(),ch8collide(),ch8billiards(),ch8cm(),ch8rocket(),ch9vector(),ch9kinematics(),ch9rolling(),ch9windlass(),ch9inertia(),ch10torque(),ch10winch(),ch10rolling(),ch10skater(),ch10gyro());
 addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>redraws.forEach(f=>f()));
 new MutationObserver(()=>redraws.forEach(f=>f())).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
